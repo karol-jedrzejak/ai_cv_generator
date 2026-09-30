@@ -36,7 +36,7 @@ export class AuthService {
       },
     });
 
-    return this.generateTokens(user.id, user.email, user.role);
+    return this.generateTokens(user.id, user.email);
   }
 
   async login(dto: LoginDto) {
@@ -59,7 +59,7 @@ export class AuthService {
       data: { lastLoginAt: new Date() },
     });
 
-    return this.generateTokens(user.id, user.email, user.role);
+    return this.generateTokens(user.id, user.email);
   }
 
   async changePassword(userId: string, dto: ChangePasswordDto) {
@@ -79,8 +79,8 @@ export class AuthService {
     return { message: 'Hasło zostało pomyślnie zmienione' };
   }
 
-  private async generateTokens(userId: string, email: string, role: string) {
-    const payload = { sub: userId, email, role };
+  private async generateTokens(userId: string, email: string) {
+    const payload = { sub: userId, email };
     const accessToken = await this.jwtService.signAsync(payload);
     return { accessToken };
   }

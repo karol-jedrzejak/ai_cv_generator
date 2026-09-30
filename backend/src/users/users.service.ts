@@ -9,18 +9,20 @@ export class UsersService {
     return this.prisma.user.findMany({
       select: {
         id: true,
+        name: true,
+        surname: true,
         username: true,
         email: true,
-        role: true,
-        displayName: true,
         avatarUrl: true,
-        bio: true,
         isActive: true,
-        isEmailVerified: true,
+        emailVerifiedAt: true,
         themePreference: true,
+        locale: true,
+        timezone: true,
         lastLoginAt: true,
         createdAt: true,
         updatedAt: true,
+        deletedAt: true,
       },
     });
   }

@@ -1,4 +1,4 @@
-import { PrismaClient, UserRole, ThemePreference } from '../../generated/prisma/client';
+import { PrismaClient, ThemePreference } from '../../generated/prisma/client';
 import * as bcrypt from 'bcrypt';
 
 export async function seedUsers(prisma: PrismaClient) {
@@ -9,29 +9,41 @@ export async function seedUsers(prisma: PrismaClient) {
   const users = [
     {
       id: 'user-1',
-      username: 'admin',
-      email: 'admin@example.com',
+      name: 'Jan',
+      surname: 'Kowalski',
+      username: 'jan.kowalski',
+      email: 'jan.kowalski@example.com',
       passwordHash,
-      role: UserRole.ADMIN,
-      displayName: 'Administrator',
+
       avatarUrl: null,
-      bio: 'Test administrator account',
+
       isActive: true,
-      isEmailVerified: true,
+      emailVerifiedAt: new Date(),
+
       themePreference: ThemePreference.SYSTEM,
+      locale: 'pl-PL',
+      timezone: 'Europe/Warsaw',
+
+      lastLoginAt: null,
     },
     {
       id: 'user-2',
-      username: 'testuser',
-      email: 'user@example.com',
+      name: 'Anna',
+      surname: 'Nowak',
+      username: 'anna.nowak',
+      email: 'anna.nowak@example.com',
       passwordHash,
-      role: UserRole.USER,
-      displayName: 'Test User',
+
       avatarUrl: null,
-      bio: 'Test user account',
+
       isActive: true,
-      isEmailVerified: true,
+      emailVerifiedAt: new Date(),
+
       themePreference: ThemePreference.LIGHT,
+      locale: 'pl-PL',
+      timezone: 'Europe/Warsaw',
+
+      lastLoginAt: null,
     },
   ];
 
@@ -41,20 +53,26 @@ export async function seedUsers(prisma: PrismaClient) {
         id: userData.id,
       },
       update: {
+        name: userData.name,
+        surname: userData.surname,
         username: userData.username,
         email: userData.email,
         passwordHash: userData.passwordHash,
-        role: userData.role,
-        displayName: userData.displayName,
+
         avatarUrl: userData.avatarUrl,
-        bio: userData.bio,
+
         isActive: userData.isActive,
-        isEmailVerified: userData.isEmailVerified,
+        emailVerifiedAt: userData.emailVerifiedAt,
+
         themePreference: userData.themePreference,
+        locale: userData.locale,
+        timezone: userData.timezone,
+
+        lastLoginAt: userData.lastLoginAt,
       },
       create: userData,
     });
   }
 
-  console.log('Users seeded!');
+  console.log('Users seeded successfully!');
 }

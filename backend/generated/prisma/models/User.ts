@@ -26,16 +26,17 @@ export type AggregateUser = {
 
 export type UserMinAggregateOutputType = {
   id: string | null
+  name: string | null
+  surname: string | null
   username: string | null
   email: string | null
   passwordHash: string | null
-  role: $Enums.UserRole | null
-  displayName: string | null
   avatarUrl: string | null
-  bio: string | null
   isActive: boolean | null
-  isEmailVerified: boolean | null
+  emailVerifiedAt: Date | null
   themePreference: $Enums.ThemePreference | null
+  locale: string | null
+  timezone: string | null
   lastLoginAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -44,16 +45,17 @@ export type UserMinAggregateOutputType = {
 
 export type UserMaxAggregateOutputType = {
   id: string | null
+  name: string | null
+  surname: string | null
   username: string | null
   email: string | null
   passwordHash: string | null
-  role: $Enums.UserRole | null
-  displayName: string | null
   avatarUrl: string | null
-  bio: string | null
   isActive: boolean | null
-  isEmailVerified: boolean | null
+  emailVerifiedAt: Date | null
   themePreference: $Enums.ThemePreference | null
+  locale: string | null
+  timezone: string | null
   lastLoginAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -62,16 +64,17 @@ export type UserMaxAggregateOutputType = {
 
 export type UserCountAggregateOutputType = {
   id: number
+  name: number
+  surname: number
   username: number
   email: number
   passwordHash: number
-  role: number
-  displayName: number
   avatarUrl: number
-  bio: number
   isActive: number
-  isEmailVerified: number
+  emailVerifiedAt: number
   themePreference: number
+  locale: number
+  timezone: number
   lastLoginAt: number
   createdAt: number
   updatedAt: number
@@ -82,16 +85,17 @@ export type UserCountAggregateOutputType = {
 
 export type UserMinAggregateInputType = {
   id?: true
+  name?: true
+  surname?: true
   username?: true
   email?: true
   passwordHash?: true
-  role?: true
-  displayName?: true
   avatarUrl?: true
-  bio?: true
   isActive?: true
-  isEmailVerified?: true
+  emailVerifiedAt?: true
   themePreference?: true
+  locale?: true
+  timezone?: true
   lastLoginAt?: true
   createdAt?: true
   updatedAt?: true
@@ -100,16 +104,17 @@ export type UserMinAggregateInputType = {
 
 export type UserMaxAggregateInputType = {
   id?: true
+  name?: true
+  surname?: true
   username?: true
   email?: true
   passwordHash?: true
-  role?: true
-  displayName?: true
   avatarUrl?: true
-  bio?: true
   isActive?: true
-  isEmailVerified?: true
+  emailVerifiedAt?: true
   themePreference?: true
+  locale?: true
+  timezone?: true
   lastLoginAt?: true
   createdAt?: true
   updatedAt?: true
@@ -118,16 +123,17 @@ export type UserMaxAggregateInputType = {
 
 export type UserCountAggregateInputType = {
   id?: true
+  name?: true
+  surname?: true
   username?: true
   email?: true
   passwordHash?: true
-  role?: true
-  displayName?: true
   avatarUrl?: true
-  bio?: true
   isActive?: true
-  isEmailVerified?: true
+  emailVerifiedAt?: true
   themePreference?: true
+  locale?: true
+  timezone?: true
   lastLoginAt?: true
   createdAt?: true
   updatedAt?: true
@@ -209,16 +215,17 @@ export type UserGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 
 export type UserGroupByOutputType = {
   id: string
+  name: string | null
+  surname: string | null
   username: string
   email: string
   passwordHash: string
-  role: $Enums.UserRole
-  displayName: string | null
   avatarUrl: string | null
-  bio: string | null
   isActive: boolean
-  isEmailVerified: boolean
+  emailVerifiedAt: Date | null
   themePreference: $Enums.ThemePreference
+  locale: string | null
+  timezone: string | null
   lastLoginAt: Date | null
   createdAt: Date
   updatedAt: Date
@@ -248,16 +255,17 @@ export type UserWhereInput = {
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   id?: Prisma.StringFilter<"User"> | string
+  name?: Prisma.StringNullableFilter<"User"> | string | null
+  surname?: Prisma.StringNullableFilter<"User"> | string | null
   username?: Prisma.StringFilter<"User"> | string
   email?: Prisma.StringFilter<"User"> | string
   passwordHash?: Prisma.StringFilter<"User"> | string
-  role?: Prisma.EnumUserRoleFilter<"User"> | $Enums.UserRole
-  displayName?: Prisma.StringNullableFilter<"User"> | string | null
   avatarUrl?: Prisma.StringNullableFilter<"User"> | string | null
-  bio?: Prisma.StringNullableFilter<"User"> | string | null
   isActive?: Prisma.BoolFilter<"User"> | boolean
-  isEmailVerified?: Prisma.BoolFilter<"User"> | boolean
+  emailVerifiedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFilter<"User"> | $Enums.ThemePreference
+  locale?: Prisma.StringNullableFilter<"User"> | string | null
+  timezone?: Prisma.StringNullableFilter<"User"> | string | null
   lastLoginAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
@@ -266,16 +274,17 @@ export type UserWhereInput = {
 
 export type UserOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  name?: Prisma.SortOrderInput | Prisma.SortOrder
+  surname?: Prisma.SortOrderInput | Prisma.SortOrder
   username?: Prisma.SortOrder
   email?: Prisma.SortOrder
   passwordHash?: Prisma.SortOrder
-  role?: Prisma.SortOrder
-  displayName?: Prisma.SortOrderInput | Prisma.SortOrder
   avatarUrl?: Prisma.SortOrderInput | Prisma.SortOrder
-  bio?: Prisma.SortOrderInput | Prisma.SortOrder
   isActive?: Prisma.SortOrder
-  isEmailVerified?: Prisma.SortOrder
+  emailVerifiedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   themePreference?: Prisma.SortOrder
+  locale?: Prisma.SortOrderInput | Prisma.SortOrder
+  timezone?: Prisma.SortOrderInput | Prisma.SortOrder
   lastLoginAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -289,14 +298,15 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
+  name?: Prisma.StringNullableFilter<"User"> | string | null
+  surname?: Prisma.StringNullableFilter<"User"> | string | null
   passwordHash?: Prisma.StringFilter<"User"> | string
-  role?: Prisma.EnumUserRoleFilter<"User"> | $Enums.UserRole
-  displayName?: Prisma.StringNullableFilter<"User"> | string | null
   avatarUrl?: Prisma.StringNullableFilter<"User"> | string | null
-  bio?: Prisma.StringNullableFilter<"User"> | string | null
   isActive?: Prisma.BoolFilter<"User"> | boolean
-  isEmailVerified?: Prisma.BoolFilter<"User"> | boolean
+  emailVerifiedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFilter<"User"> | $Enums.ThemePreference
+  locale?: Prisma.StringNullableFilter<"User"> | string | null
+  timezone?: Prisma.StringNullableFilter<"User"> | string | null
   lastLoginAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
@@ -305,16 +315,17 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
 
 export type UserOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  name?: Prisma.SortOrderInput | Prisma.SortOrder
+  surname?: Prisma.SortOrderInput | Prisma.SortOrder
   username?: Prisma.SortOrder
   email?: Prisma.SortOrder
   passwordHash?: Prisma.SortOrder
-  role?: Prisma.SortOrder
-  displayName?: Prisma.SortOrderInput | Prisma.SortOrder
   avatarUrl?: Prisma.SortOrderInput | Prisma.SortOrder
-  bio?: Prisma.SortOrderInput | Prisma.SortOrder
   isActive?: Prisma.SortOrder
-  isEmailVerified?: Prisma.SortOrder
+  emailVerifiedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   themePreference?: Prisma.SortOrder
+  locale?: Prisma.SortOrderInput | Prisma.SortOrder
+  timezone?: Prisma.SortOrderInput | Prisma.SortOrder
   lastLoginAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -329,16 +340,17 @@ export type UserScalarWhereWithAggregatesInput = {
   OR?: Prisma.UserScalarWhereWithAggregatesInput[]
   NOT?: Prisma.UserScalarWhereWithAggregatesInput | Prisma.UserScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"User"> | string
+  name?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  surname?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   username?: Prisma.StringWithAggregatesFilter<"User"> | string
   email?: Prisma.StringWithAggregatesFilter<"User"> | string
   passwordHash?: Prisma.StringWithAggregatesFilter<"User"> | string
-  role?: Prisma.EnumUserRoleWithAggregatesFilter<"User"> | $Enums.UserRole
-  displayName?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   avatarUrl?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
-  bio?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   isActive?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
-  isEmailVerified?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
+  emailVerifiedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceWithAggregatesFilter<"User"> | $Enums.ThemePreference
+  locale?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  timezone?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   lastLoginAt?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
@@ -347,16 +359,17 @@ export type UserScalarWhereWithAggregatesInput = {
 
 export type UserCreateInput = {
   id?: string
+  name?: string | null
+  surname?: string | null
   username: string
   email: string
   passwordHash: string
-  role?: $Enums.UserRole
-  displayName?: string | null
   avatarUrl?: string | null
-  bio?: string | null
   isActive?: boolean
-  isEmailVerified?: boolean
+  emailVerifiedAt?: Date | string | null
   themePreference?: $Enums.ThemePreference
+  locale?: string | null
+  timezone?: string | null
   lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -365,16 +378,17 @@ export type UserCreateInput = {
 
 export type UserUncheckedCreateInput = {
   id?: string
+  name?: string | null
+  surname?: string | null
   username: string
   email: string
   passwordHash: string
-  role?: $Enums.UserRole
-  displayName?: string | null
   avatarUrl?: string | null
-  bio?: string | null
   isActive?: boolean
-  isEmailVerified?: boolean
+  emailVerifiedAt?: Date | string | null
   themePreference?: $Enums.ThemePreference
+  locale?: string | null
+  timezone?: string | null
   lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -383,16 +397,17 @@ export type UserUncheckedCreateInput = {
 
 export type UserUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -401,16 +416,17 @@ export type UserUpdateInput = {
 
 export type UserUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -419,16 +435,17 @@ export type UserUncheckedUpdateInput = {
 
 export type UserCreateManyInput = {
   id?: string
+  name?: string | null
+  surname?: string | null
   username: string
   email: string
   passwordHash: string
-  role?: $Enums.UserRole
-  displayName?: string | null
   avatarUrl?: string | null
-  bio?: string | null
   isActive?: boolean
-  isEmailVerified?: boolean
+  emailVerifiedAt?: Date | string | null
   themePreference?: $Enums.ThemePreference
+  locale?: string | null
+  timezone?: string | null
   lastLoginAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -437,16 +454,17 @@ export type UserCreateManyInput = {
 
 export type UserUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -455,16 +473,17 @@ export type UserUpdateManyMutationInput = {
 
 export type UserUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -473,16 +492,17 @@ export type UserUncheckedUpdateManyInput = {
 
 export type UserCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  surname?: Prisma.SortOrder
   username?: Prisma.SortOrder
   email?: Prisma.SortOrder
   passwordHash?: Prisma.SortOrder
-  role?: Prisma.SortOrder
-  displayName?: Prisma.SortOrder
   avatarUrl?: Prisma.SortOrder
-  bio?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
-  isEmailVerified?: Prisma.SortOrder
+  emailVerifiedAt?: Prisma.SortOrder
   themePreference?: Prisma.SortOrder
+  locale?: Prisma.SortOrder
+  timezone?: Prisma.SortOrder
   lastLoginAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -491,16 +511,17 @@ export type UserCountOrderByAggregateInput = {
 
 export type UserMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  surname?: Prisma.SortOrder
   username?: Prisma.SortOrder
   email?: Prisma.SortOrder
   passwordHash?: Prisma.SortOrder
-  role?: Prisma.SortOrder
-  displayName?: Prisma.SortOrder
   avatarUrl?: Prisma.SortOrder
-  bio?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
-  isEmailVerified?: Prisma.SortOrder
+  emailVerifiedAt?: Prisma.SortOrder
   themePreference?: Prisma.SortOrder
+  locale?: Prisma.SortOrder
+  timezone?: Prisma.SortOrder
   lastLoginAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -509,16 +530,17 @@ export type UserMaxOrderByAggregateInput = {
 
 export type UserMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  surname?: Prisma.SortOrder
   username?: Prisma.SortOrder
   email?: Prisma.SortOrder
   passwordHash?: Prisma.SortOrder
-  role?: Prisma.SortOrder
-  displayName?: Prisma.SortOrder
   avatarUrl?: Prisma.SortOrder
-  bio?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
-  isEmailVerified?: Prisma.SortOrder
+  emailVerifiedAt?: Prisma.SortOrder
   themePreference?: Prisma.SortOrder
+  locale?: Prisma.SortOrder
+  timezone?: Prisma.SortOrder
   lastLoginAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -529,10 +551,6 @@ export type StringFieldUpdateOperationsInput = {
   set?: string
 }
 
-export type EnumUserRoleFieldUpdateOperationsInput = {
-  set?: $Enums.UserRole
-}
-
 export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null
 }
@@ -541,12 +559,12 @@ export type BoolFieldUpdateOperationsInput = {
   set?: boolean
 }
 
-export type EnumThemePreferenceFieldUpdateOperationsInput = {
-  set?: $Enums.ThemePreference
-}
-
 export type NullableDateTimeFieldUpdateOperationsInput = {
   set?: Date | string | null
+}
+
+export type EnumThemePreferenceFieldUpdateOperationsInput = {
+  set?: $Enums.ThemePreference
 }
 
 export type DateTimeFieldUpdateOperationsInput = {
@@ -557,16 +575,17 @@ export type DateTimeFieldUpdateOperationsInput = {
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  name?: boolean
+  surname?: boolean
   username?: boolean
   email?: boolean
   passwordHash?: boolean
-  role?: boolean
-  displayName?: boolean
   avatarUrl?: boolean
-  bio?: boolean
   isActive?: boolean
-  isEmailVerified?: boolean
+  emailVerifiedAt?: boolean
   themePreference?: boolean
+  locale?: boolean
+  timezone?: boolean
   lastLoginAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -575,16 +594,17 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
 
 export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  name?: boolean
+  surname?: boolean
   username?: boolean
   email?: boolean
   passwordHash?: boolean
-  role?: boolean
-  displayName?: boolean
   avatarUrl?: boolean
-  bio?: boolean
   isActive?: boolean
-  isEmailVerified?: boolean
+  emailVerifiedAt?: boolean
   themePreference?: boolean
+  locale?: boolean
+  timezone?: boolean
   lastLoginAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -593,16 +613,17 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  name?: boolean
+  surname?: boolean
   username?: boolean
   email?: boolean
   passwordHash?: boolean
-  role?: boolean
-  displayName?: boolean
   avatarUrl?: boolean
-  bio?: boolean
   isActive?: boolean
-  isEmailVerified?: boolean
+  emailVerifiedAt?: boolean
   themePreference?: boolean
+  locale?: boolean
+  timezone?: boolean
   lastLoginAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -611,39 +632,41 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
 
 export type UserSelectScalar = {
   id?: boolean
+  name?: boolean
+  surname?: boolean
   username?: boolean
   email?: boolean
   passwordHash?: boolean
-  role?: boolean
-  displayName?: boolean
   avatarUrl?: boolean
-  bio?: boolean
   isActive?: boolean
-  isEmailVerified?: boolean
+  emailVerifiedAt?: boolean
   themePreference?: boolean
+  locale?: boolean
+  timezone?: boolean
   lastLoginAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "username" | "email" | "passwordHash" | "role" | "displayName" | "avatarUrl" | "bio" | "isActive" | "isEmailVerified" | "themePreference" | "lastLoginAt" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "surname" | "username" | "email" | "passwordHash" | "avatarUrl" | "isActive" | "emailVerifiedAt" | "themePreference" | "locale" | "timezone" | "lastLoginAt" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["user"]>
 
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
   objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
+    name: string | null
+    surname: string | null
     username: string
     email: string
     passwordHash: string
-    role: $Enums.UserRole
-    displayName: string | null
     avatarUrl: string | null
-    bio: string | null
     isActive: boolean
-    isEmailVerified: boolean
+    emailVerifiedAt: Date | null
     themePreference: $Enums.ThemePreference
+    locale: string | null
+    timezone: string | null
     lastLoginAt: Date | null
     createdAt: Date
     updatedAt: Date
@@ -1072,16 +1095,17 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
  */
 export interface UserFieldRefs {
   readonly id: Prisma.FieldRef<"User", 'String'>
+  readonly name: Prisma.FieldRef<"User", 'String'>
+  readonly surname: Prisma.FieldRef<"User", 'String'>
   readonly username: Prisma.FieldRef<"User", 'String'>
   readonly email: Prisma.FieldRef<"User", 'String'>
   readonly passwordHash: Prisma.FieldRef<"User", 'String'>
-  readonly role: Prisma.FieldRef<"User", 'UserRole'>
-  readonly displayName: Prisma.FieldRef<"User", 'String'>
   readonly avatarUrl: Prisma.FieldRef<"User", 'String'>
-  readonly bio: Prisma.FieldRef<"User", 'String'>
   readonly isActive: Prisma.FieldRef<"User", 'Boolean'>
-  readonly isEmailVerified: Prisma.FieldRef<"User", 'Boolean'>
+  readonly emailVerifiedAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly themePreference: Prisma.FieldRef<"User", 'ThemePreference'>
+  readonly locale: Prisma.FieldRef<"User", 'String'>
+  readonly timezone: Prisma.FieldRef<"User", 'String'>
   readonly lastLoginAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>

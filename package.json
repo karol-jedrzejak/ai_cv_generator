@@ -14,7 +14,12 @@
     "dev-infrastructure": "docker compose up -d",
 
     "dev": "concurrently -n frontend,backend \"npm run dev-frontend\" \"npm run dev-backend\"",
-    "dev-all": "npm run dev-infrastructure && concurrently -n frontend,backend \"npm run dev-frontend\" \"npm run dev-backend\""
+    "dev-all": "npm run dev-infrastructure && concurrently -n frontend,backend \"npm run dev-frontend\" \"npm run dev-backend\"",
+
+    "prisma:generate": "cd backend && npm exec prisma generate",
+    "prisma:migrate": "cd backend && npm exec prisma migrate dev",
+    "prisma:db-seed": "cd backend && npm exec prisma db seed",
+    "prisma:reset": "cd backend && npm exec prisma migrate reset"
   },
   "devDependencies": {
     "concurrently": "^9.2.1"

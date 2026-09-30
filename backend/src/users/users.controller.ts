@@ -6,6 +6,7 @@ import { JwtAuthGuard } from '../auth/guard/jwt-auth.guard';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
+ 
   // 1. PUBLICZNY ENDPOINT – Działa zawsze dla każdego
   @Get('public')
   test() {

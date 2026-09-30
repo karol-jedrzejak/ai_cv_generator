@@ -8,9 +8,9 @@ POST {{baseUrl}}/auth/register
 Content-Type: {{contentType}}
 
 {
-  "username": "jan_kowalski",
-  "email": "jan.kowalski@example.com",
-  "password": "Password123!"
+  "username": "test",
+  "email": "test@test.pl",
+  "password": "pass"
 }
 
 ### Zapisanie tokenu JWT z odpowiedzi rejestracji lub logowania
@@ -23,23 +23,12 @@ POST {{baseUrl}}/auth/login
 Content-Type: {{contentType}}
 
 {
-  "emailOrUsername": "jan_kowalski",
-  "password": "Password123!"
+  "emailOrUsername": "jan.kowalski@example.com",
+  "password": "Test123!"
 }
 
 ### Pobranie tokenu z nazwy zapytania # @name login
 @authToken = {{login.response.body.accessToken}}
-
-
-### 3. Zmiana nazwy użytkownika (wymaga auth)
-PATCH {{baseUrl}}/users/profile
-Authorization: Bearer {{authToken}}
-Content-Type: {{contentType}}
-
-{
-  "username": "jan_kowalski_v2"
-}
-
 
 ### 4. Zmiana hasła (wymaga auth)
 POST {{baseUrl}}/auth/change-password
@@ -47,7 +36,7 @@ Authorization: Bearer {{authToken}}
 Content-Type: {{contentType}}
 
 {
-  "oldPassword": "Password123!",
+  "oldPassword": "Test123!",
   "newPassword": "NewPassword123!"
 }
 
@@ -58,7 +47,7 @@ Content-Type: {{contentType}}
 
 {
   "oldPassword": "NewPassword123!",
-  "newPassword": "Password123!"
+  "newPassword": "Test123!"
 }
 
 
