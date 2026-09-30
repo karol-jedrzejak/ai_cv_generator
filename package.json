@@ -1,0 +1,22 @@
+{
+  "name": "AI-CV-Generator",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "setup-env": "node scripts/setup-env.js",
+    "setup-backend": "npm install --prefix backend",
+    "setup-frontend": "npm install --prefix frontend",
+    "setup-infrastructure": "docker compose up -d && docker exec cv-ai-ollama ollama pull qwen3.5:4b",
+    "setup": "npm run setup-env && npm run setup-backend && npm run setup-frontend && npm run setup-infrastructure",
+
+    "dev-frontend": "npm run dev --prefix frontend",
+    "dev-backend": "npm run start:dev --prefix backend",
+    "dev-infrastructure": "docker compose up -d",
+
+    "dev": "concurrently -n frontend,backend \"npm run dev-frontend\" \"npm run dev-backend\"",
+    "dev-all": "npm run dev-infrastructure && concurrently -n frontend,backend \"npm run dev-frontend\" \"npm run dev-backend\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

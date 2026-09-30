@@ -1,0 +1,31 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Frontend",
+      "type": "shell",
+      "command": "npm run dev-frontend",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Backend",
+      "type": "shell",
+      "command": "npm run dev-backend",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Dev",
+      "dependsOn": [
+        "Frontend",
+        "Backend"
+      ],
+      "dependsOrder": "parallel",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
