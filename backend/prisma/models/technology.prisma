@@ -1,0 +1,16 @@
+model Technology {
+  id          String             @id @default(uuid())
+
+  name        String             @unique @db.VarChar(100)
+  category    TechnologyCategory
+
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+
+  users       UserTechnology[]
+  experiences WorkExperienceTechnology[]
+  projects    ProjectTechnology[]
+
+  @@index([category])
+  @@map("technologies")
+}

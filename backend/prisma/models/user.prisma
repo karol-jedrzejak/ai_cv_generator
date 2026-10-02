@@ -1,9 +1,3 @@
-enum ThemePreference {
-  SYSTEM
-  LIGHT
-  DARK
-}
-
 model User {
   id                String @id @default(uuid())
 
@@ -28,6 +22,17 @@ model User {
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
   deletedAt         DateTime?
+
+  socialLinks       UserSocialLink[]
+  technologySkills  UserTechnology[]
+  languageSkills    LanguageSkill[]
+  workExperiences   WorkExperience[]
+  projects          Project[]
+  education         Education[]
+  courses           Course[]
+  certifications    Certification[]
+  jobOffers         JobOffer[]
+  generatedCvs      GeneratedCv[]
 
   @@index([isActive])
   @@map("users")

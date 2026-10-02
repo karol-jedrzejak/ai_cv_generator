@@ -1,0 +1,11 @@
+model WorkExperienceTechnology {
+  workExperienceId String
+  technologyId     String
+
+  workExperience   WorkExperience @relation(fields: [workExperienceId], references: [id], onDelete: Cascade)
+  technology       Technology     @relation(fields: [technologyId], references: [id], onDelete: Cascade)
+
+  @@id([workExperienceId, technologyId])
+  @@index([technologyId])
+  @@map("work_experience_technologies")
+}

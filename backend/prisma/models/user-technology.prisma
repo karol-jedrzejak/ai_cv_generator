@@ -1,0 +1,13 @@
+model UserTechnology {
+  userId       String
+  technologyId String
+
+  proficiency  Int
+
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  technology   Technology @relation(fields: [technologyId], references: [id], onDelete: Cascade)
+
+  @@id([userId, technologyId])
+  @@index([technologyId])
+  @@map("user_technologies")
+}

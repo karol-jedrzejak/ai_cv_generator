@@ -1,0 +1,15 @@
+enum TechnologyCategory {
+  FRONTEND
+  BACKEND
+  DATABASE
+  DEVOPS
+  CLOUD
+  MOBILE
+  TESTING
+  DATA
+  AI
+  SECURITY
+  DESIGN
+  TOOLS
+  OTHER
+}

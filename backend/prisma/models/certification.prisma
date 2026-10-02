@@ -1,0 +1,27 @@
+model Certification {
+  id              String   @id @default(uuid())
+
+  userId          String
+
+  name            String   @db.VarChar(255)
+  organization    String   @db.VarChar(255)
+
+  issuedYear      Int?
+  issuedMonth     Int?
+
+  expirationYear  Int?
+  expirationMonth Int?
+
+  credentialId    String?  @db.VarChar(255)
+  credentialUrl   String?  @db.VarChar(500)
+
+  description     String?  @db.Text
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("certifications")
+}

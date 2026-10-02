@@ -1,0 +1,11 @@
+model ProjectTechnology {
+  projectId    String
+  technologyId String
+
+  project      Project    @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  technology   Technology @relation(fields: [technologyId], references: [id], onDelete: Cascade)
+
+  @@id([projectId, technologyId])
+  @@index([technologyId])
+  @@map("project_technologies")
+}
