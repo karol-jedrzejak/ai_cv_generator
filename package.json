@@ -19,7 +19,7 @@
     "prisma:generate": "cd backend && npm exec prisma generate",
     "prisma:migrate": "cd backend && npm exec prisma migrate dev",
     "prisma:db-seed": "cd backend && npm exec prisma db seed",
-    "prisma:reset": "cd backend && npm exec prisma migrate reset"
+    "prisma:reset": "cd backend && npm exec prisma migrate reset && npm exec prisma db seed"
   },
   "devDependencies": {
     "concurrently": "^9.2.1"

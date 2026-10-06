@@ -4,13 +4,12 @@ export async function seedLanguages(prisma: PrismaClient) {
   console.log('Seeding languages...');
 
   const topLanguages = [
-    'English', 'Mandarin Chinese', 'Hindi', 'Spanish', 'French',
-    'Standard Arabic', 'Bengali', 'Russian', 'Portuguese', 'Urdu',
-    'Indonesian', 'German', 'Japanese', 'Nigerian Pidgin', 'Marathi',
-    'Telugu', 'Turkish', 'Tamil', 'Yue Chinese (Cantonese)', 'Vietnamese',
-    'Tagalog (Filipino)', 'Wu Chinese (Shanghainese)', 'Korean', 'Iranian Persian (Farsi)', 'Hausa',
-    'Egyptian Spoken Arabic', 'Swahili', 'Javanese', 'Italian', 'Western Punjabi',
-    'Kannada', 'Gujarati', 'Thai', 'Xiang Chinese', 'Southern Min (Hokkien)',
+    'English', 'Chinese', 'Hindi', 'Spanish', 'French',
+    'Arabic', 'Russian', 'Portuguese',
+    'Indonesian', 'German', 'Japanese', 
+    'Turkish', 'Vietnamese',
+    'Korean', 
+    'Italian','Thai',
     'Dutch', 'Greek', 'Czech', 'Hungarian','Swedish', 'Bulgarian',
     'Slovak', 'Lithuanian', 'Georgian'
   ];

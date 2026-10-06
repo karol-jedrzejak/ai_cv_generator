@@ -19,6 +19,7 @@ AI-powered CV generator that creates a tailored CV and cover letter based on the
 - TypeScript
 - Prisma
 - Zod
+- jwt token
 
 ### Database
 
