@@ -1,4 +1,4 @@
-model GeneratedCv {
+model GeneratedMotivationLetters {
   id          String   @id @default(uuid())
 
   userId      String
@@ -15,9 +15,9 @@ model GeneratedCv {
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   jobOffer    JobOffer @relation(fields: [jobOfferId], references: [id], onDelete: Cascade)
   language    Language @relation(fields: [languageId], references: [id], onDelete: Cascade)
-
-  @@index([languageId])
+  
   @@index([userId])
   @@index([jobOfferId])
-  @@map("generated_cvs")
+  @@index([languageId])
+  @@map("generated_motivation_letters")
 }

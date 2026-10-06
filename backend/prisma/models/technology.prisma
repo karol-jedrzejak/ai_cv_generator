@@ -10,7 +10,10 @@ model Technology {
   users       UserTechnology[]
   experiences WorkExperienceTechnology[]
   projects    ProjectTechnology[]
-
+  educations  EducationTechnology[]
+  courses     CourseTechnology[]
+  certifications CertificationTechnology[]
+  
   @@index([category])
   @@map("technologies")
 }

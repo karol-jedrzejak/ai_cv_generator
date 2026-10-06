@@ -9,6 +9,55 @@
 * 🟢 You can import this file directly.
 */
 
+export const LanguageLevel = {
+  A1: 'A1',
+  A2: 'A2',
+  B1: 'B1',
+  B2: 'B2',
+  C1: 'C1',
+  C2: 'C2',
+  NATIVE: 'NATIVE'
+} as const
+
+export type LanguageLevel = (typeof LanguageLevel)[keyof typeof LanguageLevel]
+
+
+export const LinkType = {
+  GITHUB: 'GITHUB',
+  LINKEDIN: 'LINKEDIN',
+  FACEBOOK: 'FACEBOOK',
+  X: 'X',
+  TWITTER: 'TWITTER',
+  INSTAGRAM: 'INSTAGRAM',
+  YOUTUBE: 'YOUTUBE',
+  PERSONAL_WEBSITE: 'PERSONAL_WEBSITE',
+  OTHER: 'OTHER'
+} as const
+
+export type LinkType = (typeof LinkType)[keyof typeof LinkType]
+
+
+export const TechnologyCategory = {
+  FRONTEND: 'FRONTEND',
+  BACKEND: 'BACKEND',
+  DATABASE: 'DATABASE',
+  DEVOPS: 'DEVOPS',
+  CLOUD: 'CLOUD',
+  MOBILE: 'MOBILE',
+  TESTING: 'TESTING',
+  DATA: 'DATA',
+  AI: 'AI',
+  SECURITY: 'SECURITY',
+  DESIGN: 'DESIGN',
+  TOOLS: 'TOOLS',
+  OTHER: 'OTHER',
+  EMBEDDED_SYSTEMS: 'EMBEDDED_SYSTEMS',
+  MANAGEMENT: 'MANAGEMENT'
+} as const
+
+export type TechnologyCategory = (typeof TechnologyCategory)[keyof typeof TechnologyCategory]
+
+
 export const ThemePreference = {
   SYSTEM: 'SYSTEM',
   LIGHT: 'LIGHT',

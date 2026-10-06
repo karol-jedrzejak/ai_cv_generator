@@ -270,6 +270,17 @@ export type UserWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  socialLinks?: Prisma.UserSocialLinkListRelationFilter
+  technologySkills?: Prisma.UserTechnologyListRelationFilter
+  languageSkills?: Prisma.LanguageSkillListRelationFilter
+  workExperiences?: Prisma.WorkExperienceListRelationFilter
+  projects?: Prisma.ProjectListRelationFilter
+  education?: Prisma.EducationListRelationFilter
+  courses?: Prisma.CourseListRelationFilter
+  certifications?: Prisma.CertificationListRelationFilter
+  jobOffers?: Prisma.JobOfferListRelationFilter
+  generatedCvs?: Prisma.GeneratedCvListRelationFilter
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -289,6 +300,17 @@ export type UserOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  socialLinks?: Prisma.UserSocialLinkOrderByRelationAggregateInput
+  technologySkills?: Prisma.UserTechnologyOrderByRelationAggregateInput
+  languageSkills?: Prisma.LanguageSkillOrderByRelationAggregateInput
+  workExperiences?: Prisma.WorkExperienceOrderByRelationAggregateInput
+  projects?: Prisma.ProjectOrderByRelationAggregateInput
+  education?: Prisma.EducationOrderByRelationAggregateInput
+  courses?: Prisma.CourseOrderByRelationAggregateInput
+  certifications?: Prisma.CertificationOrderByRelationAggregateInput
+  jobOffers?: Prisma.JobOfferOrderByRelationAggregateInput
+  generatedCvs?: Prisma.GeneratedCvOrderByRelationAggregateInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -311,6 +333,17 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  socialLinks?: Prisma.UserSocialLinkListRelationFilter
+  technologySkills?: Prisma.UserTechnologyListRelationFilter
+  languageSkills?: Prisma.LanguageSkillListRelationFilter
+  workExperiences?: Prisma.WorkExperienceListRelationFilter
+  projects?: Prisma.ProjectListRelationFilter
+  education?: Prisma.EducationListRelationFilter
+  courses?: Prisma.CourseListRelationFilter
+  certifications?: Prisma.CertificationListRelationFilter
+  jobOffers?: Prisma.JobOfferListRelationFilter
+  generatedCvs?: Prisma.GeneratedCvListRelationFilter
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersListRelationFilter
 }, "id" | "username" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -374,6 +407,17 @@ export type UserCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  socialLinks?: Prisma.UserSocialLinkCreateNestedManyWithoutUserInput
+  technologySkills?: Prisma.UserTechnologyCreateNestedManyWithoutUserInput
+  languageSkills?: Prisma.LanguageSkillCreateNestedManyWithoutUserInput
+  workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutUserInput
+  projects?: Prisma.ProjectCreateNestedManyWithoutUserInput
+  education?: Prisma.EducationCreateNestedManyWithoutUserInput
+  courses?: Prisma.CourseCreateNestedManyWithoutUserInput
+  certifications?: Prisma.CertificationCreateNestedManyWithoutUserInput
+  jobOffers?: Prisma.JobOfferCreateNestedManyWithoutUserInput
+  generatedCvs?: Prisma.GeneratedCvCreateNestedManyWithoutUserInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -393,6 +437,17 @@ export type UserUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  socialLinks?: Prisma.UserSocialLinkUncheckedCreateNestedManyWithoutUserInput
+  technologySkills?: Prisma.UserTechnologyUncheckedCreateNestedManyWithoutUserInput
+  languageSkills?: Prisma.LanguageSkillUncheckedCreateNestedManyWithoutUserInput
+  workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutUserInput
+  projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutUserInput
+  education?: Prisma.EducationUncheckedCreateNestedManyWithoutUserInput
+  courses?: Prisma.CourseUncheckedCreateNestedManyWithoutUserInput
+  certifications?: Prisma.CertificationUncheckedCreateNestedManyWithoutUserInput
+  jobOffers?: Prisma.JobOfferUncheckedCreateNestedManyWithoutUserInput
+  generatedCvs?: Prisma.GeneratedCvUncheckedCreateNestedManyWithoutUserInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -412,6 +467,17 @@ export type UserUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  socialLinks?: Prisma.UserSocialLinkUpdateManyWithoutUserNestedInput
+  technologySkills?: Prisma.UserTechnologyUpdateManyWithoutUserNestedInput
+  languageSkills?: Prisma.LanguageSkillUpdateManyWithoutUserNestedInput
+  workExperiences?: Prisma.WorkExperienceUpdateManyWithoutUserNestedInput
+  projects?: Prisma.ProjectUpdateManyWithoutUserNestedInput
+  education?: Prisma.EducationUpdateManyWithoutUserNestedInput
+  courses?: Prisma.CourseUpdateManyWithoutUserNestedInput
+  certifications?: Prisma.CertificationUpdateManyWithoutUserNestedInput
+  jobOffers?: Prisma.JobOfferUpdateManyWithoutUserNestedInput
+  generatedCvs?: Prisma.GeneratedCvUpdateManyWithoutUserNestedInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -431,6 +497,17 @@ export type UserUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  socialLinks?: Prisma.UserSocialLinkUncheckedUpdateManyWithoutUserNestedInput
+  technologySkills?: Prisma.UserTechnologyUncheckedUpdateManyWithoutUserNestedInput
+  languageSkills?: Prisma.LanguageSkillUncheckedUpdateManyWithoutUserNestedInput
+  workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutUserNestedInput
+  projects?: Prisma.ProjectUncheckedUpdateManyWithoutUserNestedInput
+  education?: Prisma.EducationUncheckedUpdateManyWithoutUserNestedInput
+  courses?: Prisma.CourseUncheckedUpdateManyWithoutUserNestedInput
+  certifications?: Prisma.CertificationUncheckedUpdateManyWithoutUserNestedInput
+  jobOffers?: Prisma.JobOfferUncheckedUpdateManyWithoutUserNestedInput
+  generatedCvs?: Prisma.GeneratedCvUncheckedUpdateManyWithoutUserNestedInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -490,6 +567,11 @@ export type UserUncheckedUpdateManyInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
+export type UserScalarRelationFilter = {
+  is?: Prisma.UserWhereInput
+  isNot?: Prisma.UserWhereInput
+}
+
 export type UserCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
@@ -547,12 +629,144 @@ export type UserMinOrderByAggregateInput = {
   deletedAt?: Prisma.SortOrder
 }
 
-export type StringFieldUpdateOperationsInput = {
-  set?: string
+export type UserCreateNestedOneWithoutCertificationsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCertificationsInput, Prisma.UserUncheckedCreateWithoutCertificationsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCertificationsInput
+  connect?: Prisma.UserWhereUniqueInput
 }
 
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
+export type UserUpdateOneRequiredWithoutCertificationsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCertificationsInput, Prisma.UserUncheckedCreateWithoutCertificationsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCertificationsInput
+  upsert?: Prisma.UserUpsertWithoutCertificationsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCertificationsInput, Prisma.UserUpdateWithoutCertificationsInput>, Prisma.UserUncheckedUpdateWithoutCertificationsInput>
+}
+
+export type UserCreateNestedOneWithoutCoursesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCoursesInput, Prisma.UserUncheckedCreateWithoutCoursesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCoursesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutCoursesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCoursesInput, Prisma.UserUncheckedCreateWithoutCoursesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCoursesInput
+  upsert?: Prisma.UserUpsertWithoutCoursesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCoursesInput, Prisma.UserUpdateWithoutCoursesInput>, Prisma.UserUncheckedUpdateWithoutCoursesInput>
+}
+
+export type UserCreateNestedOneWithoutEducationInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutEducationInput, Prisma.UserUncheckedCreateWithoutEducationInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutEducationInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutEducationNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutEducationInput, Prisma.UserUncheckedCreateWithoutEducationInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutEducationInput
+  upsert?: Prisma.UserUpsertWithoutEducationInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutEducationInput, Prisma.UserUpdateWithoutEducationInput>, Prisma.UserUncheckedUpdateWithoutEducationInput>
+}
+
+export type UserCreateNestedOneWithoutGeneratedCvsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutGeneratedCvsInput, Prisma.UserUncheckedCreateWithoutGeneratedCvsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutGeneratedCvsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutGeneratedCvsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutGeneratedCvsInput, Prisma.UserUncheckedCreateWithoutGeneratedCvsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutGeneratedCvsInput
+  upsert?: Prisma.UserUpsertWithoutGeneratedCvsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutGeneratedCvsInput, Prisma.UserUpdateWithoutGeneratedCvsInput>, Prisma.UserUncheckedUpdateWithoutGeneratedCvsInput>
+}
+
+export type UserCreateNestedOneWithoutGeneratedMotivationLettersInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutGeneratedMotivationLettersInput, Prisma.UserUncheckedCreateWithoutGeneratedMotivationLettersInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutGeneratedMotivationLettersInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutGeneratedMotivationLettersNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutGeneratedMotivationLettersInput, Prisma.UserUncheckedCreateWithoutGeneratedMotivationLettersInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutGeneratedMotivationLettersInput
+  upsert?: Prisma.UserUpsertWithoutGeneratedMotivationLettersInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutGeneratedMotivationLettersInput, Prisma.UserUpdateWithoutGeneratedMotivationLettersInput>, Prisma.UserUncheckedUpdateWithoutGeneratedMotivationLettersInput>
+}
+
+export type UserCreateNestedOneWithoutJobOffersInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutJobOffersInput, Prisma.UserUncheckedCreateWithoutJobOffersInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutJobOffersInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutJobOffersNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutJobOffersInput, Prisma.UserUncheckedCreateWithoutJobOffersInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutJobOffersInput
+  upsert?: Prisma.UserUpsertWithoutJobOffersInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutJobOffersInput, Prisma.UserUpdateWithoutJobOffersInput>, Prisma.UserUncheckedUpdateWithoutJobOffersInput>
+}
+
+export type UserCreateNestedOneWithoutLanguageSkillsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLanguageSkillsInput, Prisma.UserUncheckedCreateWithoutLanguageSkillsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLanguageSkillsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutLanguageSkillsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLanguageSkillsInput, Prisma.UserUncheckedCreateWithoutLanguageSkillsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLanguageSkillsInput
+  upsert?: Prisma.UserUpsertWithoutLanguageSkillsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutLanguageSkillsInput, Prisma.UserUpdateWithoutLanguageSkillsInput>, Prisma.UserUncheckedUpdateWithoutLanguageSkillsInput>
+}
+
+export type UserCreateNestedOneWithoutProjectsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutProjectsInput, Prisma.UserUncheckedCreateWithoutProjectsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutProjectsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutProjectsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutProjectsInput, Prisma.UserUncheckedCreateWithoutProjectsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutProjectsInput
+  upsert?: Prisma.UserUpsertWithoutProjectsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutProjectsInput, Prisma.UserUpdateWithoutProjectsInput>, Prisma.UserUncheckedUpdateWithoutProjectsInput>
+}
+
+export type UserCreateNestedOneWithoutSocialLinksInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSocialLinksInput, Prisma.UserUncheckedCreateWithoutSocialLinksInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSocialLinksInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutSocialLinksNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSocialLinksInput, Prisma.UserUncheckedCreateWithoutSocialLinksInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSocialLinksInput
+  upsert?: Prisma.UserUpsertWithoutSocialLinksInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSocialLinksInput, Prisma.UserUpdateWithoutSocialLinksInput>, Prisma.UserUncheckedUpdateWithoutSocialLinksInput>
+}
+
+export type UserCreateNestedOneWithoutTechnologySkillsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTechnologySkillsInput, Prisma.UserUncheckedCreateWithoutTechnologySkillsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTechnologySkillsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutTechnologySkillsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTechnologySkillsInput, Prisma.UserUncheckedCreateWithoutTechnologySkillsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTechnologySkillsInput
+  upsert?: Prisma.UserUpsertWithoutTechnologySkillsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutTechnologySkillsInput, Prisma.UserUpdateWithoutTechnologySkillsInput>, Prisma.UserUncheckedUpdateWithoutTechnologySkillsInput>
 }
 
 export type BoolFieldUpdateOperationsInput = {
@@ -567,10 +781,1591 @@ export type EnumThemePreferenceFieldUpdateOperationsInput = {
   set?: $Enums.ThemePreference
 }
 
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
+export type UserCreateNestedOneWithoutWorkExperiencesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutWorkExperiencesInput, Prisma.UserUncheckedCreateWithoutWorkExperiencesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutWorkExperiencesInput
+  connect?: Prisma.UserWhereUniqueInput
 }
 
+export type UserUpdateOneRequiredWithoutWorkExperiencesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutWorkExperiencesInput, Prisma.UserUncheckedCreateWithoutWorkExperiencesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutWorkExperiencesInput
+  upsert?: Prisma.UserUpsertWithoutWorkExperiencesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutWorkExperiencesInput, Prisma.UserUpdateWithoutWorkExperiencesInput>, Prisma.UserUncheckedUpdateWithoutWorkExperiencesInput>
+}
+
+export type UserCreateWithoutCertificationsInput = {
+  id?: string
+  name?: string | null
+  surname?: string | null
+  username: string
+  email: string
+  passwordHash: string
+  avatarUrl?: string | null
+  isActive?: boolean
+  emailVerifiedAt?: Date | string | null
+  themePreference?: $Enums.ThemePreference
+  locale?: string | null
+  timezone?: string | null
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  socialLinks?: Prisma.UserSocialLinkCreateNestedManyWithoutUserInput
+  technologySkills?: Prisma.UserTechnologyCreateNestedManyWithoutUserInput
+  languageSkills?: Prisma.LanguageSkillCreateNestedManyWithoutUserInput
+  workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutUserInput
+  projects?: Prisma.ProjectCreateNestedManyWithoutUserInput
+  education?: Prisma.EducationCreateNestedManyWithoutUserInput
+  courses?: Prisma.CourseCreateNestedManyWithoutUserInput
+  jobOffers?: Prisma.JobOfferCreateNestedManyWithoutUserInput
+  generatedCvs?: Prisma.GeneratedCvCreateNestedManyWithoutUserInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutCertificationsInput = {
+  id?: string
+  name?: string | null
+  surname?: string | null
+  username: string
+  email: string
+  passwordHash: string
+  avatarUrl?: string | null
+  isActive?: boolean
+  emailVerifiedAt?: Date | string | null
+  themePreference?: $Enums.ThemePreference
+  locale?: string | null
+  timezone?: string | null
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  socialLinks?: Prisma.UserSocialLinkUncheckedCreateNestedManyWithoutUserInput
+  technologySkills?: Prisma.UserTechnologyUncheckedCreateNestedManyWithoutUserInput
+  languageSkills?: Prisma.LanguageSkillUncheckedCreateNestedManyWithoutUserInput
+  workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutUserInput
+  projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutUserInput
+  education?: Prisma.EducationUncheckedCreateNestedManyWithoutUserInput
+  courses?: Prisma.CourseUncheckedCreateNestedManyWithoutUserInput
+  jobOffers?: Prisma.JobOfferUncheckedCreateNestedManyWithoutUserInput
+  generatedCvs?: Prisma.GeneratedCvUncheckedCreateNestedManyWithoutUserInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutCertificationsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutCertificationsInput, Prisma.UserUncheckedCreateWithoutCertificationsInput>
+}
+
+export type UserUpsertWithoutCertificationsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutCertificationsInput, Prisma.UserUncheckedUpdateWithoutCertificationsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutCertificationsInput, Prisma.UserUncheckedCreateWithoutCertificationsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutCertificationsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutCertificationsInput, Prisma.UserUncheckedUpdateWithoutCertificationsInput>
+}
+
+export type UserUpdateWithoutCertificationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  socialLinks?: Prisma.UserSocialLinkUpdateManyWithoutUserNestedInput
+  technologySkills?: Prisma.UserTechnologyUpdateManyWithoutUserNestedInput
+  languageSkills?: Prisma.LanguageSkillUpdateManyWithoutUserNestedInput
+  workExperiences?: Prisma.WorkExperienceUpdateManyWithoutUserNestedInput
+  projects?: Prisma.ProjectUpdateManyWithoutUserNestedInput
+  education?: Prisma.EducationUpdateManyWithoutUserNestedInput
+  courses?: Prisma.CourseUpdateManyWithoutUserNestedInput
+  jobOffers?: Prisma.JobOfferUpdateManyWithoutUserNestedInput
+  generatedCvs?: Prisma.GeneratedCvUpdateManyWithoutUserNestedInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutCertificationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  socialLinks?: Prisma.UserSocialLinkUncheckedUpdateManyWithoutUserNestedInput
+  technologySkills?: Prisma.UserTechnologyUncheckedUpdateManyWithoutUserNestedInput
+  languageSkills?: Prisma.LanguageSkillUncheckedUpdateManyWithoutUserNestedInput
+  workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutUserNestedInput
+  projects?: Prisma.ProjectUncheckedUpdateManyWithoutUserNestedInput
+  education?: Prisma.EducationUncheckedUpdateManyWithoutUserNestedInput
+  courses?: Prisma.CourseUncheckedUpdateManyWithoutUserNestedInput
+  jobOffers?: Prisma.JobOfferUncheckedUpdateManyWithoutUserNestedInput
+  generatedCvs?: Prisma.GeneratedCvUncheckedUpdateManyWithoutUserNestedInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutCoursesInput = {
+  id?: string
+  name?: string | null
+  surname?: string | null
+  username: string
+  email: string
+  passwordHash: string
+  avatarUrl?: string | null
+  isActive?: boolean
+  emailVerifiedAt?: Date | string | null
+  themePreference?: $Enums.ThemePreference
+  locale?: string | null
+  timezone?: string | null
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  socialLinks?: Prisma.UserSocialLinkCreateNestedManyWithoutUserInput
+  technologySkills?: Prisma.UserTechnologyCreateNestedManyWithoutUserInput
+  languageSkills?: Prisma.LanguageSkillCreateNestedManyWithoutUserInput
+  workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutUserInput
+  projects?: Prisma.ProjectCreateNestedManyWithoutUserInput
+  education?: Prisma.EducationCreateNestedManyWithoutUserInput
+  certifications?: Prisma.CertificationCreateNestedManyWithoutUserInput
+  jobOffers?: Prisma.JobOfferCreateNestedManyWithoutUserInput
+  generatedCvs?: Prisma.GeneratedCvCreateNestedManyWithoutUserInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutCoursesInput = {
+  id?: string
+  name?: string | null
+  surname?: string | null
+  username: string
+  email: string
+  passwordHash: string
+  avatarUrl?: string | null
+  isActive?: boolean
+  emailVerifiedAt?: Date | string | null
+  themePreference?: $Enums.ThemePreference
+  locale?: string | null
+  timezone?: string | null
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  socialLinks?: Prisma.UserSocialLinkUncheckedCreateNestedManyWithoutUserInput
+  technologySkills?: Prisma.UserTechnologyUncheckedCreateNestedManyWithoutUserInput
+  languageSkills?: Prisma.LanguageSkillUncheckedCreateNestedManyWithoutUserInput
+  workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutUserInput
+  projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutUserInput
+  education?: Prisma.EducationUncheckedCreateNestedManyWithoutUserInput
+  certifications?: Prisma.CertificationUncheckedCreateNestedManyWithoutUserInput
+  jobOffers?: Prisma.JobOfferUncheckedCreateNestedManyWithoutUserInput
+  generatedCvs?: Prisma.GeneratedCvUncheckedCreateNestedManyWithoutUserInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutCoursesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutCoursesInput, Prisma.UserUncheckedCreateWithoutCoursesInput>
+}
+
+export type UserUpsertWithoutCoursesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutCoursesInput, Prisma.UserUncheckedUpdateWithoutCoursesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutCoursesInput, Prisma.UserUncheckedCreateWithoutCoursesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutCoursesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutCoursesInput, Prisma.UserUncheckedUpdateWithoutCoursesInput>
+}
+
+export type UserUpdateWithoutCoursesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  socialLinks?: Prisma.UserSocialLinkUpdateManyWithoutUserNestedInput
+  technologySkills?: Prisma.UserTechnologyUpdateManyWithoutUserNestedInput
+  languageSkills?: Prisma.LanguageSkillUpdateManyWithoutUserNestedInput
+  workExperiences?: Prisma.WorkExperienceUpdateManyWithoutUserNestedInput
+  projects?: Prisma.ProjectUpdateManyWithoutUserNestedInput
+  education?: Prisma.EducationUpdateManyWithoutUserNestedInput
+  certifications?: Prisma.CertificationUpdateManyWithoutUserNestedInput
+  jobOffers?: Prisma.JobOfferUpdateManyWithoutUserNestedInput
+  generatedCvs?: Prisma.GeneratedCvUpdateManyWithoutUserNestedInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutCoursesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  socialLinks?: Prisma.UserSocialLinkUncheckedUpdateManyWithoutUserNestedInput
+  technologySkills?: Prisma.UserTechnologyUncheckedUpdateManyWithoutUserNestedInput
+  languageSkills?: Prisma.LanguageSkillUncheckedUpdateManyWithoutUserNestedInput
+  workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutUserNestedInput
+  projects?: Prisma.ProjectUncheckedUpdateManyWithoutUserNestedInput
+  education?: Prisma.EducationUncheckedUpdateManyWithoutUserNestedInput
+  certifications?: Prisma.CertificationUncheckedUpdateManyWithoutUserNestedInput
+  jobOffers?: Prisma.JobOfferUncheckedUpdateManyWithoutUserNestedInput
+  generatedCvs?: Prisma.GeneratedCvUncheckedUpdateManyWithoutUserNestedInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutEducationInput = {
+  id?: string
+  name?: string | null
+  surname?: string | null
+  username: string
+  email: string
+  passwordHash: string
+  avatarUrl?: string | null
+  isActive?: boolean
+  emailVerifiedAt?: Date | string | null
+  themePreference?: $Enums.ThemePreference
+  locale?: string | null
+  timezone?: string | null
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  socialLinks?: Prisma.UserSocialLinkCreateNestedManyWithoutUserInput
+  technologySkills?: Prisma.UserTechnologyCreateNestedManyWithoutUserInput
+  languageSkills?: Prisma.LanguageSkillCreateNestedManyWithoutUserInput
+  workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutUserInput
+  projects?: Prisma.ProjectCreateNestedManyWithoutUserInput
+  courses?: Prisma.CourseCreateNestedManyWithoutUserInput
+  certifications?: Prisma.CertificationCreateNestedManyWithoutUserInput
+  jobOffers?: Prisma.JobOfferCreateNestedManyWithoutUserInput
+  generatedCvs?: Prisma.GeneratedCvCreateNestedManyWithoutUserInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutEducationInput = {
+  id?: string
+  name?: string | null
+  surname?: string | null
+  username: string
+  email: string
+  passwordHash: string
+  avatarUrl?: string | null
+  isActive?: boolean
+  emailVerifiedAt?: Date | string | null
+  themePreference?: $Enums.ThemePreference
+  locale?: string | null
+  timezone?: string | null
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  socialLinks?: Prisma.UserSocialLinkUncheckedCreateNestedManyWithoutUserInput
+  technologySkills?: Prisma.UserTechnologyUncheckedCreateNestedManyWithoutUserInput
+  languageSkills?: Prisma.LanguageSkillUncheckedCreateNestedManyWithoutUserInput
+  workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutUserInput
+  projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutUserInput
+  courses?: Prisma.CourseUncheckedCreateNestedManyWithoutUserInput
+  certifications?: Prisma.CertificationUncheckedCreateNestedManyWithoutUserInput
+  jobOffers?: Prisma.JobOfferUncheckedCreateNestedManyWithoutUserInput
+  generatedCvs?: Prisma.GeneratedCvUncheckedCreateNestedManyWithoutUserInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutEducationInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutEducationInput, Prisma.UserUncheckedCreateWithoutEducationInput>
+}
+
+export type UserUpsertWithoutEducationInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutEducationInput, Prisma.UserUncheckedUpdateWithoutEducationInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutEducationInput, Prisma.UserUncheckedCreateWithoutEducationInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutEducationInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutEducationInput, Prisma.UserUncheckedUpdateWithoutEducationInput>
+}
+
+export type UserUpdateWithoutEducationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  socialLinks?: Prisma.UserSocialLinkUpdateManyWithoutUserNestedInput
+  technologySkills?: Prisma.UserTechnologyUpdateManyWithoutUserNestedInput
+  languageSkills?: Prisma.LanguageSkillUpdateManyWithoutUserNestedInput
+  workExperiences?: Prisma.WorkExperienceUpdateManyWithoutUserNestedInput
+  projects?: Prisma.ProjectUpdateManyWithoutUserNestedInput
+  courses?: Prisma.CourseUpdateManyWithoutUserNestedInput
+  certifications?: Prisma.CertificationUpdateManyWithoutUserNestedInput
+  jobOffers?: Prisma.JobOfferUpdateManyWithoutUserNestedInput
+  generatedCvs?: Prisma.GeneratedCvUpdateManyWithoutUserNestedInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutEducationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  socialLinks?: Prisma.UserSocialLinkUncheckedUpdateManyWithoutUserNestedInput
+  technologySkills?: Prisma.UserTechnologyUncheckedUpdateManyWithoutUserNestedInput
+  languageSkills?: Prisma.LanguageSkillUncheckedUpdateManyWithoutUserNestedInput
+  workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutUserNestedInput
+  projects?: Prisma.ProjectUncheckedUpdateManyWithoutUserNestedInput
+  courses?: Prisma.CourseUncheckedUpdateManyWithoutUserNestedInput
+  certifications?: Prisma.CertificationUncheckedUpdateManyWithoutUserNestedInput
+  jobOffers?: Prisma.JobOfferUncheckedUpdateManyWithoutUserNestedInput
+  generatedCvs?: Prisma.GeneratedCvUncheckedUpdateManyWithoutUserNestedInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutGeneratedCvsInput = {
+  id?: string
+  name?: string | null
+  surname?: string | null
+  username: string
+  email: string
+  passwordHash: string
+  avatarUrl?: string | null
+  isActive?: boolean
+  emailVerifiedAt?: Date | string | null
+  themePreference?: $Enums.ThemePreference
+  locale?: string | null
+  timezone?: string | null
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  socialLinks?: Prisma.UserSocialLinkCreateNestedManyWithoutUserInput
+  technologySkills?: Prisma.UserTechnologyCreateNestedManyWithoutUserInput
+  languageSkills?: Prisma.LanguageSkillCreateNestedManyWithoutUserInput
+  workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutUserInput
+  projects?: Prisma.ProjectCreateNestedManyWithoutUserInput
+  education?: Prisma.EducationCreateNestedManyWithoutUserInput
+  courses?: Prisma.CourseCreateNestedManyWithoutUserInput
+  certifications?: Prisma.CertificationCreateNestedManyWithoutUserInput
+  jobOffers?: Prisma.JobOfferCreateNestedManyWithoutUserInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutGeneratedCvsInput = {
+  id?: string
+  name?: string | null
+  surname?: string | null
+  username: string
+  email: string
+  passwordHash: string
+  avatarUrl?: string | null
+  isActive?: boolean
+  emailVerifiedAt?: Date | string | null
+  themePreference?: $Enums.ThemePreference
+  locale?: string | null
+  timezone?: string | null
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  socialLinks?: Prisma.UserSocialLinkUncheckedCreateNestedManyWithoutUserInput
+  technologySkills?: Prisma.UserTechnologyUncheckedCreateNestedManyWithoutUserInput
+  languageSkills?: Prisma.LanguageSkillUncheckedCreateNestedManyWithoutUserInput
+  workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutUserInput
+  projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutUserInput
+  education?: Prisma.EducationUncheckedCreateNestedManyWithoutUserInput
+  courses?: Prisma.CourseUncheckedCreateNestedManyWithoutUserInput
+  certifications?: Prisma.CertificationUncheckedCreateNestedManyWithoutUserInput
+  jobOffers?: Prisma.JobOfferUncheckedCreateNestedManyWithoutUserInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutGeneratedCvsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutGeneratedCvsInput, Prisma.UserUncheckedCreateWithoutGeneratedCvsInput>
+}
+
+export type UserUpsertWithoutGeneratedCvsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutGeneratedCvsInput, Prisma.UserUncheckedUpdateWithoutGeneratedCvsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutGeneratedCvsInput, Prisma.UserUncheckedCreateWithoutGeneratedCvsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutGeneratedCvsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutGeneratedCvsInput, Prisma.UserUncheckedUpdateWithoutGeneratedCvsInput>
+}
+
+export type UserUpdateWithoutGeneratedCvsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  socialLinks?: Prisma.UserSocialLinkUpdateManyWithoutUserNestedInput
+  technologySkills?: Prisma.UserTechnologyUpdateManyWithoutUserNestedInput
+  languageSkills?: Prisma.LanguageSkillUpdateManyWithoutUserNestedInput
+  workExperiences?: Prisma.WorkExperienceUpdateManyWithoutUserNestedInput
+  projects?: Prisma.ProjectUpdateManyWithoutUserNestedInput
+  education?: Prisma.EducationUpdateManyWithoutUserNestedInput
+  courses?: Prisma.CourseUpdateManyWithoutUserNestedInput
+  certifications?: Prisma.CertificationUpdateManyWithoutUserNestedInput
+  jobOffers?: Prisma.JobOfferUpdateManyWithoutUserNestedInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutGeneratedCvsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  socialLinks?: Prisma.UserSocialLinkUncheckedUpdateManyWithoutUserNestedInput
+  technologySkills?: Prisma.UserTechnologyUncheckedUpdateManyWithoutUserNestedInput
+  languageSkills?: Prisma.LanguageSkillUncheckedUpdateManyWithoutUserNestedInput
+  workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutUserNestedInput
+  projects?: Prisma.ProjectUncheckedUpdateManyWithoutUserNestedInput
+  education?: Prisma.EducationUncheckedUpdateManyWithoutUserNestedInput
+  courses?: Prisma.CourseUncheckedUpdateManyWithoutUserNestedInput
+  certifications?: Prisma.CertificationUncheckedUpdateManyWithoutUserNestedInput
+  jobOffers?: Prisma.JobOfferUncheckedUpdateManyWithoutUserNestedInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutGeneratedMotivationLettersInput = {
+  id?: string
+  name?: string | null
+  surname?: string | null
+  username: string
+  email: string
+  passwordHash: string
+  avatarUrl?: string | null
+  isActive?: boolean
+  emailVerifiedAt?: Date | string | null
+  themePreference?: $Enums.ThemePreference
+  locale?: string | null
+  timezone?: string | null
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  socialLinks?: Prisma.UserSocialLinkCreateNestedManyWithoutUserInput
+  technologySkills?: Prisma.UserTechnologyCreateNestedManyWithoutUserInput
+  languageSkills?: Prisma.LanguageSkillCreateNestedManyWithoutUserInput
+  workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutUserInput
+  projects?: Prisma.ProjectCreateNestedManyWithoutUserInput
+  education?: Prisma.EducationCreateNestedManyWithoutUserInput
+  courses?: Prisma.CourseCreateNestedManyWithoutUserInput
+  certifications?: Prisma.CertificationCreateNestedManyWithoutUserInput
+  jobOffers?: Prisma.JobOfferCreateNestedManyWithoutUserInput
+  generatedCvs?: Prisma.GeneratedCvCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutGeneratedMotivationLettersInput = {
+  id?: string
+  name?: string | null
+  surname?: string | null
+  username: string
+  email: string
+  passwordHash: string
+  avatarUrl?: string | null
+  isActive?: boolean
+  emailVerifiedAt?: Date | string | null
+  themePreference?: $Enums.ThemePreference
+  locale?: string | null
+  timezone?: string | null
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  socialLinks?: Prisma.UserSocialLinkUncheckedCreateNestedManyWithoutUserInput
+  technologySkills?: Prisma.UserTechnologyUncheckedCreateNestedManyWithoutUserInput
+  languageSkills?: Prisma.LanguageSkillUncheckedCreateNestedManyWithoutUserInput
+  workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutUserInput
+  projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutUserInput
+  education?: Prisma.EducationUncheckedCreateNestedManyWithoutUserInput
+  courses?: Prisma.CourseUncheckedCreateNestedManyWithoutUserInput
+  certifications?: Prisma.CertificationUncheckedCreateNestedManyWithoutUserInput
+  jobOffers?: Prisma.JobOfferUncheckedCreateNestedManyWithoutUserInput
+  generatedCvs?: Prisma.GeneratedCvUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutGeneratedMotivationLettersInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutGeneratedMotivationLettersInput, Prisma.UserUncheckedCreateWithoutGeneratedMotivationLettersInput>
+}
+
+export type UserUpsertWithoutGeneratedMotivationLettersInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutGeneratedMotivationLettersInput, Prisma.UserUncheckedUpdateWithoutGeneratedMotivationLettersInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutGeneratedMotivationLettersInput, Prisma.UserUncheckedCreateWithoutGeneratedMotivationLettersInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutGeneratedMotivationLettersInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutGeneratedMotivationLettersInput, Prisma.UserUncheckedUpdateWithoutGeneratedMotivationLettersInput>
+}
+
+export type UserUpdateWithoutGeneratedMotivationLettersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  socialLinks?: Prisma.UserSocialLinkUpdateManyWithoutUserNestedInput
+  technologySkills?: Prisma.UserTechnologyUpdateManyWithoutUserNestedInput
+  languageSkills?: Prisma.LanguageSkillUpdateManyWithoutUserNestedInput
+  workExperiences?: Prisma.WorkExperienceUpdateManyWithoutUserNestedInput
+  projects?: Prisma.ProjectUpdateManyWithoutUserNestedInput
+  education?: Prisma.EducationUpdateManyWithoutUserNestedInput
+  courses?: Prisma.CourseUpdateManyWithoutUserNestedInput
+  certifications?: Prisma.CertificationUpdateManyWithoutUserNestedInput
+  jobOffers?: Prisma.JobOfferUpdateManyWithoutUserNestedInput
+  generatedCvs?: Prisma.GeneratedCvUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutGeneratedMotivationLettersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  socialLinks?: Prisma.UserSocialLinkUncheckedUpdateManyWithoutUserNestedInput
+  technologySkills?: Prisma.UserTechnologyUncheckedUpdateManyWithoutUserNestedInput
+  languageSkills?: Prisma.LanguageSkillUncheckedUpdateManyWithoutUserNestedInput
+  workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutUserNestedInput
+  projects?: Prisma.ProjectUncheckedUpdateManyWithoutUserNestedInput
+  education?: Prisma.EducationUncheckedUpdateManyWithoutUserNestedInput
+  courses?: Prisma.CourseUncheckedUpdateManyWithoutUserNestedInput
+  certifications?: Prisma.CertificationUncheckedUpdateManyWithoutUserNestedInput
+  jobOffers?: Prisma.JobOfferUncheckedUpdateManyWithoutUserNestedInput
+  generatedCvs?: Prisma.GeneratedCvUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutJobOffersInput = {
+  id?: string
+  name?: string | null
+  surname?: string | null
+  username: string
+  email: string
+  passwordHash: string
+  avatarUrl?: string | null
+  isActive?: boolean
+  emailVerifiedAt?: Date | string | null
+  themePreference?: $Enums.ThemePreference
+  locale?: string | null
+  timezone?: string | null
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  socialLinks?: Prisma.UserSocialLinkCreateNestedManyWithoutUserInput
+  technologySkills?: Prisma.UserTechnologyCreateNestedManyWithoutUserInput
+  languageSkills?: Prisma.LanguageSkillCreateNestedManyWithoutUserInput
+  workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutUserInput
+  projects?: Prisma.ProjectCreateNestedManyWithoutUserInput
+  education?: Prisma.EducationCreateNestedManyWithoutUserInput
+  courses?: Prisma.CourseCreateNestedManyWithoutUserInput
+  certifications?: Prisma.CertificationCreateNestedManyWithoutUserInput
+  generatedCvs?: Prisma.GeneratedCvCreateNestedManyWithoutUserInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutJobOffersInput = {
+  id?: string
+  name?: string | null
+  surname?: string | null
+  username: string
+  email: string
+  passwordHash: string
+  avatarUrl?: string | null
+  isActive?: boolean
+  emailVerifiedAt?: Date | string | null
+  themePreference?: $Enums.ThemePreference
+  locale?: string | null
+  timezone?: string | null
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  socialLinks?: Prisma.UserSocialLinkUncheckedCreateNestedManyWithoutUserInput
+  technologySkills?: Prisma.UserTechnologyUncheckedCreateNestedManyWithoutUserInput
+  languageSkills?: Prisma.LanguageSkillUncheckedCreateNestedManyWithoutUserInput
+  workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutUserInput
+  projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutUserInput
+  education?: Prisma.EducationUncheckedCreateNestedManyWithoutUserInput
+  courses?: Prisma.CourseUncheckedCreateNestedManyWithoutUserInput
+  certifications?: Prisma.CertificationUncheckedCreateNestedManyWithoutUserInput
+  generatedCvs?: Prisma.GeneratedCvUncheckedCreateNestedManyWithoutUserInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutJobOffersInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutJobOffersInput, Prisma.UserUncheckedCreateWithoutJobOffersInput>
+}
+
+export type UserUpsertWithoutJobOffersInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutJobOffersInput, Prisma.UserUncheckedUpdateWithoutJobOffersInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutJobOffersInput, Prisma.UserUncheckedCreateWithoutJobOffersInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutJobOffersInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutJobOffersInput, Prisma.UserUncheckedUpdateWithoutJobOffersInput>
+}
+
+export type UserUpdateWithoutJobOffersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  socialLinks?: Prisma.UserSocialLinkUpdateManyWithoutUserNestedInput
+  technologySkills?: Prisma.UserTechnologyUpdateManyWithoutUserNestedInput
+  languageSkills?: Prisma.LanguageSkillUpdateManyWithoutUserNestedInput
+  workExperiences?: Prisma.WorkExperienceUpdateManyWithoutUserNestedInput
+  projects?: Prisma.ProjectUpdateManyWithoutUserNestedInput
+  education?: Prisma.EducationUpdateManyWithoutUserNestedInput
+  courses?: Prisma.CourseUpdateManyWithoutUserNestedInput
+  certifications?: Prisma.CertificationUpdateManyWithoutUserNestedInput
+  generatedCvs?: Prisma.GeneratedCvUpdateManyWithoutUserNestedInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutJobOffersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  socialLinks?: Prisma.UserSocialLinkUncheckedUpdateManyWithoutUserNestedInput
+  technologySkills?: Prisma.UserTechnologyUncheckedUpdateManyWithoutUserNestedInput
+  languageSkills?: Prisma.LanguageSkillUncheckedUpdateManyWithoutUserNestedInput
+  workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutUserNestedInput
+  projects?: Prisma.ProjectUncheckedUpdateManyWithoutUserNestedInput
+  education?: Prisma.EducationUncheckedUpdateManyWithoutUserNestedInput
+  courses?: Prisma.CourseUncheckedUpdateManyWithoutUserNestedInput
+  certifications?: Prisma.CertificationUncheckedUpdateManyWithoutUserNestedInput
+  generatedCvs?: Prisma.GeneratedCvUncheckedUpdateManyWithoutUserNestedInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutLanguageSkillsInput = {
+  id?: string
+  name?: string | null
+  surname?: string | null
+  username: string
+  email: string
+  passwordHash: string
+  avatarUrl?: string | null
+  isActive?: boolean
+  emailVerifiedAt?: Date | string | null
+  themePreference?: $Enums.ThemePreference
+  locale?: string | null
+  timezone?: string | null
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  socialLinks?: Prisma.UserSocialLinkCreateNestedManyWithoutUserInput
+  technologySkills?: Prisma.UserTechnologyCreateNestedManyWithoutUserInput
+  workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutUserInput
+  projects?: Prisma.ProjectCreateNestedManyWithoutUserInput
+  education?: Prisma.EducationCreateNestedManyWithoutUserInput
+  courses?: Prisma.CourseCreateNestedManyWithoutUserInput
+  certifications?: Prisma.CertificationCreateNestedManyWithoutUserInput
+  jobOffers?: Prisma.JobOfferCreateNestedManyWithoutUserInput
+  generatedCvs?: Prisma.GeneratedCvCreateNestedManyWithoutUserInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutLanguageSkillsInput = {
+  id?: string
+  name?: string | null
+  surname?: string | null
+  username: string
+  email: string
+  passwordHash: string
+  avatarUrl?: string | null
+  isActive?: boolean
+  emailVerifiedAt?: Date | string | null
+  themePreference?: $Enums.ThemePreference
+  locale?: string | null
+  timezone?: string | null
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  socialLinks?: Prisma.UserSocialLinkUncheckedCreateNestedManyWithoutUserInput
+  technologySkills?: Prisma.UserTechnologyUncheckedCreateNestedManyWithoutUserInput
+  workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutUserInput
+  projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutUserInput
+  education?: Prisma.EducationUncheckedCreateNestedManyWithoutUserInput
+  courses?: Prisma.CourseUncheckedCreateNestedManyWithoutUserInput
+  certifications?: Prisma.CertificationUncheckedCreateNestedManyWithoutUserInput
+  jobOffers?: Prisma.JobOfferUncheckedCreateNestedManyWithoutUserInput
+  generatedCvs?: Prisma.GeneratedCvUncheckedCreateNestedManyWithoutUserInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutLanguageSkillsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutLanguageSkillsInput, Prisma.UserUncheckedCreateWithoutLanguageSkillsInput>
+}
+
+export type UserUpsertWithoutLanguageSkillsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutLanguageSkillsInput, Prisma.UserUncheckedUpdateWithoutLanguageSkillsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutLanguageSkillsInput, Prisma.UserUncheckedCreateWithoutLanguageSkillsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutLanguageSkillsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutLanguageSkillsInput, Prisma.UserUncheckedUpdateWithoutLanguageSkillsInput>
+}
+
+export type UserUpdateWithoutLanguageSkillsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  socialLinks?: Prisma.UserSocialLinkUpdateManyWithoutUserNestedInput
+  technologySkills?: Prisma.UserTechnologyUpdateManyWithoutUserNestedInput
+  workExperiences?: Prisma.WorkExperienceUpdateManyWithoutUserNestedInput
+  projects?: Prisma.ProjectUpdateManyWithoutUserNestedInput
+  education?: Prisma.EducationUpdateManyWithoutUserNestedInput
+  courses?: Prisma.CourseUpdateManyWithoutUserNestedInput
+  certifications?: Prisma.CertificationUpdateManyWithoutUserNestedInput
+  jobOffers?: Prisma.JobOfferUpdateManyWithoutUserNestedInput
+  generatedCvs?: Prisma.GeneratedCvUpdateManyWithoutUserNestedInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutLanguageSkillsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  socialLinks?: Prisma.UserSocialLinkUncheckedUpdateManyWithoutUserNestedInput
+  technologySkills?: Prisma.UserTechnologyUncheckedUpdateManyWithoutUserNestedInput
+  workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutUserNestedInput
+  projects?: Prisma.ProjectUncheckedUpdateManyWithoutUserNestedInput
+  education?: Prisma.EducationUncheckedUpdateManyWithoutUserNestedInput
+  courses?: Prisma.CourseUncheckedUpdateManyWithoutUserNestedInput
+  certifications?: Prisma.CertificationUncheckedUpdateManyWithoutUserNestedInput
+  jobOffers?: Prisma.JobOfferUncheckedUpdateManyWithoutUserNestedInput
+  generatedCvs?: Prisma.GeneratedCvUncheckedUpdateManyWithoutUserNestedInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutProjectsInput = {
+  id?: string
+  name?: string | null
+  surname?: string | null
+  username: string
+  email: string
+  passwordHash: string
+  avatarUrl?: string | null
+  isActive?: boolean
+  emailVerifiedAt?: Date | string | null
+  themePreference?: $Enums.ThemePreference
+  locale?: string | null
+  timezone?: string | null
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  socialLinks?: Prisma.UserSocialLinkCreateNestedManyWithoutUserInput
+  technologySkills?: Prisma.UserTechnologyCreateNestedManyWithoutUserInput
+  languageSkills?: Prisma.LanguageSkillCreateNestedManyWithoutUserInput
+  workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutUserInput
+  education?: Prisma.EducationCreateNestedManyWithoutUserInput
+  courses?: Prisma.CourseCreateNestedManyWithoutUserInput
+  certifications?: Prisma.CertificationCreateNestedManyWithoutUserInput
+  jobOffers?: Prisma.JobOfferCreateNestedManyWithoutUserInput
+  generatedCvs?: Prisma.GeneratedCvCreateNestedManyWithoutUserInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutProjectsInput = {
+  id?: string
+  name?: string | null
+  surname?: string | null
+  username: string
+  email: string
+  passwordHash: string
+  avatarUrl?: string | null
+  isActive?: boolean
+  emailVerifiedAt?: Date | string | null
+  themePreference?: $Enums.ThemePreference
+  locale?: string | null
+  timezone?: string | null
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  socialLinks?: Prisma.UserSocialLinkUncheckedCreateNestedManyWithoutUserInput
+  technologySkills?: Prisma.UserTechnologyUncheckedCreateNestedManyWithoutUserInput
+  languageSkills?: Prisma.LanguageSkillUncheckedCreateNestedManyWithoutUserInput
+  workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutUserInput
+  education?: Prisma.EducationUncheckedCreateNestedManyWithoutUserInput
+  courses?: Prisma.CourseUncheckedCreateNestedManyWithoutUserInput
+  certifications?: Prisma.CertificationUncheckedCreateNestedManyWithoutUserInput
+  jobOffers?: Prisma.JobOfferUncheckedCreateNestedManyWithoutUserInput
+  generatedCvs?: Prisma.GeneratedCvUncheckedCreateNestedManyWithoutUserInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutProjectsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutProjectsInput, Prisma.UserUncheckedCreateWithoutProjectsInput>
+}
+
+export type UserUpsertWithoutProjectsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutProjectsInput, Prisma.UserUncheckedUpdateWithoutProjectsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutProjectsInput, Prisma.UserUncheckedCreateWithoutProjectsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutProjectsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutProjectsInput, Prisma.UserUncheckedUpdateWithoutProjectsInput>
+}
+
+export type UserUpdateWithoutProjectsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  socialLinks?: Prisma.UserSocialLinkUpdateManyWithoutUserNestedInput
+  technologySkills?: Prisma.UserTechnologyUpdateManyWithoutUserNestedInput
+  languageSkills?: Prisma.LanguageSkillUpdateManyWithoutUserNestedInput
+  workExperiences?: Prisma.WorkExperienceUpdateManyWithoutUserNestedInput
+  education?: Prisma.EducationUpdateManyWithoutUserNestedInput
+  courses?: Prisma.CourseUpdateManyWithoutUserNestedInput
+  certifications?: Prisma.CertificationUpdateManyWithoutUserNestedInput
+  jobOffers?: Prisma.JobOfferUpdateManyWithoutUserNestedInput
+  generatedCvs?: Prisma.GeneratedCvUpdateManyWithoutUserNestedInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutProjectsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  socialLinks?: Prisma.UserSocialLinkUncheckedUpdateManyWithoutUserNestedInput
+  technologySkills?: Prisma.UserTechnologyUncheckedUpdateManyWithoutUserNestedInput
+  languageSkills?: Prisma.LanguageSkillUncheckedUpdateManyWithoutUserNestedInput
+  workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutUserNestedInput
+  education?: Prisma.EducationUncheckedUpdateManyWithoutUserNestedInput
+  courses?: Prisma.CourseUncheckedUpdateManyWithoutUserNestedInput
+  certifications?: Prisma.CertificationUncheckedUpdateManyWithoutUserNestedInput
+  jobOffers?: Prisma.JobOfferUncheckedUpdateManyWithoutUserNestedInput
+  generatedCvs?: Prisma.GeneratedCvUncheckedUpdateManyWithoutUserNestedInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutSocialLinksInput = {
+  id?: string
+  name?: string | null
+  surname?: string | null
+  username: string
+  email: string
+  passwordHash: string
+  avatarUrl?: string | null
+  isActive?: boolean
+  emailVerifiedAt?: Date | string | null
+  themePreference?: $Enums.ThemePreference
+  locale?: string | null
+  timezone?: string | null
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  technologySkills?: Prisma.UserTechnologyCreateNestedManyWithoutUserInput
+  languageSkills?: Prisma.LanguageSkillCreateNestedManyWithoutUserInput
+  workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutUserInput
+  projects?: Prisma.ProjectCreateNestedManyWithoutUserInput
+  education?: Prisma.EducationCreateNestedManyWithoutUserInput
+  courses?: Prisma.CourseCreateNestedManyWithoutUserInput
+  certifications?: Prisma.CertificationCreateNestedManyWithoutUserInput
+  jobOffers?: Prisma.JobOfferCreateNestedManyWithoutUserInput
+  generatedCvs?: Prisma.GeneratedCvCreateNestedManyWithoutUserInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutSocialLinksInput = {
+  id?: string
+  name?: string | null
+  surname?: string | null
+  username: string
+  email: string
+  passwordHash: string
+  avatarUrl?: string | null
+  isActive?: boolean
+  emailVerifiedAt?: Date | string | null
+  themePreference?: $Enums.ThemePreference
+  locale?: string | null
+  timezone?: string | null
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  technologySkills?: Prisma.UserTechnologyUncheckedCreateNestedManyWithoutUserInput
+  languageSkills?: Prisma.LanguageSkillUncheckedCreateNestedManyWithoutUserInput
+  workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutUserInput
+  projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutUserInput
+  education?: Prisma.EducationUncheckedCreateNestedManyWithoutUserInput
+  courses?: Prisma.CourseUncheckedCreateNestedManyWithoutUserInput
+  certifications?: Prisma.CertificationUncheckedCreateNestedManyWithoutUserInput
+  jobOffers?: Prisma.JobOfferUncheckedCreateNestedManyWithoutUserInput
+  generatedCvs?: Prisma.GeneratedCvUncheckedCreateNestedManyWithoutUserInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutSocialLinksInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutSocialLinksInput, Prisma.UserUncheckedCreateWithoutSocialLinksInput>
+}
+
+export type UserUpsertWithoutSocialLinksInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutSocialLinksInput, Prisma.UserUncheckedUpdateWithoutSocialLinksInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutSocialLinksInput, Prisma.UserUncheckedCreateWithoutSocialLinksInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutSocialLinksInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutSocialLinksInput, Prisma.UserUncheckedUpdateWithoutSocialLinksInput>
+}
+
+export type UserUpdateWithoutSocialLinksInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  technologySkills?: Prisma.UserTechnologyUpdateManyWithoutUserNestedInput
+  languageSkills?: Prisma.LanguageSkillUpdateManyWithoutUserNestedInput
+  workExperiences?: Prisma.WorkExperienceUpdateManyWithoutUserNestedInput
+  projects?: Prisma.ProjectUpdateManyWithoutUserNestedInput
+  education?: Prisma.EducationUpdateManyWithoutUserNestedInput
+  courses?: Prisma.CourseUpdateManyWithoutUserNestedInput
+  certifications?: Prisma.CertificationUpdateManyWithoutUserNestedInput
+  jobOffers?: Prisma.JobOfferUpdateManyWithoutUserNestedInput
+  generatedCvs?: Prisma.GeneratedCvUpdateManyWithoutUserNestedInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutSocialLinksInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  technologySkills?: Prisma.UserTechnologyUncheckedUpdateManyWithoutUserNestedInput
+  languageSkills?: Prisma.LanguageSkillUncheckedUpdateManyWithoutUserNestedInput
+  workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutUserNestedInput
+  projects?: Prisma.ProjectUncheckedUpdateManyWithoutUserNestedInput
+  education?: Prisma.EducationUncheckedUpdateManyWithoutUserNestedInput
+  courses?: Prisma.CourseUncheckedUpdateManyWithoutUserNestedInput
+  certifications?: Prisma.CertificationUncheckedUpdateManyWithoutUserNestedInput
+  jobOffers?: Prisma.JobOfferUncheckedUpdateManyWithoutUserNestedInput
+  generatedCvs?: Prisma.GeneratedCvUncheckedUpdateManyWithoutUserNestedInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutTechnologySkillsInput = {
+  id?: string
+  name?: string | null
+  surname?: string | null
+  username: string
+  email: string
+  passwordHash: string
+  avatarUrl?: string | null
+  isActive?: boolean
+  emailVerifiedAt?: Date | string | null
+  themePreference?: $Enums.ThemePreference
+  locale?: string | null
+  timezone?: string | null
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  socialLinks?: Prisma.UserSocialLinkCreateNestedManyWithoutUserInput
+  languageSkills?: Prisma.LanguageSkillCreateNestedManyWithoutUserInput
+  workExperiences?: Prisma.WorkExperienceCreateNestedManyWithoutUserInput
+  projects?: Prisma.ProjectCreateNestedManyWithoutUserInput
+  education?: Prisma.EducationCreateNestedManyWithoutUserInput
+  courses?: Prisma.CourseCreateNestedManyWithoutUserInput
+  certifications?: Prisma.CertificationCreateNestedManyWithoutUserInput
+  jobOffers?: Prisma.JobOfferCreateNestedManyWithoutUserInput
+  generatedCvs?: Prisma.GeneratedCvCreateNestedManyWithoutUserInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutTechnologySkillsInput = {
+  id?: string
+  name?: string | null
+  surname?: string | null
+  username: string
+  email: string
+  passwordHash: string
+  avatarUrl?: string | null
+  isActive?: boolean
+  emailVerifiedAt?: Date | string | null
+  themePreference?: $Enums.ThemePreference
+  locale?: string | null
+  timezone?: string | null
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  socialLinks?: Prisma.UserSocialLinkUncheckedCreateNestedManyWithoutUserInput
+  languageSkills?: Prisma.LanguageSkillUncheckedCreateNestedManyWithoutUserInput
+  workExperiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutUserInput
+  projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutUserInput
+  education?: Prisma.EducationUncheckedCreateNestedManyWithoutUserInput
+  courses?: Prisma.CourseUncheckedCreateNestedManyWithoutUserInput
+  certifications?: Prisma.CertificationUncheckedCreateNestedManyWithoutUserInput
+  jobOffers?: Prisma.JobOfferUncheckedCreateNestedManyWithoutUserInput
+  generatedCvs?: Prisma.GeneratedCvUncheckedCreateNestedManyWithoutUserInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutTechnologySkillsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutTechnologySkillsInput, Prisma.UserUncheckedCreateWithoutTechnologySkillsInput>
+}
+
+export type UserUpsertWithoutTechnologySkillsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutTechnologySkillsInput, Prisma.UserUncheckedUpdateWithoutTechnologySkillsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutTechnologySkillsInput, Prisma.UserUncheckedCreateWithoutTechnologySkillsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutTechnologySkillsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutTechnologySkillsInput, Prisma.UserUncheckedUpdateWithoutTechnologySkillsInput>
+}
+
+export type UserUpdateWithoutTechnologySkillsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  socialLinks?: Prisma.UserSocialLinkUpdateManyWithoutUserNestedInput
+  languageSkills?: Prisma.LanguageSkillUpdateManyWithoutUserNestedInput
+  workExperiences?: Prisma.WorkExperienceUpdateManyWithoutUserNestedInput
+  projects?: Prisma.ProjectUpdateManyWithoutUserNestedInput
+  education?: Prisma.EducationUpdateManyWithoutUserNestedInput
+  courses?: Prisma.CourseUpdateManyWithoutUserNestedInput
+  certifications?: Prisma.CertificationUpdateManyWithoutUserNestedInput
+  jobOffers?: Prisma.JobOfferUpdateManyWithoutUserNestedInput
+  generatedCvs?: Prisma.GeneratedCvUpdateManyWithoutUserNestedInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutTechnologySkillsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  socialLinks?: Prisma.UserSocialLinkUncheckedUpdateManyWithoutUserNestedInput
+  languageSkills?: Prisma.LanguageSkillUncheckedUpdateManyWithoutUserNestedInput
+  workExperiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutUserNestedInput
+  projects?: Prisma.ProjectUncheckedUpdateManyWithoutUserNestedInput
+  education?: Prisma.EducationUncheckedUpdateManyWithoutUserNestedInput
+  courses?: Prisma.CourseUncheckedUpdateManyWithoutUserNestedInput
+  certifications?: Prisma.CertificationUncheckedUpdateManyWithoutUserNestedInput
+  jobOffers?: Prisma.JobOfferUncheckedUpdateManyWithoutUserNestedInput
+  generatedCvs?: Prisma.GeneratedCvUncheckedUpdateManyWithoutUserNestedInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutWorkExperiencesInput = {
+  id?: string
+  name?: string | null
+  surname?: string | null
+  username: string
+  email: string
+  passwordHash: string
+  avatarUrl?: string | null
+  isActive?: boolean
+  emailVerifiedAt?: Date | string | null
+  themePreference?: $Enums.ThemePreference
+  locale?: string | null
+  timezone?: string | null
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  socialLinks?: Prisma.UserSocialLinkCreateNestedManyWithoutUserInput
+  technologySkills?: Prisma.UserTechnologyCreateNestedManyWithoutUserInput
+  languageSkills?: Prisma.LanguageSkillCreateNestedManyWithoutUserInput
+  projects?: Prisma.ProjectCreateNestedManyWithoutUserInput
+  education?: Prisma.EducationCreateNestedManyWithoutUserInput
+  courses?: Prisma.CourseCreateNestedManyWithoutUserInput
+  certifications?: Prisma.CertificationCreateNestedManyWithoutUserInput
+  jobOffers?: Prisma.JobOfferCreateNestedManyWithoutUserInput
+  generatedCvs?: Prisma.GeneratedCvCreateNestedManyWithoutUserInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutWorkExperiencesInput = {
+  id?: string
+  name?: string | null
+  surname?: string | null
+  username: string
+  email: string
+  passwordHash: string
+  avatarUrl?: string | null
+  isActive?: boolean
+  emailVerifiedAt?: Date | string | null
+  themePreference?: $Enums.ThemePreference
+  locale?: string | null
+  timezone?: string | null
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  socialLinks?: Prisma.UserSocialLinkUncheckedCreateNestedManyWithoutUserInput
+  technologySkills?: Prisma.UserTechnologyUncheckedCreateNestedManyWithoutUserInput
+  languageSkills?: Prisma.LanguageSkillUncheckedCreateNestedManyWithoutUserInput
+  projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutUserInput
+  education?: Prisma.EducationUncheckedCreateNestedManyWithoutUserInput
+  courses?: Prisma.CourseUncheckedCreateNestedManyWithoutUserInput
+  certifications?: Prisma.CertificationUncheckedCreateNestedManyWithoutUserInput
+  jobOffers?: Prisma.JobOfferUncheckedCreateNestedManyWithoutUserInput
+  generatedCvs?: Prisma.GeneratedCvUncheckedCreateNestedManyWithoutUserInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutWorkExperiencesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutWorkExperiencesInput, Prisma.UserUncheckedCreateWithoutWorkExperiencesInput>
+}
+
+export type UserUpsertWithoutWorkExperiencesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutWorkExperiencesInput, Prisma.UserUncheckedUpdateWithoutWorkExperiencesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutWorkExperiencesInput, Prisma.UserUncheckedCreateWithoutWorkExperiencesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutWorkExperiencesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutWorkExperiencesInput, Prisma.UserUncheckedUpdateWithoutWorkExperiencesInput>
+}
+
+export type UserUpdateWithoutWorkExperiencesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  socialLinks?: Prisma.UserSocialLinkUpdateManyWithoutUserNestedInput
+  technologySkills?: Prisma.UserTechnologyUpdateManyWithoutUserNestedInput
+  languageSkills?: Prisma.LanguageSkillUpdateManyWithoutUserNestedInput
+  projects?: Prisma.ProjectUpdateManyWithoutUserNestedInput
+  education?: Prisma.EducationUpdateManyWithoutUserNestedInput
+  courses?: Prisma.CourseUpdateManyWithoutUserNestedInput
+  certifications?: Prisma.CertificationUpdateManyWithoutUserNestedInput
+  jobOffers?: Prisma.JobOfferUpdateManyWithoutUserNestedInput
+  generatedCvs?: Prisma.GeneratedCvUpdateManyWithoutUserNestedInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutWorkExperiencesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  socialLinks?: Prisma.UserSocialLinkUncheckedUpdateManyWithoutUserNestedInput
+  technologySkills?: Prisma.UserTechnologyUncheckedUpdateManyWithoutUserNestedInput
+  languageSkills?: Prisma.LanguageSkillUncheckedUpdateManyWithoutUserNestedInput
+  projects?: Prisma.ProjectUncheckedUpdateManyWithoutUserNestedInput
+  education?: Prisma.EducationUncheckedUpdateManyWithoutUserNestedInput
+  courses?: Prisma.CourseUncheckedUpdateManyWithoutUserNestedInput
+  certifications?: Prisma.CertificationUncheckedUpdateManyWithoutUserNestedInput
+  jobOffers?: Prisma.JobOfferUncheckedUpdateManyWithoutUserNestedInput
+  generatedCvs?: Prisma.GeneratedCvUncheckedUpdateManyWithoutUserNestedInput
+  generatedMotivationLetters?: Prisma.GeneratedMotivationLettersUncheckedUpdateManyWithoutUserNestedInput
+}
+
+
+/**
+ * Count Type UserCountOutputType
+ */
+
+export type UserCountOutputType = {
+  socialLinks: number
+  technologySkills: number
+  languageSkills: number
+  workExperiences: number
+  projects: number
+  education: number
+  courses: number
+  certifications: number
+  jobOffers: number
+  generatedCvs: number
+  generatedMotivationLetters: number
+}
+
+export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  socialLinks?: boolean | UserCountOutputTypeCountSocialLinksArgs
+  technologySkills?: boolean | UserCountOutputTypeCountTechnologySkillsArgs
+  languageSkills?: boolean | UserCountOutputTypeCountLanguageSkillsArgs
+  workExperiences?: boolean | UserCountOutputTypeCountWorkExperiencesArgs
+  projects?: boolean | UserCountOutputTypeCountProjectsArgs
+  education?: boolean | UserCountOutputTypeCountEducationArgs
+  courses?: boolean | UserCountOutputTypeCountCoursesArgs
+  certifications?: boolean | UserCountOutputTypeCountCertificationsArgs
+  jobOffers?: boolean | UserCountOutputTypeCountJobOffersArgs
+  generatedCvs?: boolean | UserCountOutputTypeCountGeneratedCvsArgs
+  generatedMotivationLetters?: boolean | UserCountOutputTypeCountGeneratedMotivationLettersArgs
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserCountOutputType
+   */
+  select?: Prisma.UserCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountSocialLinksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.UserSocialLinkWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountTechnologySkillsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.UserTechnologyWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountLanguageSkillsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.LanguageSkillWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountWorkExperiencesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.WorkExperienceWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountProjectsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ProjectWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountEducationArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.EducationWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCoursesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CourseWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCertificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CertificationWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountJobOffersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.JobOfferWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountGeneratedCvsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.GeneratedCvWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountGeneratedMotivationLettersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.GeneratedMotivationLettersWhereInput
+}
 
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -590,6 +2385,18 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
+  socialLinks?: boolean | Prisma.User$socialLinksArgs<ExtArgs>
+  technologySkills?: boolean | Prisma.User$technologySkillsArgs<ExtArgs>
+  languageSkills?: boolean | Prisma.User$languageSkillsArgs<ExtArgs>
+  workExperiences?: boolean | Prisma.User$workExperiencesArgs<ExtArgs>
+  projects?: boolean | Prisma.User$projectsArgs<ExtArgs>
+  education?: boolean | Prisma.User$educationArgs<ExtArgs>
+  courses?: boolean | Prisma.User$coursesArgs<ExtArgs>
+  certifications?: boolean | Prisma.User$certificationsArgs<ExtArgs>
+  jobOffers?: boolean | Prisma.User$jobOffersArgs<ExtArgs>
+  generatedCvs?: boolean | Prisma.User$generatedCvsArgs<ExtArgs>
+  generatedMotivationLetters?: boolean | Prisma.User$generatedMotivationLettersArgs<ExtArgs>
+  _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -650,10 +2457,38 @@ export type UserSelectScalar = {
 }
 
 export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "surname" | "username" | "email" | "passwordHash" | "avatarUrl" | "isActive" | "emailVerifiedAt" | "themePreference" | "locale" | "timezone" | "lastLoginAt" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["user"]>
+export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  socialLinks?: boolean | Prisma.User$socialLinksArgs<ExtArgs>
+  technologySkills?: boolean | Prisma.User$technologySkillsArgs<ExtArgs>
+  languageSkills?: boolean | Prisma.User$languageSkillsArgs<ExtArgs>
+  workExperiences?: boolean | Prisma.User$workExperiencesArgs<ExtArgs>
+  projects?: boolean | Prisma.User$projectsArgs<ExtArgs>
+  education?: boolean | Prisma.User$educationArgs<ExtArgs>
+  courses?: boolean | Prisma.User$coursesArgs<ExtArgs>
+  certifications?: boolean | Prisma.User$certificationsArgs<ExtArgs>
+  jobOffers?: boolean | Prisma.User$jobOffersArgs<ExtArgs>
+  generatedCvs?: boolean | Prisma.User$generatedCvsArgs<ExtArgs>
+  generatedMotivationLetters?: boolean | Prisma.User$generatedMotivationLettersArgs<ExtArgs>
+  _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
+}
+export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
 
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
-  objects: {}
+  objects: {
+    socialLinks: Prisma.$UserSocialLinkPayload<ExtArgs>[]
+    technologySkills: Prisma.$UserTechnologyPayload<ExtArgs>[]
+    languageSkills: Prisma.$LanguageSkillPayload<ExtArgs>[]
+    workExperiences: Prisma.$WorkExperiencePayload<ExtArgs>[]
+    projects: Prisma.$ProjectPayload<ExtArgs>[]
+    education: Prisma.$EducationPayload<ExtArgs>[]
+    courses: Prisma.$CoursePayload<ExtArgs>[]
+    certifications: Prisma.$CertificationPayload<ExtArgs>[]
+    jobOffers: Prisma.$JobOfferPayload<ExtArgs>[]
+    generatedCvs: Prisma.$GeneratedCvPayload<ExtArgs>[]
+    generatedMotivationLetters: Prisma.$GeneratedMotivationLettersPayload<ExtArgs>[]
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     name: string | null
@@ -1065,6 +2900,17 @@ readonly fields: UserFieldRefs;
  */
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  socialLinks<T extends Prisma.User$socialLinksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$socialLinksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserSocialLinkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  technologySkills<T extends Prisma.User$technologySkillsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$technologySkillsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserTechnologyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  languageSkills<T extends Prisma.User$languageSkillsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$languageSkillsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LanguageSkillPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  workExperiences<T extends Prisma.User$workExperiencesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$workExperiencesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WorkExperiencePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  projects<T extends Prisma.User$projectsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$projectsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  education<T extends Prisma.User$educationArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$educationArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EducationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  courses<T extends Prisma.User$coursesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$coursesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CoursePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  certifications<T extends Prisma.User$certificationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$certificationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CertificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  jobOffers<T extends Prisma.User$jobOffersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$jobOffersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$JobOfferPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  generatedCvs<T extends Prisma.User$generatedCvsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$generatedCvsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GeneratedCvPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  generatedMotivationLetters<T extends Prisma.User$generatedMotivationLettersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$generatedMotivationLettersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GeneratedMotivationLettersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1127,6 +2973,10 @@ export type UserFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.Internal
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter, which User to fetch.
    */
   where: Prisma.UserWhereUniqueInput
@@ -1145,6 +2995,10 @@ export type UserFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.I
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter, which User to fetch.
    */
   where: Prisma.UserWhereUniqueInput
@@ -1162,6 +3016,10 @@ export type UserFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
   /**
    * Filter, which User to fetch.
    */
@@ -1211,6 +3069,10 @@ export type UserFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.In
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter, which User to fetch.
    */
   where?: Prisma.UserWhereInput
@@ -1258,6 +3120,10 @@ export type UserFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
   /**
    * Filter, which Users to fetch.
    */
@@ -1307,6 +3173,10 @@ export type UserCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * The data needed to create a User.
    */
   data: Prisma.XOR<Prisma.UserCreateInput, Prisma.UserUncheckedCreateInput>
@@ -1354,6 +3224,10 @@ export type UserUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
   /**
    * The data needed to update a User.
    */
@@ -1421,6 +3295,10 @@ export type UserUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * The filter to search for the User to update in case it exists.
    */
   where: Prisma.UserWhereUniqueInput
@@ -1447,6 +3325,10 @@ export type UserDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter which User to delete.
    */
   where: Prisma.UserWhereUniqueInput
@@ -1467,6 +3349,270 @@ export type UserDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
+ * User.socialLinks
+ */
+export type User$socialLinksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserSocialLink
+   */
+  select?: Prisma.UserSocialLinkSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the UserSocialLink
+   */
+  omit?: Prisma.UserSocialLinkOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserSocialLinkInclude<ExtArgs> | null
+  where?: Prisma.UserSocialLinkWhereInput
+  orderBy?: Prisma.UserSocialLinkOrderByWithRelationInput | Prisma.UserSocialLinkOrderByWithRelationInput[]
+  cursor?: Prisma.UserSocialLinkWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.UserSocialLinkScalarFieldEnum | Prisma.UserSocialLinkScalarFieldEnum[]
+}
+
+/**
+ * User.technologySkills
+ */
+export type User$technologySkillsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserTechnology
+   */
+  select?: Prisma.UserTechnologySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the UserTechnology
+   */
+  omit?: Prisma.UserTechnologyOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserTechnologyInclude<ExtArgs> | null
+  where?: Prisma.UserTechnologyWhereInput
+  orderBy?: Prisma.UserTechnologyOrderByWithRelationInput | Prisma.UserTechnologyOrderByWithRelationInput[]
+  cursor?: Prisma.UserTechnologyWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.UserTechnologyScalarFieldEnum | Prisma.UserTechnologyScalarFieldEnum[]
+}
+
+/**
+ * User.languageSkills
+ */
+export type User$languageSkillsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the LanguageSkill
+   */
+  select?: Prisma.LanguageSkillSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the LanguageSkill
+   */
+  omit?: Prisma.LanguageSkillOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.LanguageSkillInclude<ExtArgs> | null
+  where?: Prisma.LanguageSkillWhereInput
+  orderBy?: Prisma.LanguageSkillOrderByWithRelationInput | Prisma.LanguageSkillOrderByWithRelationInput[]
+  cursor?: Prisma.LanguageSkillWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.LanguageSkillScalarFieldEnum | Prisma.LanguageSkillScalarFieldEnum[]
+}
+
+/**
+ * User.workExperiences
+ */
+export type User$workExperiencesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the WorkExperience
+   */
+  select?: Prisma.WorkExperienceSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the WorkExperience
+   */
+  omit?: Prisma.WorkExperienceOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.WorkExperienceInclude<ExtArgs> | null
+  where?: Prisma.WorkExperienceWhereInput
+  orderBy?: Prisma.WorkExperienceOrderByWithRelationInput | Prisma.WorkExperienceOrderByWithRelationInput[]
+  cursor?: Prisma.WorkExperienceWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.WorkExperienceScalarFieldEnum | Prisma.WorkExperienceScalarFieldEnum[]
+}
+
+/**
+ * User.projects
+ */
+export type User$projectsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Project
+   */
+  select?: Prisma.ProjectSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Project
+   */
+  omit?: Prisma.ProjectOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProjectInclude<ExtArgs> | null
+  where?: Prisma.ProjectWhereInput
+  orderBy?: Prisma.ProjectOrderByWithRelationInput | Prisma.ProjectOrderByWithRelationInput[]
+  cursor?: Prisma.ProjectWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ProjectScalarFieldEnum | Prisma.ProjectScalarFieldEnum[]
+}
+
+/**
+ * User.education
+ */
+export type User$educationArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Education
+   */
+  select?: Prisma.EducationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Education
+   */
+  omit?: Prisma.EducationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EducationInclude<ExtArgs> | null
+  where?: Prisma.EducationWhereInput
+  orderBy?: Prisma.EducationOrderByWithRelationInput | Prisma.EducationOrderByWithRelationInput[]
+  cursor?: Prisma.EducationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.EducationScalarFieldEnum | Prisma.EducationScalarFieldEnum[]
+}
+
+/**
+ * User.courses
+ */
+export type User$coursesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Course
+   */
+  select?: Prisma.CourseSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Course
+   */
+  omit?: Prisma.CourseOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CourseInclude<ExtArgs> | null
+  where?: Prisma.CourseWhereInput
+  orderBy?: Prisma.CourseOrderByWithRelationInput | Prisma.CourseOrderByWithRelationInput[]
+  cursor?: Prisma.CourseWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CourseScalarFieldEnum | Prisma.CourseScalarFieldEnum[]
+}
+
+/**
+ * User.certifications
+ */
+export type User$certificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Certification
+   */
+  select?: Prisma.CertificationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Certification
+   */
+  omit?: Prisma.CertificationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CertificationInclude<ExtArgs> | null
+  where?: Prisma.CertificationWhereInput
+  orderBy?: Prisma.CertificationOrderByWithRelationInput | Prisma.CertificationOrderByWithRelationInput[]
+  cursor?: Prisma.CertificationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CertificationScalarFieldEnum | Prisma.CertificationScalarFieldEnum[]
+}
+
+/**
+ * User.jobOffers
+ */
+export type User$jobOffersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the JobOffer
+   */
+  select?: Prisma.JobOfferSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the JobOffer
+   */
+  omit?: Prisma.JobOfferOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.JobOfferInclude<ExtArgs> | null
+  where?: Prisma.JobOfferWhereInput
+  orderBy?: Prisma.JobOfferOrderByWithRelationInput | Prisma.JobOfferOrderByWithRelationInput[]
+  cursor?: Prisma.JobOfferWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.JobOfferScalarFieldEnum | Prisma.JobOfferScalarFieldEnum[]
+}
+
+/**
+ * User.generatedCvs
+ */
+export type User$generatedCvsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the GeneratedCv
+   */
+  select?: Prisma.GeneratedCvSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the GeneratedCv
+   */
+  omit?: Prisma.GeneratedCvOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GeneratedCvInclude<ExtArgs> | null
+  where?: Prisma.GeneratedCvWhereInput
+  orderBy?: Prisma.GeneratedCvOrderByWithRelationInput | Prisma.GeneratedCvOrderByWithRelationInput[]
+  cursor?: Prisma.GeneratedCvWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.GeneratedCvScalarFieldEnum | Prisma.GeneratedCvScalarFieldEnum[]
+}
+
+/**
+ * User.generatedMotivationLetters
+ */
+export type User$generatedMotivationLettersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the GeneratedMotivationLetters
+   */
+  select?: Prisma.GeneratedMotivationLettersSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the GeneratedMotivationLetters
+   */
+  omit?: Prisma.GeneratedMotivationLettersOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GeneratedMotivationLettersInclude<ExtArgs> | null
+  where?: Prisma.GeneratedMotivationLettersWhereInput
+  orderBy?: Prisma.GeneratedMotivationLettersOrderByWithRelationInput | Prisma.GeneratedMotivationLettersOrderByWithRelationInput[]
+  cursor?: Prisma.GeneratedMotivationLettersWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.GeneratedMotivationLettersScalarFieldEnum | Prisma.GeneratedMotivationLettersScalarFieldEnum[]
+}
+
+/**
  * User without action
  */
 export type UserDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1478,4 +3624,8 @@ export type UserDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
 }

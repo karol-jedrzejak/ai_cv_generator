@@ -3,6 +3,8 @@ import dotenv from 'dotenv';
 import { PrismaPg } from '@prisma/adapter-pg';
 import { PrismaClient } from '../generated/prisma/client';
 import { seedUsers } from './seeds/seedUsers';
+import { seedLanguages } from './seeds/seedLanguages';
+import { seedTechnologies } from './seeds/seedTechnology';
 
 
 const adapter = new PrismaPg({
@@ -15,6 +17,8 @@ async function main() {
     console.log('🌱 Seeding database...');
 
     await seedUsers(prisma);
+    await seedLanguages(prisma);
+    await seedTechnologies(prisma);
 
     console.log('🌱 Seed completed!');
 }

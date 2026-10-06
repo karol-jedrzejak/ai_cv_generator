@@ -51,7 +51,25 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  User: 'User'
+  CertificationTechnology: 'CertificationTechnology',
+  Certification: 'Certification',
+  CourseTechnology: 'CourseTechnology',
+  Course: 'Course',
+  EducationTechnology: 'EducationTechnology',
+  Education: 'Education',
+  GeneratedCv: 'GeneratedCv',
+  GeneratedMotivationLetters: 'GeneratedMotivationLetters',
+  JobOffer: 'JobOffer',
+  LanguageSkill: 'LanguageSkill',
+  Language: 'Language',
+  ProjectTechnology: 'ProjectTechnology',
+  Project: 'Project',
+  Technology: 'Technology',
+  UserSocialLink: 'UserSocialLink',
+  UserTechnology: 'UserTechnology',
+  User: 'User',
+  WorkExperienceTechnology: 'WorkExperienceTechnology',
+  WorkExperience: 'WorkExperience'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -68,6 +86,217 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 } as const)
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+
+
+export const CertificationTechnologyScalarFieldEnum = {
+  certificationId: 'certificationId',
+  technologyId: 'technologyId'
+} as const
+
+export type CertificationTechnologyScalarFieldEnum = (typeof CertificationTechnologyScalarFieldEnum)[keyof typeof CertificationTechnologyScalarFieldEnum]
+
+
+export const CertificationScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  name: 'name',
+  organization: 'organization',
+  issuedYear: 'issuedYear',
+  issuedMonth: 'issuedMonth',
+  expirationYear: 'expirationYear',
+  expirationMonth: 'expirationMonth',
+  credentialId: 'credentialId',
+  credentialUrl: 'credentialUrl',
+  description: 'description',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CertificationScalarFieldEnum = (typeof CertificationScalarFieldEnum)[keyof typeof CertificationScalarFieldEnum]
+
+
+export const CourseTechnologyScalarFieldEnum = {
+  courseId: 'courseId',
+  technologyId: 'technologyId'
+} as const
+
+export type CourseTechnologyScalarFieldEnum = (typeof CourseTechnologyScalarFieldEnum)[keyof typeof CourseTechnologyScalarFieldEnum]
+
+
+export const CourseScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  name: 'name',
+  organization: 'organization',
+  startYear: 'startYear',
+  startMonth: 'startMonth',
+  endYear: 'endYear',
+  endMonth: 'endMonth',
+  description: 'description',
+  learnedSkills: 'learnedSkills',
+  certificateUrl: 'certificateUrl',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CourseScalarFieldEnum = (typeof CourseScalarFieldEnum)[keyof typeof CourseScalarFieldEnum]
+
+
+export const EducationTechnologyScalarFieldEnum = {
+  educationId: 'educationId',
+  technologyId: 'technologyId'
+} as const
+
+export type EducationTechnologyScalarFieldEnum = (typeof EducationTechnologyScalarFieldEnum)[keyof typeof EducationTechnologyScalarFieldEnum]
+
+
+export const EducationScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  institutionName: 'institutionName',
+  fieldOfStudy: 'fieldOfStudy',
+  startYear: 'startYear',
+  startMonth: 'startMonth',
+  endYear: 'endYear',
+  endMonth: 'endMonth',
+  description: 'description',
+  achievements: 'achievements',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type EducationScalarFieldEnum = (typeof EducationScalarFieldEnum)[keyof typeof EducationScalarFieldEnum]
+
+
+export const GeneratedCvScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  jobOfferId: 'jobOfferId',
+  languageId: 'languageId',
+  description: 'description',
+  content: 'content',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type GeneratedCvScalarFieldEnum = (typeof GeneratedCvScalarFieldEnum)[keyof typeof GeneratedCvScalarFieldEnum]
+
+
+export const GeneratedMotivationLettersScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  jobOfferId: 'jobOfferId',
+  languageId: 'languageId',
+  description: 'description',
+  content: 'content',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type GeneratedMotivationLettersScalarFieldEnum = (typeof GeneratedMotivationLettersScalarFieldEnum)[keyof typeof GeneratedMotivationLettersScalarFieldEnum]
+
+
+export const JobOfferScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  title: 'title',
+  companyName: 'companyName',
+  location: 'location',
+  url: 'url',
+  description: 'description',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type JobOfferScalarFieldEnum = (typeof JobOfferScalarFieldEnum)[keyof typeof JobOfferScalarFieldEnum]
+
+
+export const LanguageSkillScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  languageId: 'languageId',
+  level: 'level',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LanguageSkillScalarFieldEnum = (typeof LanguageSkillScalarFieldEnum)[keyof typeof LanguageSkillScalarFieldEnum]
+
+
+export const LanguageScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LanguageScalarFieldEnum = (typeof LanguageScalarFieldEnum)[keyof typeof LanguageScalarFieldEnum]
+
+
+export const ProjectTechnologyScalarFieldEnum = {
+  projectId: 'projectId',
+  technologyId: 'technologyId'
+} as const
+
+export type ProjectTechnologyScalarFieldEnum = (typeof ProjectTechnologyScalarFieldEnum)[keyof typeof ProjectTechnologyScalarFieldEnum]
+
+
+export const ProjectScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  name: 'name',
+  startYear: 'startYear',
+  startMonth: 'startMonth',
+  endYear: 'endYear',
+  endMonth: 'endMonth',
+  description: 'description',
+  responsibilities: 'responsibilities',
+  achievements: 'achievements',
+  projectUrl: 'projectUrl',
+  repositoryUrl: 'repositoryUrl',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ProjectScalarFieldEnum = (typeof ProjectScalarFieldEnum)[keyof typeof ProjectScalarFieldEnum]
+
+
+export const TechnologyScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  category: 'category',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TechnologyScalarFieldEnum = (typeof TechnologyScalarFieldEnum)[keyof typeof TechnologyScalarFieldEnum]
+
+
+export const UserSocialLinkScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  type: 'type',
+  label: 'label',
+  url: 'url',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type UserSocialLinkScalarFieldEnum = (typeof UserSocialLinkScalarFieldEnum)[keyof typeof UserSocialLinkScalarFieldEnum]
+
+
+export const UserTechnologyScalarFieldEnum = {
+  userId: 'userId',
+  technologyId: 'technologyId',
+  proficiency: 'proficiency'
+} as const
+
+export type UserTechnologyScalarFieldEnum = (typeof UserTechnologyScalarFieldEnum)[keyof typeof UserTechnologyScalarFieldEnum]
 
 
 export const UserScalarFieldEnum = {
@@ -92,12 +321,49 @@ export const UserScalarFieldEnum = {
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
+export const WorkExperienceTechnologyScalarFieldEnum = {
+  workExperienceId: 'workExperienceId',
+  technologyId: 'technologyId'
+} as const
+
+export type WorkExperienceTechnologyScalarFieldEnum = (typeof WorkExperienceTechnologyScalarFieldEnum)[keyof typeof WorkExperienceTechnologyScalarFieldEnum]
+
+
+export const WorkExperienceScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  companyName: 'companyName',
+  position: 'position',
+  location: 'location',
+  startYear: 'startYear',
+  startMonth: 'startMonth',
+  endYear: 'endYear',
+  endMonth: 'endMonth',
+  isCurrent: 'isCurrent',
+  description: 'description',
+  responsibilities: 'responsibilities',
+  achievements: 'achievements',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type WorkExperienceScalarFieldEnum = (typeof WorkExperienceScalarFieldEnum)[keyof typeof WorkExperienceScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
 export const QueryMode = {
@@ -114,4 +380,13 @@ export const NullsOrder = {
 } as const
 
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 

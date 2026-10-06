@@ -8,5 +8,23 @@
  *
  * 🟢 You can import this file directly.
  */
+export type * from './models/CertificationTechnology.js'
+export type * from './models/Certification.js'
+export type * from './models/CourseTechnology.js'
+export type * from './models/Course.js'
+export type * from './models/EducationTechnology.js'
+export type * from './models/Education.js'
+export type * from './models/GeneratedCv.js'
+export type * from './models/GeneratedMotivationLetters.js'
+export type * from './models/JobOffer.js'
+export type * from './models/LanguageSkill.js'
+export type * from './models/Language.js'
+export type * from './models/ProjectTechnology.js'
+export type * from './models/Project.js'
+export type * from './models/Technology.js'
+export type * from './models/UserSocialLink.js'
+export type * from './models/UserTechnology.js'
 export type * from './models/User.js'
+export type * from './models/WorkExperienceTechnology.js'
+export type * from './models/WorkExperience.js'
 export type * from './commonInputTypes.js'

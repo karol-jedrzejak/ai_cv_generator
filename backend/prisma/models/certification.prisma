@@ -22,6 +22,8 @@ model Certification {
 
   user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
+  certificationTechnologies CertificationTechnology[]
+  
   @@index([userId])
   @@map("certifications")
 }

@@ -33,6 +33,7 @@ model User {
   certifications    Certification[]
   jobOffers         JobOffer[]
   generatedCvs      GeneratedCv[]
+  generatedMotivationLetters GeneratedMotivationLetters[]
 
   @@index([isActive])
   @@map("users")

@@ -24,6 +24,8 @@ model Course {
 
   user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
+  technologies    CourseTechnology[]
+
   @@index([userId])
   @@index([userId, startYear])
   @@map("courses")

@@ -12,4 +12,6 @@ enum TechnologyCategory {
   DESIGN
   TOOLS
   OTHER
+  EMBEDDED_SYSTEMS
+  MANAGEMENT
 }

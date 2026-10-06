@@ -1,0 +1,11 @@
+model CertificationTechnology {
+  certificationId String
+  technologyId    String
+
+  certification Certification @relation(fields: [certificationId], references: [id], onDelete: Cascade)
+  technology    Technology    @relation(fields: [technologyId], references: [id], onDelete: Cascade)
+
+  @@id([certificationId, technologyId])
+  @@index([technologyId])
+  @@map("certification_technologies")
+}

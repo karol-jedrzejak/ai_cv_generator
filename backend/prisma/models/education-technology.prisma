@@ -1,0 +1,12 @@
+model EducationTechnology {
+
+  educationId       String
+  technologyId String
+
+  education    Education  @relation(fields: [educationId], references: [id], onDelete: Cascade)
+  technology   Technology @relation(fields: [technologyId], references: [id], onDelete: Cascade)
+
+  @@id([educationId, technologyId])
+  @@index([technologyId])
+  @@map("education_technologies")
+}

@@ -4,15 +4,12 @@ model Project {
   userId           String
 
   name             String   @db.VarChar(200)
-  location         String?  @db.VarChar(255)
 
   startYear        Int?
   startMonth       Int?
 
   endYear          Int?
   endMonth         Int?
-
-  isCurrent        Boolean  @default(false)
 
   description      String?  @db.Text
   responsibilities String?  @db.Text

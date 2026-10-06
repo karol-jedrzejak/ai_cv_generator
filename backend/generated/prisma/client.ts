@@ -29,8 +29,8 @@ export * from "./enums.js"
  * const prisma = new PrismaClient({
  *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
  * })
- * // Fetch zero or more Users
- * const users = await prisma.user.findMany()
+ * // Fetch zero or more CertificationTechnologies
+ * const certificationTechnologies = await prisma.certificationTechnology.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -40,7 +40,97 @@ export type PrismaClient<LogOpts extends Prisma.LogLevel = never, OmitOpts exten
 export { Prisma }
 
 /**
+ * Model CertificationTechnology
+ * 
+ */
+export type CertificationTechnology = Prisma.CertificationTechnologyModel
+/**
+ * Model Certification
+ * 
+ */
+export type Certification = Prisma.CertificationModel
+/**
+ * Model CourseTechnology
+ * 
+ */
+export type CourseTechnology = Prisma.CourseTechnologyModel
+/**
+ * Model Course
+ * 
+ */
+export type Course = Prisma.CourseModel
+/**
+ * Model EducationTechnology
+ * 
+ */
+export type EducationTechnology = Prisma.EducationTechnologyModel
+/**
+ * Model Education
+ * 
+ */
+export type Education = Prisma.EducationModel
+/**
+ * Model GeneratedCv
+ * 
+ */
+export type GeneratedCv = Prisma.GeneratedCvModel
+/**
+ * Model GeneratedMotivationLetters
+ * 
+ */
+export type GeneratedMotivationLetters = Prisma.GeneratedMotivationLettersModel
+/**
+ * Model JobOffer
+ * 
+ */
+export type JobOffer = Prisma.JobOfferModel
+/**
+ * Model LanguageSkill
+ * 
+ */
+export type LanguageSkill = Prisma.LanguageSkillModel
+/**
+ * Model Language
+ * 
+ */
+export type Language = Prisma.LanguageModel
+/**
+ * Model ProjectTechnology
+ * 
+ */
+export type ProjectTechnology = Prisma.ProjectTechnologyModel
+/**
+ * Model Project
+ * 
+ */
+export type Project = Prisma.ProjectModel
+/**
+ * Model Technology
+ * 
+ */
+export type Technology = Prisma.TechnologyModel
+/**
+ * Model UserSocialLink
+ * 
+ */
+export type UserSocialLink = Prisma.UserSocialLinkModel
+/**
+ * Model UserTechnology
+ * 
+ */
+export type UserTechnology = Prisma.UserTechnologyModel
+/**
  * Model User
  * 
  */
 export type User = Prisma.UserModel
+/**
+ * Model WorkExperienceTechnology
+ * 
+ */
+export type WorkExperienceTechnology = Prisma.WorkExperienceTechnologyModel
+/**
+ * Model WorkExperience
+ * 
+ */
+export type WorkExperience = Prisma.WorkExperienceModel

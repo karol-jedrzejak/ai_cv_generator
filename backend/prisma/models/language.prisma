@@ -1,0 +1,14 @@
+model Language {
+  id          String   @id @default(uuid())
+
+  name        String?  @db.VarChar(100)
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  languageSkills    LanguageSkill[]
+  generatedMotivationLetters GeneratedMotivationLetters[]
+  generatedCvs GeneratedCv[]
+
+  @@map("languages")
+}

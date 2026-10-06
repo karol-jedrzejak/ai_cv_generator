@@ -3,8 +3,7 @@ model Education {
 
   userId        String
 
-  institution   String   @db.VarChar(255)
-  name          String   @db.VarChar(255)
+  institutionName   String   @db.VarChar(255)
   fieldOfStudy  String?  @db.VarChar(255)
 
   startYear     Int?
@@ -12,8 +11,6 @@ model Education {
 
   endYear       Int?
   endMonth      Int?
-
-  isCurrent     Boolean  @default(false)
 
   description   String?  @db.Text
   achievements  String?  @db.Text
@@ -24,6 +21,8 @@ model Education {
   updatedAt     DateTime @updatedAt
 
   user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  educationalTechnologies EducationTechnology[]
 
   @@index([userId])
   @@index([userId, startYear])

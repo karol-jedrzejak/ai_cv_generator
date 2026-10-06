@@ -17,6 +17,7 @@ model JobOffer {
   user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   generatedCvs   GeneratedCv[]
+  generatedMotivationLetters GeneratedMotivationLetters[]
 
   @@index([userId])
   @@map("job_offers")
