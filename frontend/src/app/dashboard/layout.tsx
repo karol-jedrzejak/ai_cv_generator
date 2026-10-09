@@ -1,5 +1,8 @@
 'use client';
 
+import Link from 'next/link';
+import LinkIcon from '@mui/icons-material/Link';
+
 import React, { useEffect, useState } from 'react';
 import {
   AppBar,
@@ -56,6 +59,14 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <Typography variant="h6" component="div" sx={{ flexGrow: 1, fontWeight: 'bold' }}>
             CV Generator AI
           </Typography>
+          <Button
+            component={Link}
+            href="/dashboard/social-links"
+            color="inherit"
+            startIcon={<LinkIcon />}
+          >
+            Moje linki
+          </Button>
           <Button color="inherit" onClick={handleLogout} startIcon={<LogoutIcon />}>
             Wyloguj
           </Button>
