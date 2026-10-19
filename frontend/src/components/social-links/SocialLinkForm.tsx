@@ -180,6 +180,9 @@ export default function SocialLinkForm({ initialData }: Props) {
               startIcon={<ArrowBackIcon />}
               onClick={() => router.push('/dashboard/social-links')}
               disabled={saving}
+              sx={{
+                mb: 1,
+              }}
             >
               Anuluj
             </Button>
