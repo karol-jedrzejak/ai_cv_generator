@@ -1,7 +1,14 @@
+import {
+  IsInt,
+  Min,
+  Max,
+} from 'class-validator';
 
-import { PartialType } from '@nestjs/mapped-types';
-import { CreateUserTechnologyDto } from './create-user-technology.dto';
 
-export class UpdateUserTechnologyDto extends PartialType(
-  CreateUserTechnologyDto,
-) {}
+export class UpdateUserTechnologyDto
+{
+  @IsInt()
+  @Min(1)
+  @Max(10)
+  proficiency!: number;
+}

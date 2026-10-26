@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import LinkIcon from '@mui/icons-material/Link';
+import ChecklistRtlIcon from '@mui/icons-material/ChecklistRtl';
 
 import React, { useEffect, useState } from 'react';
 import {
@@ -65,7 +66,15 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             color="inherit"
             startIcon={<LinkIcon />}
           >
-            Moje linki
+            linki
+          </Button>
+          <Button
+            component={Link}
+            href="/dashboard/user-technologies"
+            color="inherit"
+            startIcon={<ChecklistRtlIcon />}
+          >
+            Technologie
           </Button>
           <Button color="inherit" onClick={handleLogout} startIcon={<LogoutIcon />}>
             Wyloguj

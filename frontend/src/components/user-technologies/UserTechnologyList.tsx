@@ -15,33 +15,33 @@ import {
 import AddIcon from '@mui/icons-material/Add';
 import LinkIcon from '@mui/icons-material/Link';
 
-import { socialLinksApi } from '@/lib/api/social-links';
-import type { SocialLink } from '@/types/social-link';
-import SocialLinkCard from './SocialLinkCard';
-import DeleteSocialLinkDialog from './DeleteSocialLinkDialog';
+import { userTechnologiesApi } from '@/lib/api/user-technologies';
+import type { UserTechnology } from '@/types/user-technology';
+import UserTechnologiesCard from './UserTechnologyCard';
+import DeleteUserTechnologiesDialog from './DeleteUserTechnologyDialog';
 
-export default function SocialLinkList() {
+export default function UserTechnologiesList() {
   const router = useRouter();
 
-  const [links, setLinks] = useState<SocialLink[]>([]);
+  const [technologies, setTechnologies] = useState<UserTechnology[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [selected, setSelected] = useState<SocialLink | null>(null);
+  const [selected, setSelected] = useState<UserTechnology | null>(null);
   const [deleting, setDeleting] = useState(false);
   const [deleteError, setDeleteError] = useState<string | null>(null);
 
-  const loadLinks = useCallback(async () => {
+  const loadTechnologies = useCallback(async () => {
     setLoading(true);
     setError(null);
 
     try {
-      const data = await socialLinksApi.getAll();
-      setLinks(data);
+      const data = await userTechnologiesApi.getAll();
+      setTechnologies(data);
     } catch (err) {
       setError(
         err instanceof Error
           ? err.message
-          : 'Nie udało się pobrać linków.',
+          : 'Nie udało się pobrać technologii.',
       );
     } finally {
       setLoading(false);
@@ -49,8 +49,8 @@ export default function SocialLinkList() {
   }, []);
 
   useEffect(() => {
-    void loadLinks();
-  }, [loadLinks]);
+    void loadTechnologies();
+  }, [loadTechnologies]);
 
   const handleDelete = async () => {
     if (!selected) return;
@@ -59,16 +59,16 @@ export default function SocialLinkList() {
     setDeleteError(null);
 
     try {
-      await socialLinksApi.remove(selected.id);
-      setLinks((current) =>
-        current.filter((link) => link.id !== selected.id),
+      await userTechnologiesApi.remove(selected.technologyId);
+      setTechnologies((current) =>
+        current.filter((technology) => technology.technologyId !== selected.technologyId),
       );
       setSelected(null);
     } catch (err) {
       setDeleteError(
         err instanceof Error
           ? err.message
-          : 'Nie udało się usunąć linku.',
+          : 'Nie udało się usunąć technologii.',
       );
     } finally {
       setDeleting(false);
@@ -89,7 +89,7 @@ export default function SocialLinkList() {
         <Alert
           severity="error"
           action={
-            <Button color="inherit" size="small" onClick={loadLinks}>
+            <Button color="inherit" size="small" onClick={loadTechnologies}>
               Spróbuj ponownie
             </Button>
           }
@@ -100,7 +100,7 @@ export default function SocialLinkList() {
 
       {!error && (
         <>
-          {links.length === 0 ? (
+          {technologies.length === 0 ? (
             <Paper
               variant="outlined"
               sx={{
@@ -115,31 +115,31 @@ export default function SocialLinkList() {
               />
 
               <Typography variant="h6" sx={{ fontWeight: 700 }} gutterBottom>
-                Nie masz jeszcze żadnych linków
+                Nie masz jeszcze żadnych technologii
               </Typography>
 
               <Typography color="text.secondary" sx={{ mb: 3 }}>
-                Dodaj GitHub, LinkedIn lub portfolio, aby uzupełnić
+                Dodaj technologie, które znasz, aby uzupełnić
                 swój profil zawodowy.
               </Typography>
 
               <Button
                 variant="contained"
                 startIcon={<AddIcon />}
-                onClick={() => router.push('/dashboard/social-links/new')}
+                onClick={() => router.push('/dashboard/user-technologies/new')}
               >
-                Dodaj pierwszy link
+                Dodaj pierwszą technologię
               </Button>
             </Paper>
           ) : (
             <Stack spacing={2}>
-              {links.map((link) => (
-                <SocialLinkCard
-                  key={link.id}
-                  link={link}
+              {technologies.map((technology) => (
+                <UserTechnologiesCard
+                  key={technology.technologyId+technology.userId}
+                  technology={technology}
                   onEdit={(item) =>
                     router.push(
-                      `/dashboard/social-links/${item.id}/edit`,
+                      `/dashboard/user-technologies/${item.technologyId}/edit`,
                     )
                   }
                   onDelete={(item) => {
@@ -153,9 +153,9 @@ export default function SocialLinkList() {
         </>
       )}
 
-      <DeleteSocialLinkDialog
+      <DeleteUserTechnologiesDialog
         open={Boolean(selected)}
-        link={selected}
+        technology={selected}
         deleting={deleting}
         error={deleteError}
         onClose={() => {

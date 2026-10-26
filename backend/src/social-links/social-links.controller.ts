@@ -19,7 +19,7 @@ import { UpdateSocialLinkDto } from './dto/update-social-link.dto';
 
 interface AuthenticatedRequest extends Request {
   user: {
-    sub: string;
+    id: string;
   };
 }
 
@@ -32,7 +32,7 @@ export class SocialLinksController {
 
   @Get()
   async getAll(@Req() req: AuthenticatedRequest) {
-    return this.socialLinksService.findAll(req.user.sub);
+    return this.socialLinksService.findAll(req.user.id);
   }
 
   @Get(':id')
@@ -40,7 +40,7 @@ export class SocialLinksController {
     @Req() req: AuthenticatedRequest,
     @Param('id', ParseUUIDPipe) id: string,
   ) {
-    return this.socialLinksService.findOne(req.user.sub, id);
+    return this.socialLinksService.findOne(req.user.id, id);
   }
 
   @Post()
@@ -61,7 +61,7 @@ export class SocialLinksController {
     @Body() dto: UpdateSocialLinkDto,
   ) {
     return this.socialLinksService.update(
-      req.user.sub,
+      req.user.id,
       id,
       dto,
     );
@@ -72,6 +72,6 @@ export class SocialLinksController {
     @Req() req: AuthenticatedRequest,
     @Param('id', ParseUUIDPipe) id: string,
   ) {
-    return this.socialLinksService.remove(req.user.sub, id);
+    return this.socialLinksService.remove(req.user.id, id);
   }
 }

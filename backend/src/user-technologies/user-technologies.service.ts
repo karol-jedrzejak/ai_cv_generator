@@ -2,8 +2,12 @@
 import {
   Injectable,
   NotFoundException,
+    ConflictException,
 } from '@nestjs/common';
+
 import { PrismaService } from '../prisma/prisma.service';
+import { Prisma } from '../../generated/prisma/client';
+
 import { CreateUserTechnologyDto } from './dto/create-user-technology.dto';
 import { UpdateUserTechnologyDto } from './dto/update-user-technology.dto';
 
@@ -57,18 +61,38 @@ export class UserTechnologiesService {
   }
 
   async create(userId: string, dto: CreateUserTechnologyDto) {
-    return this.prisma.userTechnology.create({
-      data: {
-        proficiency: dto.proficiency ?? 1,
-        user: {
-          connect: { id: userId },
+    try {
+      return await this.prisma.userTechnology.create({
+        data: {
+          proficiency: dto.proficiency ?? 1,
+          user: {
+            connect: { id: userId },
+          },
+          technology: {
+            connect: { id: dto.technologyId },
+          },
         },
-        technology: {
-          connect: { id: dto.technologyId },
-        },
-      },
-      select: this.selectFields,
-    });
+        select: this.selectFields,
+      });
+    } catch (error) {
+      if (
+        error instanceof Prisma.PrismaClientKnownRequestError
+      ) {
+        if (error.code === 'P2002') {
+          throw new ConflictException(
+            'This technology is already assigned to the user',
+          );
+        }
+
+        if (error.code === 'P2025') {
+          throw new NotFoundException(
+            'User or technology not found',
+          );
+        }
+      }
+
+      throw error;
+    }
   }
 
   async update(

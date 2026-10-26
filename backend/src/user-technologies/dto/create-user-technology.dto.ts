@@ -1,5 +1,3 @@
-import { LinkType } from '@generated/prisma';
-
 import {
   IsInt,
   IsString,
@@ -9,7 +7,6 @@ import {
 } from 'class-validator';
 
 export class CreateUserTechnologyDto {
-
   @IsString()
   @IsNotEmpty()
   technologyId!: string;

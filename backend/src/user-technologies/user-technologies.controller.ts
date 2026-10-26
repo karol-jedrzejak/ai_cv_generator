@@ -12,6 +12,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import type { Request } from 'express';
+
 import { JwtAuthGuard } from '../auth/guard/jwt-auth.guard';
 import { UserTechnologiesService } from './user-technologies.service';
 import { CreateUserTechnologyDto } from './dto/create-user-technology.dto';
@@ -19,7 +20,7 @@ import { UpdateUserTechnologyDto } from './dto/update-user-technology.dto';
 
 interface AuthenticatedRequest extends Request {
   user: {
-    sub: string;
+    id: string;
   };
 }
 
@@ -27,51 +28,57 @@ interface AuthenticatedRequest extends Request {
 @Controller('user-technologies')
 export class UserTechnologiesController {
   constructor(
-    private readonly UserTechnologiesService: UserTechnologiesService,
+    private readonly userTechnologiesService: UserTechnologiesService,
   ) {}
 
   @Get()
-  async getAll(@Req() req: AuthenticatedRequest) {
-    return this.UserTechnologiesService.findAll(req.user.sub);
+  getAll(@Req() req: AuthenticatedRequest) {
+    return this.userTechnologiesService.findAll(req.user.id);
   }
 
-  @Get(':id')
-  async getOne(
+  @Get(':technologyId')
+  getOne(
     @Req() req: AuthenticatedRequest,
-    @Param('id', ParseUUIDPipe) id: string,
+    @Param('technologyId', ParseUUIDPipe) technologyId: string,
   ) {
-    return this.UserTechnologiesService.findOne(req.user.sub, id);
+    return this.userTechnologiesService.findOne(
+      req.user.id,
+      technologyId,
+    );
   }
 
   @Post()
   create(
-    @Req() req: Request & { user: { id: string } },
+    @Req() req: AuthenticatedRequest,
     @Body() dto: CreateUserTechnologyDto,
   ) {
-    return this.UserTechnologiesService.create(
+    return this.userTechnologiesService.create(
       req.user.id,
       dto,
     );
   }
 
-  @Patch(':id')
-  async update(
+  @Patch(':technologyId')
+  update(
     @Req() req: AuthenticatedRequest,
-    @Param('id', ParseUUIDPipe) id: string,
+    @Param('technologyId', ParseUUIDPipe) technologyId: string,
     @Body() dto: UpdateUserTechnologyDto,
   ) {
-    return this.UserTechnologiesService.update(
-      req.user.sub,
-      id,
+    return this.userTechnologiesService.update(
+      req.user.id,
+      technologyId,
       dto,
     );
   }
 
-  @Delete(':id')
-  async remove(
+  @Delete(':technologyId')
+  remove(
     @Req() req: AuthenticatedRequest,
-    @Param('id', ParseUUIDPipe) id: string,
+    @Param('technologyId', ParseUUIDPipe) technologyId: string,
   ) {
-    return this.UserTechnologiesService.remove(req.user.sub, id);
+    return this.userTechnologiesService.remove(
+      req.user.id,
+      technologyId,
+    );
   }
 }

@@ -4,7 +4,7 @@ import { Box, Button, Stack, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import { useRouter } from 'next/navigation';
 
-import SocialLinkList from '@/components/social-links/SocialLinkList';
+import UserTechnologyList from '@/components/user-technologies/UserTechnologyList';
 
 export default function UserTechnologiesPage() {
   const router = useRouter();
@@ -27,24 +27,24 @@ export default function UserTechnologiesPage() {
             component="h1"
             gutterBottom
           >
-            Moje linki
+            Moje technologie
           </Typography>
 
           <Typography color="text.secondary">
-            Zarządzaj linkami, które chcesz udostępniać w swoim CV.
+            Zarządzaj technologiami, które znasz i chcesz udostępniać w swoim CV.
           </Typography>
         </Box>
 
         <Button
           variant="contained"
           startIcon={<AddIcon />}
-          onClick={() => router.push('/dashboard/social-links/new')}
+          onClick={() => router.push('/dashboard/user-technologies/new')}
         >
-          Dodaj link
+          Dodaj technologie
         </Button>
       </Box>
 
-      <SocialLinkList />
+      <UserTechnologyList />
     </Stack>
   );
 }

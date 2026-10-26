@@ -17,8 +17,8 @@ export class TechnologiesService {
             where: {
                 ...(normalizedSearch && {
                     name: {
-                    contains: normalizedSearch,
-                    mode: 'insensitive',
+                        contains: normalizedSearch,
+                        mode: 'insensitive',
                     },
                 }),
                 ...(category && { category }),

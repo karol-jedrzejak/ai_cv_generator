@@ -1,7 +1,14 @@
 
-import { Controller, Get, Query } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Query,
+  UsePipes,
+  ValidationPipe,
+} from '@nestjs/common';
+
 import { TechnologiesService } from './technologies.service';
-import { TechnologyCategory } from '../../generated/prisma/browser';
+import { FindTechnologiesDto } from './dto/find-technologies.dto';
 
 @Controller('technologies')
 export class TechnologiesController {
@@ -10,10 +17,16 @@ export class TechnologiesController {
   ) {}
 
   @Get()
-  findAll(
-    @Query('search') search?: string,
-    @Query('category') category?: TechnologyCategory,
-  ) {
-    return this.technologiesService.findAll(search, category);
+  @UsePipes(
+    new ValidationPipe({
+      transform: true,
+      whitelist: true,
+    }),
+  )
+  findAll(@Query() query: FindTechnologiesDto) {
+    return this.technologiesService.findAll(
+      query.search,
+      query.category,
+    );
   }
 }
