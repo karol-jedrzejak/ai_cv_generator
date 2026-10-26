@@ -51,8 +51,8 @@ export default function SocialLinkCard({
         }}
       >
         <Box sx={{ flex: 1, minWidth: 0 }}>
-          <Stack
-            sx={{ mb: 1, alignItems: 'center', direction: 'row' , spacing: 1, flexWrap: 'wrap' }}
+          <Stack direction="row" spacing={1} 
+            sx={{ mb: 1, alignItems: 'center', flexWrap: 'wrap' }}
           >
             <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
               {link.label?.trim() || link.type.replaceAll('_', ' ')}

@@ -8,6 +8,8 @@ import { PrismaModule } from './prisma/prisma.module';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { SocialLinksModule } from './social-links/social-links.module';
+import { UserTechnologiesModule } from './user-technologies/user-technologies.module';
+import { TechnologiesModule } from './technologies/technologies.module';
 
 @Module({
   imports: [
@@ -18,7 +20,9 @@ import { SocialLinksModule } from './social-links/social-links.module';
     PrismaModule,
     UsersModule,
     AuthModule,
-    SocialLinksModule
+    SocialLinksModule,
+    UserTechnologiesModule,
+    TechnologiesModule
   ],
   controllers: [AppController],
   providers: [AppService],

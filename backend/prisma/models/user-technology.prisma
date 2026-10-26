@@ -2,7 +2,7 @@ model UserTechnology {
   userId       String
   technologyId String
 
-  proficiency  Int
+  proficiency  Int @default(1)
 
   user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
   technology   Technology @relation(fields: [technologyId], references: [id], onDelete: Cascade)
