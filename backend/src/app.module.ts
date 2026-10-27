@@ -12,6 +12,7 @@ import { UserTechnologiesModule } from './user-technologies/user-technologies.mo
 import { TechnologiesModule } from './technologies/technologies.module';
 import { LanguageSkillModule } from './language-skill/language-skill.module';
 import { LanguagesModule } from './languages/languages.module';
+import { WorkExperienceModule } from './work-experience/work-experience.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { LanguagesModule } from './languages/languages.module';
     TechnologiesModule,
     LanguageSkillModule,
     LanguagesModule,
+    WorkExperienceModule,
   ],
   controllers: [AppController],
   providers: [AppService],

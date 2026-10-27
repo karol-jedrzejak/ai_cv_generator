@@ -4,23 +4,55 @@ import Link from 'next/link';
 import LinkIcon from '@mui/icons-material/Link';
 import ChecklistRtlIcon from '@mui/icons-material/ChecklistRtl';
 import LanguageIcon from '@mui/icons-material/Language';
+import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
+
+import { AppLogo } from '@/components/layout/AppLogo';
 
 import React, { useEffect, useState } from 'react';
 import {
   AppBar,
   Toolbar,
-  Typography,
   Button,
   Box,
   Container,
   CircularProgress,
+  IconButton,
+  Stack,
 } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useRouter } from 'next/navigation';
 
+const navigationItems = [
+  {
+    href: '/dashboard/social-links',
+    label: 'Linki',
+    icon: <LinkIcon />,
+  },
+  {
+    href: '/dashboard/user-technologies',
+    label: 'Technologie',
+    icon: <ChecklistRtlIcon />,
+  },
+  {
+    href: '/dashboard/language-skills',
+    label: 'Języki',
+    icon: <LanguageIcon />,
+  },
+  {
+    href: '/dashboard/work-experience',
+    label: 'Doświadczenie',
+    icon: <WorkHistoryIcon />,
+  },
+];
+
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const closeMenu = () => setMenuOpen(false);
 
   useEffect(() => {
     const token = localStorage.getItem('accessToken');
@@ -56,40 +88,135 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1, fontWeight: 'bold' }}>
-            CV Generator AI
-          </Typography>
-          <Button
-            component={Link}
-            href="/dashboard/social-links"
+      <AppBar
+        position="sticky"
+        sx={{ zIndex: (theme) => theme.zIndex.appBar + 1 }}
+      >
+        <Toolbar sx={{ gap: { xs: 1, md: 0.5, lg: 1 } }}>
+          <AppLogo />
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}>
+            {navigationItems.map((item) => (
+              <Button
+                key={item.href}
+                component={Link}
+                href={item.href}
+                color="inherit"
+                aria-label={item.label}
+                title={item.label}
+                startIcon={item.icon}
+                sx={{
+                  minWidth: { md: 42, lg: 'auto' },
+                  px: { md: 1, lg: 1.5 },
+                  '& .MuiButton-startIcon': {
+                    mr: { md: 0, lg: 1 },
+                  },
+                }}
+              >
+                <Box component="span" sx={{ display: { md: 'none', lg: 'inline' } }}>
+                  {item.label}
+                </Box>
+              </Button>
+            ))}
+            <Button
+              color="inherit"
+              onClick={handleLogout}
+              aria-label="Wyloguj"
+              title="Wyloguj"
+              startIcon={<LogoutIcon />}
+              sx={{
+                minWidth: { md: 42, lg: 'auto' },
+                px: { md: 1, lg: 1.5 },
+                '& .MuiButton-startIcon': {
+                  mr: { md: 0, lg: 1 },
+                },
+              }}
+            >
+              <Box component="span" sx={{ display: { md: 'none', lg: 'inline' } }}>
+                Wyloguj
+              </Box>
+            </Button>
+          </Box>
+          <IconButton
             color="inherit"
-            startIcon={<LinkIcon />}
+            aria-label={menuOpen ? 'Zamknij menu' : 'Otwórz menu'}
+            aria-expanded={menuOpen}
+            aria-controls="dashboard-mobile-menu"
+            onClick={() => setMenuOpen((open) => !open)}
+            sx={{ display: { xs: 'inline-flex', md: 'none' } }}
           >
-            linki
-          </Button>
-          <Button
-            component={Link}
-            href="/dashboard/user-technologies"
-            color="inherit"
-            startIcon={<ChecklistRtlIcon />}
-          >
-            Technologie
-          </Button>
-          <Button
-            component={Link}
-            href="/dashboard/language-skills"
-            color="inherit"
-            startIcon={<LanguageIcon />}
-          >
-            Języki
-          </Button>
-          <Button color="inherit" onClick={handleLogout} startIcon={<LogoutIcon />}>
-            Wyloguj
-          </Button>
+            {menuOpen ? <CloseIcon /> : <MenuIcon />}
+          </IconButton>
         </Toolbar>
       </AppBar>
+      <Box
+        component="nav"
+        id="dashboard-mobile-menu"
+        aria-label="Menu główne"
+        aria-hidden={!menuOpen}
+        sx={{
+          display: { xs: 'block', md: 'none' },
+          position: 'fixed',
+          top: { xs: '56px', sm: '64px' },
+          left: 0,
+          right: 0,
+          height: {
+            xs: 'calc(100dvh - 56px)',
+            sm: 'calc(100dvh - 64px)',
+          },
+          overflowY: 'auto',
+          bgcolor: 'primary.main',
+          color: 'common.white',
+          zIndex: (theme) => theme.zIndex.appBar,
+          transform: menuOpen ? 'translateY(0)' : 'translateY(-8px)',
+          opacity: menuOpen ? 1 : 0,
+          visibility: menuOpen ? 'visible' : 'hidden',
+          pointerEvents: menuOpen ? 'auto' : 'none',
+          transition: (theme) =>
+            theme.transitions.create(
+              ['transform', 'opacity', 'visibility'],
+              {
+                duration: theme.transitions.duration.short,
+              },
+            ),
+        }}
+      >
+        <Stack spacing={1} sx={{ p: 3 }}>
+          {navigationItems.map((item) => (
+            <Button
+              key={item.href}
+              component={Link}
+              href={item.href}
+              color="inherit"
+              startIcon={item.icon}
+              onClick={closeMenu}
+              sx={{
+                justifyContent: 'flex-start',
+                px: 2,
+                py: 1.5,
+                fontSize: '1.1rem',
+              }}
+            >
+              {item.label}
+            </Button>
+          ))}
+          <Button
+            color="inherit"
+            startIcon={<LogoutIcon />}
+            onClick={() => {
+              closeMenu();
+              void handleLogout();
+            }}
+            sx={{
+              justifyContent: 'flex-start',
+              px: 2,
+              py: 1.5,
+              fontSize: '1.1rem',
+            }}
+          >
+            Wyloguj
+          </Button>
+        </Stack>
+      </Box>
       <Container component="main" sx={{ mt: 4, mb: 4 }}>
         {children}
       </Container>
