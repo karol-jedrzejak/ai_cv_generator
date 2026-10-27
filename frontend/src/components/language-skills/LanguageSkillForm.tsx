@@ -190,6 +190,7 @@ export default function LanguageSkillForm({ initialData }: Props) {
             sx={{ justifyContent: 'flex-end' }}
           >
             <Button
+              sx={{ mt: { xs: 2, sm: 0 }, mr: { xs: 0, sm: 2 } }}
               variant="outlined"
               startIcon={<ArrowBackIcon />}
               onClick={() => router.push('/dashboard/language-skills')}

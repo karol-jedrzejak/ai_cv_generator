@@ -4,15 +4,33 @@ export async function seedLanguages(prisma: PrismaClient) {
   console.log('Seeding languages...');
 
   const topLanguages = [
-    'English', 'Chinese', 'Hindi', 'Spanish', 'French',
-    'Arabic', 'Russian', 'Portuguese',
-    'Indonesian', 'German', 'Japanese', 
-    'Turkish', 'Vietnamese',
-    'Korean', 
-    'Italian','Thai',
-    'Dutch', 'Greek', 'Czech', 'Hungarian','Swedish', 'Bulgarian',
-    'Slovak', 'Lithuanian', 'Georgian'
-  ];
+  'Polski',
+  'Angielski',
+  'Chiński',
+  'Hindi',
+  'Hiszpański',
+  'Francuski',
+  'Arabski',
+  'Rosyjski',
+  'Portugalski',
+  'Indonezyjski',
+  'Niemiecki',
+  'Japoński',
+  'Turecki',
+  'Wietnamski',
+  'Koreański',
+  'Włoski',
+  'Tajski',
+  'Holenderski',
+  'Grecki',
+  'Czeski',
+  'Węgierski',
+  'Szwedzki',
+  'Bułgarski',
+  'Słowacki',
+  'Litewski',
+  'Gruziński'
+ ];
 
   // Mapujemy nazwy języków na obiekty do wstawienia
   const languagesData = topLanguages.map((name) => ({ name }));

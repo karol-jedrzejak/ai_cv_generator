@@ -173,16 +173,15 @@ export default function SocialLinkForm({ initialData }: Props) {
           />
 
           <Stack
-            sx={{ direction: { xs: 'column-reverse', sm: 'row' }, spacing: 2, justifyContent: 'flex-end' }}
+            direction={{ xs: 'column-reverse', sm: 'row' }}
+            sx={{ justifyContent: 'flex-end' }}
           >
             <Button
+              sx={{ mt: { xs: 2, sm: 0 }, mr: { xs: 0, sm: 2 } }}
               variant="outlined"
               startIcon={<ArrowBackIcon />}
               onClick={() => router.push('/dashboard/social-links')}
               disabled={saving}
-              sx={{
-                mb: 1,
-              }}
             >
               Anuluj
             </Button>

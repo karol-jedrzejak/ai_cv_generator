@@ -319,10 +319,11 @@ export default function UserTechnologyForm({
           </Box>
 
           <Stack
-          direction={{ xs: 'column-reverse', sm: 'row' }}
-           spacing={2}
+            direction={{ xs: 'column-reverse', sm: 'row' }}
+            sx={{ justifyContent: 'flex-end' }}
           >
             <Button
+              sx={{ mt: { xs: 2, sm: 0 }, mr: { xs: 0, sm: 2 } }}
               variant="outlined"
               startIcon={<ArrowBackIcon />}
               disabled={saving}
