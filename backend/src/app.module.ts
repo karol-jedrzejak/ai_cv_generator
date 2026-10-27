@@ -10,6 +10,8 @@ import { AuthModule } from './auth/auth.module';
 import { SocialLinksModule } from './social-links/social-links.module';
 import { UserTechnologiesModule } from './user-technologies/user-technologies.module';
 import { TechnologiesModule } from './technologies/technologies.module';
+import { LanguageSkillModule } from './language-skill/language-skill.module';
+import { LanguagesModule } from './languages/languages.module';
 
 @Module({
   imports: [
@@ -22,7 +24,9 @@ import { TechnologiesModule } from './technologies/technologies.module';
     AuthModule,
     SocialLinksModule,
     UserTechnologiesModule,
-    TechnologiesModule
+    TechnologiesModule,
+    LanguageSkillModule,
+    LanguagesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

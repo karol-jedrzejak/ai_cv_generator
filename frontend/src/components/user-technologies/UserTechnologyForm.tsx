@@ -61,6 +61,8 @@ export default function UserTechnologyForm({
   const isEditing = Boolean(initialData);
 
   const [search, setSearch] = useState('');
+  const [isSearching, setIsSearching] = useState(false);
+  
   const [options, setOptions] = useState<Technology[]>([]);
   const [selected, setSelected] = useState<Technology | null>(
     initialData?.technology ?? null,
@@ -75,7 +77,7 @@ export default function UserTechnologyForm({
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (isEditing || search.trim().length < 2) {
+    if (isEditing || !isSearching || search.trim().length < 2) {
       setOptions([]);
       setLoading(false);
       return;
@@ -196,7 +198,9 @@ export default function UserTechnologyForm({
             inputValue={
               isEditing
                 ? initialData?.technology.name ?? ''
-                : search
+                : isSearching
+                  ? search
+                  : selected?.name ?? ''
             }
             loading={loading}
             disabled={isEditing || saving}
@@ -205,12 +209,28 @@ export default function UserTechnologyForm({
             groupBy={(option) => option.category}
             isOptionEqualToValue={(a, b) => a.id === b.id}
             onInputChange={(_, value, reason) => {
-              if (reason === 'input' || reason === 'clear') {
+              if (reason === 'input') {
                 setSearch(value);
+                setIsSearching(true);
+              }
+
+              if (reason === 'clear') {
+                setSearch('');
+                setSelected(null);
+                setIsSearching(true);
               }
             }}
             onChange={(_, value) => {
               setSelected(value);
+              setSearch('');
+              setIsSearching(false);
+              setOptions([]);
+            }}
+            onOpen={() => {
+              if (!isEditing) {
+                setSearch('');
+                setIsSearching(true);
+              }
             }}
             noOptionsText={
               search.trim().length < 2
@@ -229,13 +249,15 @@ export default function UserTechnologyForm({
                   gap: 2,
                 }}
               >
-                <Typography>{option.name}</Typography>
-                <Typography
-                  variant="caption"
-                  color="text.secondary"
-                >
-                  {formatCategory(option.category)}
-                </Typography>
+                <div key={option.id}>
+                  <Typography>{option.name}</Typography>
+                  <Typography
+                    variant="caption"
+                    color="text.secondary"
+                  >
+                    {formatCategory(option.category)}
+                  </Typography>
+                </div>
               </Box>
             )}
             renderInput={(params) => (

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import LinkIcon from '@mui/icons-material/Link';
 import ChecklistRtlIcon from '@mui/icons-material/ChecklistRtl';
+import LanguageIcon from '@mui/icons-material/Language';
 
 import React, { useEffect, useState } from 'react';
 import {
@@ -75,6 +76,14 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             startIcon={<ChecklistRtlIcon />}
           >
             Technologie
+          </Button>
+          <Button
+            component={Link}
+            href="/dashboard/language-skills"
+            color="inherit"
+            startIcon={<LanguageIcon />}
+          >
+            Języki
           </Button>
           <Button color="inherit" onClick={handleLogout} startIcon={<LogoutIcon />}>
             Wyloguj

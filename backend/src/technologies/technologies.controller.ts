@@ -5,11 +5,15 @@ import {
   Query,
   UsePipes,
   ValidationPipe,
+  UseGuards,
 } from '@nestjs/common';
+
+import { JwtAuthGuard } from '../auth/guard/jwt-auth.guard';
 
 import { TechnologiesService } from './technologies.service';
 import { FindTechnologiesDto } from './dto/find-technologies.dto';
 
+@UseGuards(JwtAuthGuard)
 @Controller('technologies')
 export class TechnologiesController {
   constructor(
