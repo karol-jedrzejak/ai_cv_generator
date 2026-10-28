@@ -21,7 +21,9 @@ export type TechnologyCategory = (typeof TECHNOLOGY_CATEGORIES)[number];
 export interface Technology {
   id: string
   name: string
-  category:TechnologyCategory 
+  category: TechnologyCategory
   createdAt: Date
   updatedAt: Date
 }
+
+export type TechnologyOption = Pick<Technology, 'id' | 'name' | 'category'>;

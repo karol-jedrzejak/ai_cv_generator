@@ -13,6 +13,8 @@ import { TechnologiesModule } from './technologies/technologies.module';
 import { LanguageSkillModule } from './language-skill/language-skill.module';
 import { LanguagesModule } from './languages/languages.module';
 import { WorkExperienceModule } from './work-experience/work-experience.module';
+import { ProjectsModule } from './projects/projects.module';
+import { EducationModule } from './education/education.module';
 
 @Module({
   imports: [
@@ -29,6 +31,8 @@ import { WorkExperienceModule } from './work-experience/work-experience.module';
     LanguageSkillModule,
     LanguagesModule,
     WorkExperienceModule,
+    ProjectsModule,
+    EducationModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -5,6 +5,8 @@ import LinkIcon from '@mui/icons-material/Link';
 import ChecklistRtlIcon from '@mui/icons-material/ChecklistRtl';
 import LanguageIcon from '@mui/icons-material/Language';
 import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
+import FolderSpecialIcon from '@mui/icons-material/FolderSpecial';
+import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 
@@ -44,6 +46,16 @@ const navigationItems = [
     href: '/dashboard/work-experience',
     label: 'Doświadczenie',
     icon: <WorkHistoryIcon />,
+  },
+  {
+    href: '/dashboard/projects',
+    label: 'Projekty',
+    icon: <FolderSpecialIcon />,
+  },
+  {
+    href: '/dashboard/education',
+    label: 'Edukacja',
+    icon: <SchoolOutlinedIcon />,
   },
 ];
 
@@ -105,14 +117,14 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 title={item.label}
                 startIcon={item.icon}
                 sx={{
-                  minWidth: { md: 42, lg: 'auto' },
-                  px: { md: 1, lg: 1.5 },
+                  minWidth: { md: 42, xl: 'auto' },
+                  px: { md: 1, xl: 1.5 },
                   '& .MuiButton-startIcon': {
-                    mr: { md: 0, lg: 1 },
+                    mr: { md: 0, xl: 1 },
                   },
                 }}
               >
-                <Box component="span" sx={{ display: { md: 'none', lg: 'inline' } }}>
+                <Box component="span" sx={{ display: { md: 'none', xl: 'inline' } }}>
                   {item.label}
                 </Box>
               </Button>
@@ -124,14 +136,14 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               title="Wyloguj"
               startIcon={<LogoutIcon />}
               sx={{
-                minWidth: { md: 42, lg: 'auto' },
-                px: { md: 1, lg: 1.5 },
+                minWidth: { md: 42, xl: 'auto' },
+                px: { md: 1, xl: 1.5 },
                 '& .MuiButton-startIcon': {
-                  mr: { md: 0, lg: 1 },
+                  mr: { md: 0, xl: 1 },
                 },
               }}
             >
-              <Box component="span" sx={{ display: { md: 'none', lg: 'inline' } }}>
+              <Box component="span" sx={{ display: { md: 'none', xl: 'inline' } }}>
                 Wyloguj
               </Box>
             </Button>
