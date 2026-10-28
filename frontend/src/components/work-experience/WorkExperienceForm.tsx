@@ -388,10 +388,12 @@ export default function WorkExperienceForm({ initialData }: Props) {
                   gap: 2,
                 }}
               >
-                <Typography>{option.name}</Typography>
-                <Typography variant="caption" color="text.secondary">
-                  {formatCategory(option.category)}
-                </Typography>
+                <div key={option.id}>
+                  <Typography>{option.name}</Typography>
+                  <Typography variant="caption" color="text.secondary">
+                    {formatCategory(option.category)}
+                  </Typography>
+                </div>
               </Box>
             )}
             renderInput={(params) => (

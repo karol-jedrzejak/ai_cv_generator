@@ -5,7 +5,6 @@ model JobOffer {
 
   title          String   @db.VarChar(255)
   companyName    String?  @db.VarChar(255)
-  location       String?  @db.VarChar(255)
 
   url            String?  @db.VarChar(1000)
 

@@ -17,6 +17,7 @@ import { ProjectsModule } from './projects/projects.module';
 import { EducationModule } from './education/education.module';
 import { CoursesModule } from './courses/courses.module';
 import { CertificationsModule } from './certifications/certifications.module';
+import { JobOffersModule } from './job-offers/job-offers.module';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { CertificationsModule } from './certifications/certifications.module';
     EducationModule,
     CoursesModule,
     CertificationsModule,
+    JobOffersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

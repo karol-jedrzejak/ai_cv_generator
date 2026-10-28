@@ -9,6 +9,7 @@ import FolderSpecialIcon from '@mui/icons-material/FolderSpecial';
 import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
 import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
 import WorkspacePremiumOutlinedIcon from '@mui/icons-material/WorkspacePremiumOutlined';
+import WorkOutlineIcon from '@mui/icons-material/WorkOutlined';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 
@@ -68,6 +69,11 @@ const navigationItems = [
     href: '/dashboard/certifications',
     label: 'Certyfikaty',
     icon: <WorkspacePremiumOutlinedIcon />,
+  },
+  {
+    href: '/dashboard/job-offers',
+    label: 'Oferty pracy',
+    icon: <WorkOutlineIcon />,
   },
 ];
 

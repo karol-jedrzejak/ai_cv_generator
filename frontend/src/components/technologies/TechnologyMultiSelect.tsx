@@ -38,7 +38,7 @@ export default function TechnologyMultiSelect({
   const [searching, setSearching] = useState(false);
 
   const options = useMemo(() => {
-    const results = new Map<string, Technology>();
+    const results = new Map<string, TechnologyOption>();
     for (const technology of value) results.set(technology.id, technology);
     for (const technology of searchResults) results.set(technology.id, technology);
     return [...results.values()];
@@ -123,10 +123,12 @@ export default function TechnologyMultiSelect({
             gap: 2,
           }}
         >
-          <Typography>{option.name}</Typography>
-          <Typography variant="caption" color="text.secondary">
-            {formatCategory(option.category)}
-          </Typography>
+          <div id={option.id}>
+            <Typography>{option.name}</Typography>
+            <Typography variant="caption" color="text.secondary">
+              {formatCategory(option.category)}
+            </Typography>
+          </div>
         </Box>
       )}
       renderInput={(params) => (
