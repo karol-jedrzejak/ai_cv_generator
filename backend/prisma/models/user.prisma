@@ -1,9 +1,10 @@
 model User {
   id                String @id @default(uuid())
 
-  name              String? @db.VarChar(100)
-  surname           String? @db.VarChar(100)
-  mobilePhone       String? @db.VarChar(30)
+  name              String  @db.VarChar(100)
+  surname           String  @db.VarChar(100)
+  mobilePhone       String  @db.VarChar(30)
+  hometown          String  @db.VarChar(100)
 
   username          String @unique @db.VarChar(50)
   email             String @unique @db.VarChar(255)

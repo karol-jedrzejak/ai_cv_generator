@@ -24,6 +24,7 @@ export default function EditProfilePage() {
   const [surname, setSurname] = useState('');
   const [email, setEmail] = useState('');
   const [mobilePhone, setMobilePhone] = useState('');
+  const [hometown, setHometown] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(true);
@@ -38,10 +39,11 @@ export default function EditProfilePage() {
         const data = await userProfileApi.get();
         if (active) {
           setProfile(data);
-          setName(data.name ?? '');
-          setSurname(data.surname ?? '');
+          setName(data.name);
+          setSurname(data.surname);
           setEmail(data.email);
-          setMobilePhone(data.mobilePhone ?? '');
+          setMobilePhone(data.mobilePhone);
+          setHometown(data.hometown);
         }
       } catch (err) {
         if (active) {
@@ -85,17 +87,19 @@ export default function EditProfilePage() {
     try {
       setSaving(true);
       const updatedProfile = await userProfileApi.update({
-        name: name.trim() || null,
-        surname: surname.trim() || null,
+        name: name.trim(),
+        surname: surname.trim(),
         email: email.trim(),
-        mobilePhone: mobilePhone.trim() || null,
+        mobilePhone: mobilePhone.trim(),
+        hometown: hometown.trim(),
         ...(password && { password, confirmPassword }),
       });
       setProfile(updatedProfile);
-      setName(updatedProfile.name ?? '');
-      setSurname(updatedProfile.surname ?? '');
+      setName(updatedProfile.name);
+      setSurname(updatedProfile.surname);
       setEmail(updatedProfile.email);
-      setMobilePhone(updatedProfile.mobilePhone ?? '');
+      setMobilePhone(updatedProfile.mobilePhone);
+      setHometown(updatedProfile.hometown);
       setPassword('');
       setConfirmPassword('');
       setSuccess('Dane profilu zostały zapisane.');
@@ -151,6 +155,7 @@ export default function EditProfilePage() {
               {success && <Alert severity="success">{success}</Alert>}
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
                 <TextField
+                  required
                   fullWidth
                   label="Imię"
                   value={name}
@@ -159,6 +164,7 @@ export default function EditProfilePage() {
                   disabled={saving}
                 />
                 <TextField
+                  required
                   fullWidth
                   label="Nazwisko"
                   value={surname}
@@ -179,6 +185,7 @@ export default function EditProfilePage() {
                 disabled={saving}
               />
               <TextField
+                required
                 fullWidth
                 type="tel"
                 label="Numer telefonu komórkowego"
@@ -187,6 +194,16 @@ export default function EditProfilePage() {
                 onChange={(event) => setMobilePhone(event.target.value)}
                 slotProps={{ htmlInput: { maxLength: 30 } }}
                 helperText="Podaj numer z kodem kraju, jeśli jest potrzebny."
+                disabled={saving}
+              />
+              <TextField
+                required
+                fullWidth
+                label="Miasto"
+                autoComplete="address-level2"
+                value={hometown}
+                onChange={(event) => setHometown(event.target.value)}
+                slotProps={{ htmlInput: { maxLength: 100 } }}
                 disabled={saving}
               />
               <Typography variant="h6" sx={{ fontWeight: 700, mt: 1 }}>

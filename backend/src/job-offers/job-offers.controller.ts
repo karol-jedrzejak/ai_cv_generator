@@ -25,6 +25,11 @@ interface AuthenticatedRequest extends Request {
 export class JobOffersController {
   constructor(private readonly jobOffersService: JobOffersService) {}
 
+  @Get('generation-languages')
+  getGenerationLanguages() {
+    return this.jobOffersService.findGenerationLanguages();
+  }
+
   @Get()
   getAll(@Req() req: AuthenticatedRequest) {
     return this.jobOffersService.findAll(req.user.id);

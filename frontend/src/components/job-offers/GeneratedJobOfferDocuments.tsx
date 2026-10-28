@@ -24,10 +24,10 @@ import {
 } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutlined';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
-import { languagesApi } from '@/lib/api/languages';
 import {
   generatedCvsApi,
   generatedMotivationLettersApi,
+  generationLanguagesApi,
 } from '@/lib/api/job-offer-documents';
 import type { Language } from '@/types/language-skill';
 import type { GeneratedJobOfferDocumentSummary } from '@/types/generated-job-offer-document';
@@ -48,9 +48,7 @@ const documentLabels = {
   'motivation-letter': 'List motywacyjny',
 };
 
-export default function GeneratedJobOfferDocuments({
-  jobOfferId,
-}: Props) {
+export default function GeneratedJobOfferDocuments({ jobOfferId }: Props) {
   const [languages, setLanguages] = useState<Language[]>([]);
   const [cvs, setCvs] = useState<GeneratedJobOfferDocumentSummary[]>([]);
   const [motivationLetters, setMotivationLetters] = useState<
@@ -68,33 +66,62 @@ export default function GeneratedJobOfferDocuments({
     document: GeneratedJobOfferDocumentSummary;
   } | null>(null);
 
-  const loadDocuments = useCallback(async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const [availableLanguages, generatedCvs, generatedLetters] =
-        await Promise.all([
-          languagesApi.getAll(),
-          generatedCvsApi.getAll(jobOfferId),
-          generatedMotivationLettersApi.getAll(jobOfferId),
-        ]);
+  const fetchDocuments = useCallback(
+    () =>
+      Promise.all([
+        generationLanguagesApi.getAll(),
+        generatedCvsApi.getAll(jobOfferId),
+        generatedMotivationLettersApi.getAll(jobOfferId),
+      ]),
+    [jobOfferId],
+  );
+
+  const applyDocuments = useCallback(
+    ([availableLanguages, generatedCvs, generatedLetters]: Awaited<
+      ReturnType<typeof fetchDocuments>
+    >) => {
       setLanguages(availableLanguages);
       setCvs(generatedCvs);
       setMotivationLetters(generatedLetters);
+    },
+    [],
+  );
+
+  const loadDocuments = useCallback(async () => {
+    try {
+      applyDocuments(await fetchDocuments());
     } catch (err) {
       setError(
         err instanceof Error
           ? err.message
           : 'Nie udało się pobrać wygenerowanych dokumentów.',
       );
-    } finally {
-      setLoading(false);
     }
-  }, [jobOfferId]);
+  }, [applyDocuments, fetchDocuments]);
 
   useEffect(() => {
-    void loadDocuments();
-  }, [loadDocuments]);
+    let active = true;
+    async function loadInitialDocuments() {
+      try {
+        applyDocuments(await fetchDocuments());
+      } catch (err) {
+        if (active) {
+          setError(
+            err instanceof Error
+              ? err.message
+              : 'Nie udało się pobrać wygenerowanych dokumentów.',
+          );
+        }
+      } finally {
+        if (active) setLoading(false);
+      }
+    }
+
+    void loadInitialDocuments();
+    return () => {
+      active = false;
+    };
+  }, [applyDocuments, fetchDocuments]);
 
   const existingLanguageIds = useMemo(() => {
     const docs = dialogKind === 'cv' ? cvs : motivationLetters;
@@ -109,6 +136,7 @@ export default function GeneratedJobOfferDocuments({
       await documentApis[dialogKind].generate(jobOfferId, languageId);
       setDialogKind(null);
       setLanguageId('');
+      setError(null);
       await loadDocuments();
     } catch (err) {
       setActionError(
@@ -279,7 +307,9 @@ export default function GeneratedJobOfferDocuments({
         </DialogTitle>
         <DialogContent>
           <FormControl fullWidth sx={{ mt: 1 }}>
-            <InputLabel id="generated-document-language-label">Język</InputLabel>
+            <InputLabel id="generated-document-language-label">
+              Język
+            </InputLabel>
             <Select
               labelId="generated-document-language-label"
               value={languageId}
@@ -314,10 +344,7 @@ export default function GeneratedJobOfferDocuments({
           )}
         </DialogContent>
         <DialogActions sx={{ p: 2.5, pt: 1 }}>
-          <Button
-            onClick={() => setDialogKind(null)}
-            disabled={generating}
-          >
+          <Button onClick={() => setDialogKind(null)} disabled={generating}>
             Anuluj
           </Button>
           <Button
@@ -353,10 +380,7 @@ export default function GeneratedJobOfferDocuments({
           )}
         </DialogContent>
         <DialogActions sx={{ p: 2.5, pt: 1 }}>
-          <Button
-            onClick={() => setSelectedDocument(null)}
-            disabled={deleting}
-          >
+          <Button onClick={() => setSelectedDocument(null)} disabled={deleting}>
             Anuluj
           </Button>
           <Button

@@ -2,7 +2,12 @@ import type {
   GeneratedJobOfferDocument,
   GeneratedJobOfferDocumentSummary,
 } from '@/types/generated-job-offer-document';
+import type { Language } from '@/types/language-skill';
 import { apiRequest } from './client';
+
+export const generationLanguagesApi = {
+  getAll: () => apiRequest<Language[]>('/job-offers/generation-languages'),
+};
 
 function createDocumentApi(resource: string) {
   const offerPath = (jobOfferId: string) =>

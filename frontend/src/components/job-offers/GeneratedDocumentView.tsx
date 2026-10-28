@@ -16,6 +16,9 @@ import {
   generatedMotivationLettersApi,
 } from '@/lib/api/job-offer-documents';
 import type { GeneratedJobOfferDocument } from '@/types/generated-job-offer-document';
+import GeneratedCoverLetter, {
+  isCoverLetterContent,
+} from './GeneratedCoverLetter';
 
 type DocumentKind = 'cv' | 'motivation-letter';
 
@@ -40,8 +43,9 @@ export default function GeneratedDocumentView({
   documentId,
   kind,
 }: Props) {
-  const [document, setDocument] =
-    useState<GeneratedJobOfferDocument | null>(null);
+  const [document, setDocument] = useState<GeneratedJobOfferDocument | null>(
+    null,
+  );
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -74,25 +78,27 @@ export default function GeneratedDocumentView({
 
   return (
     <Box>
-      <Breadcrumbs sx={{ mb: 3 }}>
-        <MuiLink
-          component={Link}
-          href="/dashboard/job-offers"
-          underline="hover"
-          color="inherit"
-        >
-          Oferty pracy
-        </MuiLink>
-        <MuiLink
-          component={Link}
-          href={`/dashboard/job-offers/${jobOfferId}/edit`}
-          underline="hover"
-          color="inherit"
-        >
-          Oferta
-        </MuiLink>
-        <Typography color="text.primary">{documentLabels[kind]}</Typography>
-      </Breadcrumbs>
+      {kind !== 'motivation-letter' && (
+        <Breadcrumbs sx={{ mb: 3 }}>
+          <MuiLink
+            component={Link}
+            href="/dashboard/job-offers"
+            underline="hover"
+            color="inherit"
+          >
+            Oferty pracy
+          </MuiLink>
+          <MuiLink
+            component={Link}
+            href={`/dashboard/job-offers/${jobOfferId}/edit`}
+            underline="hover"
+            color="inherit"
+          >
+            Oferta
+          </MuiLink>
+          <Typography color="text.primary">{documentLabels[kind]}</Typography>
+        </Breadcrumbs>
+      )}
       {loading ? (
         <Box sx={{ display: 'flex', justifyContent: 'center', py: 8 }}>
           <CircularProgress />
@@ -100,33 +106,45 @@ export default function GeneratedDocumentView({
       ) : error ? (
         <Alert severity="error">{error}</Alert>
       ) : document ? (
-        <Paper
-          variant="outlined"
-          sx={{ p: { xs: 2.5, sm: 4 }, borderRadius: 3 }}
-        >
-          <Typography variant="h4" component="h1" sx={{ fontWeight: 800 }}>
-            {documentLabels[kind]}
-          </Typography>
-          <Typography color="text.secondary" sx={{ mt: 1, mb: 3 }}>
-            {document.language.name ?? 'Język bez nazwy'}
-            {document.description ? ` · ${document.description}` : ''}
-          </Typography>
-          <Box
-            component="pre"
-            sx={{
-              m: 0,
-              p: 2,
-              borderRadius: 2,
-              bgcolor: 'action.hover',
-              overflow: 'auto',
-              whiteSpace: 'pre-wrap',
-              overflowWrap: 'anywhere',
-              fontFamily: 'monospace',
-            }}
+        kind === 'motivation-letter' &&
+        isCoverLetterContent(document.content) ? (
+          <GeneratedCoverLetter
+            content={document.content}
+            languageName={document.language.name}
+          />
+        ) : kind === 'motivation-letter' ? (
+          <Alert severity="error">
+            Zawartość listu motywacyjnego ma nieprawidłowy format.
+          </Alert>
+        ) : (
+          <Paper
+            variant="outlined"
+            sx={{ p: { xs: 2.5, sm: 4 }, borderRadius: 3 }}
           >
-            {JSON.stringify(document.content, null, 2)}
-          </Box>
-        </Paper>
+            <Typography variant="h4" component="h1" sx={{ fontWeight: 800 }}>
+              {documentLabels[kind]}
+            </Typography>
+            <Typography color="text.secondary" sx={{ mt: 1, mb: 3 }}>
+              {document.language.name ?? 'Język bez nazwy'}
+              {document.description ? ` · ${document.description}` : ''}
+            </Typography>
+            <Box
+              component="pre"
+              sx={{
+                m: 0,
+                p: 2,
+                borderRadius: 2,
+                bgcolor: 'action.hover',
+                overflow: 'auto',
+                whiteSpace: 'pre-wrap',
+                overflowWrap: 'anywhere',
+                fontFamily: 'monospace',
+              }}
+            >
+              {JSON.stringify(document.content, null, 2)}
+            </Box>
+          </Paper>
+        )
       ) : (
         <Alert severity="warning">Nie znaleziono dokumentu.</Alert>
       )}

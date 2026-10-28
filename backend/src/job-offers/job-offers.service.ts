@@ -13,6 +13,16 @@ import { UpdateJobOfferDto } from './dto/update-job-offer.dto';
 export class JobOffersService {
   constructor(private readonly prisma: PrismaService) {}
 
+  private readonly generationLanguageNames = ['Polski', 'Angielski'];
+
+  findGenerationLanguages() {
+    return this.prisma.language.findMany({
+      where: { name: { in: this.generationLanguageNames } },
+      select: { id: true, name: true },
+      orderBy: { name: 'asc' },
+    });
+  }
+
   private readonly generatedDocumentListSelect = {
     id: true,
     jobOfferId: true,
@@ -126,7 +136,11 @@ export class JobOffersService {
     });
   }
 
-  async findGeneratedCv(userId: string, jobOfferId: string, documentId: string) {
+  async findGeneratedCv(
+    userId: string,
+    jobOfferId: string,
+    documentId: string,
+  ) {
     const document = await this.prisma.generatedCv.findFirst({
       where: { id: documentId, jobOfferId, userId },
       select: this.generatedDocumentDetailSelect,
@@ -139,6 +153,7 @@ export class JobOffersService {
 
   async generateCv(userId: string, jobOfferId: string, languageId: string) {
     await this.findOne(userId, jobOfferId);
+    await this.ensureGenerationLanguage(languageId);
     await this.ensureDocumentLanguageAvailable(
       this.prisma.generatedCv.findFirst({
         where: { userId, jobOfferId, languageId },
@@ -207,6 +222,7 @@ export class JobOffersService {
     languageId: string,
   ) {
     await this.findOne(userId, jobOfferId);
+    await this.ensureGenerationLanguage(languageId);
     await this.ensureDocumentLanguageAvailable(
       this.prisma.generatedMotivationLetters.findFirst({
         where: { userId, jobOfferId, languageId },
@@ -215,11 +231,50 @@ export class JobOffersService {
       'A cover letter already exists for this language and job offer',
     );
 
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+      select: {
+        name: true,
+        surname: true,
+        email: true,
+        mobilePhone: true,
+        hometown: true,
+      },
+    });
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+
     try {
       return await this.prisma.generatedMotivationLetters.create({
         data: {
           description: 'lorem ipsum',
-          content: { text: 'lorem ipsum' },
+          content: {
+            paragraphs: [
+              'lorem ipsum 1',
+              'lorem ipsum 2',
+              'lorem ipsum 3',
+              'lorem ipsum 4',
+            ],
+            name: user.name,
+            surname: user.surname,
+            phone: user.mobilePhone,
+            hometown: user.hometown,
+            email: user.email,
+            role: 'FULL-STACK DEVELOPER',
+            roleStack: 'REACT · TYPESCRIPT · LARAVEL · PHP · MYSQL',
+            techstack: {
+              FRONTEND: [
+                'React',
+                'TypeScript',
+                'JavaScript',
+                'Next.js',
+                'Tailwind CSS',
+                'HTML5/SCSS',
+              ],
+              BACKEND: ['PHP', 'Laravel', 'Symfony'],
+            },
+          },
           user: { connect: { id: userId } },
           jobOffer: { connect: { id: jobOfferId } },
           language: { connect: { id: languageId } },
@@ -252,6 +307,21 @@ export class JobOffersService {
     const existing = await document;
     if (existing) {
       throw new ConflictException(conflictMessage);
+    }
+  }
+
+  private async ensureGenerationLanguage(languageId: string) {
+    const language = await this.prisma.language.findFirst({
+      where: {
+        id: languageId,
+        name: { in: this.generationLanguageNames },
+      },
+      select: { id: true },
+    });
+    if (!language) {
+      throw new BadRequestException(
+        'Generated documents are only available in Polish and English',
+      );
     }
   }
 

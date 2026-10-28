@@ -21,6 +21,7 @@ export class UsersService {
     surname: true,
     email: true,
     mobilePhone: true,
+    hometown: true,
     updatedAt: true,
   };
 
@@ -36,6 +37,16 @@ export class UsersService {
   }
 
   async updateProfile(userId: string, dto: UpdateProfileDto) {
+    const name = dto.name.trim();
+    const surname = dto.surname.trim();
+    const hometown = dto.hometown.trim();
+    const mobilePhone = dto.mobilePhone.trim();
+    if (!name || !surname || !hometown || !mobilePhone) {
+      throw new BadRequestException(
+        'Name, surname, mobile phone, and hometown are required',
+      );
+    }
+
     if (dto.password !== undefined || dto.confirmPassword !== undefined) {
       if (!dto.password || !dto.confirmPassword) {
         throw new BadRequestException('Enter and confirm the new password');
@@ -45,41 +56,29 @@ export class UsersService {
       }
     }
 
-    const mobilePhone = dto.mobilePhone?.trim();
-    if (mobilePhone) {
-      const digits = mobilePhone.replace(/\D/g, '');
-      if (
-        !/^[+0-9().\s-]+$/.test(mobilePhone) ||
-        digits.length < 7 ||
-        digits.length > 15
-      ) {
-        throw new BadRequestException('Enter a valid mobile phone number');
-      }
+    const phoneDigits = mobilePhone.replace(/\D/g, '');
+    if (phoneDigits.length < 7 || phoneDigits.length > 15) {
+      throw new BadRequestException('Enter a valid mobile phone number');
     }
 
-    const email = dto.email?.trim().toLowerCase();
-    if (email) {
-      const existingUser = await this.prisma.user.findFirst({
-        where: {
-          email: { equals: email, mode: 'insensitive' },
-          NOT: { id: userId },
-        },
-        select: { id: true },
-      });
-      if (existingUser) {
-        throw new ConflictException('Email address is already in use');
-      }
+    const email = dto.email.trim().toLowerCase();
+    const existingUser = await this.prisma.user.findFirst({
+      where: {
+        email: { equals: email, mode: 'insensitive' },
+        NOT: { id: userId },
+      },
+      select: { id: true },
+    });
+    if (existingUser) {
+      throw new ConflictException('Email address is already in use');
     }
 
     const data = {
-      ...(dto.name !== undefined && { name: dto.name?.trim() || null }),
-      ...(dto.surname !== undefined && {
-        surname: dto.surname?.trim() || null,
-      }),
-      ...(email !== undefined && { email }),
-      ...(dto.mobilePhone !== undefined && {
-        mobilePhone: mobilePhone || null,
-      }),
+      name,
+      surname,
+      email,
+      mobilePhone,
+      hometown,
       ...(dto.password !== undefined && {
         passwordHash: await bcrypt.hash(dto.password, this.saltRounds),
       }),
@@ -112,6 +111,8 @@ export class UsersService {
         surname: true,
         username: true,
         email: true,
+        mobilePhone: true,
+        hometown: true,
         avatarUrl: true,
         isActive: true,
         emailVerifiedAt: true,

@@ -28,7 +28,7 @@ import {
   Stack,
 } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 const navigationItems = [
   {
@@ -83,10 +83,16 @@ const navigationItems = [
   },
 ];
 
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const router = useRouter();
+  const pathname = usePathname();
   const [loading, setLoading] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
+  const isCoverLetterPage = pathname.includes('/generated-motivation-letters/');
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -116,30 +122,65 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   if (loading) {
     return (
-      <Box sx={{ display: 'flex', height: '100vh', justifyContent: 'center', alignItems: 'center' }}>
+      <Box
+        sx={{
+          display: 'flex',
+          height: '100vh',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
         <CircularProgress />
       </Box>
     );
   }
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar
-        position="sticky"
-        sx={{ zIndex: (theme) => theme.zIndex.appBar + 1 }}
-      >
-        <Toolbar sx={{ gap: { xs: 1, md: 0.5, lg: 1 } }}>
-          <AppLogo />
-          <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}>
-            {navigationItems.map((item) => (
+    <Box
+      sx={{ flexGrow: 1, minHeight: isCoverLetterPage ? '100dvh' : undefined }}
+    >
+      {!isCoverLetterPage && (
+        <AppBar
+          className="dashboard-appbar"
+          position="sticky"
+          sx={{ zIndex: (theme) => theme.zIndex.appBar + 1 }}
+        >
+          <Toolbar sx={{ gap: { xs: 1, md: 0.5, lg: 1 } }}>
+            <AppLogo />
+            <Box
+              sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}
+            >
+              {navigationItems.map((item) => (
+                <Button
+                  key={item.href}
+                  component={Link}
+                  href={item.href}
+                  color="inherit"
+                  aria-label={item.label}
+                  title={item.label}
+                  startIcon={item.icon}
+                  sx={{
+                    minWidth: { md: 42, xl: 'auto' },
+                    px: { md: 1, xl: 1.5 },
+                    '& .MuiButton-startIcon': {
+                      mr: { md: 0, xl: 1 },
+                    },
+                  }}
+                >
+                  <Box
+                    component="span"
+                    sx={{ display: { md: 'none', xl: 'inline' } }}
+                  >
+                    {item.label}
+                  </Box>
+                </Button>
+              ))}
               <Button
-                key={item.href}
-                component={Link}
-                href={item.href}
                 color="inherit"
-                aria-label={item.label}
-                title={item.label}
-                startIcon={item.icon}
+                onClick={handleLogout}
+                aria-label="Wyloguj"
+                title="Wyloguj"
+                startIcon={<LogoutIcon />}
                 sx={{
                   minWidth: { md: 42, xl: 'auto' },
                   px: { md: 1, xl: 1.5 },
@@ -148,83 +189,83 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                   },
                 }}
               >
-                <Box component="span" sx={{ display: { md: 'none', xl: 'inline' } }}>
-                  {item.label}
+                <Box
+                  component="span"
+                  sx={{ display: { md: 'none', xl: 'inline' } }}
+                >
+                  Wyloguj
                 </Box>
+              </Button>
+            </Box>
+            <IconButton
+              color="inherit"
+              aria-label={menuOpen ? 'Zamknij menu' : 'Otwórz menu'}
+              aria-expanded={menuOpen}
+              aria-controls="dashboard-mobile-menu"
+              onClick={() => setMenuOpen((open) => !open)}
+              sx={{ display: { xs: 'inline-flex', md: 'none' } }}
+            >
+              {menuOpen ? <CloseIcon /> : <MenuIcon />}
+            </IconButton>
+          </Toolbar>
+        </AppBar>
+      )}
+      {!isCoverLetterPage && (
+        <Box
+          component="nav"
+          id="dashboard-mobile-menu"
+          aria-label="Menu główne"
+          aria-hidden={!menuOpen}
+          sx={{
+            display: { xs: 'block', md: 'none' },
+            position: 'fixed',
+            top: { xs: '56px', sm: '64px' },
+            left: 0,
+            right: 0,
+            height: {
+              xs: 'calc(100dvh - 56px)',
+              sm: 'calc(100dvh - 64px)',
+            },
+            overflowY: 'auto',
+            bgcolor: 'primary.main',
+            color: 'common.white',
+            zIndex: (theme) => theme.zIndex.appBar,
+            transform: menuOpen ? 'translateY(0)' : 'translateY(-8px)',
+            opacity: menuOpen ? 1 : 0,
+            visibility: menuOpen ? 'visible' : 'hidden',
+            pointerEvents: menuOpen ? 'auto' : 'none',
+            transition: (theme) =>
+              theme.transitions.create(['transform', 'opacity', 'visibility'], {
+                duration: theme.transitions.duration.short,
+              }),
+          }}
+        >
+          <Stack spacing={1} sx={{ p: 3 }}>
+            {navigationItems.map((item) => (
+              <Button
+                key={item.href}
+                component={Link}
+                href={item.href}
+                color="inherit"
+                startIcon={item.icon}
+                onClick={closeMenu}
+                sx={{
+                  justifyContent: 'flex-start',
+                  px: 2,
+                  py: 1.5,
+                  fontSize: '1.1rem',
+                }}
+              >
+                {item.label}
               </Button>
             ))}
             <Button
               color="inherit"
-              onClick={handleLogout}
-              aria-label="Wyloguj"
-              title="Wyloguj"
               startIcon={<LogoutIcon />}
-              sx={{
-                minWidth: { md: 42, xl: 'auto' },
-                px: { md: 1, xl: 1.5 },
-                '& .MuiButton-startIcon': {
-                  mr: { md: 0, xl: 1 },
-                },
+              onClick={() => {
+                closeMenu();
+                void handleLogout();
               }}
-            >
-              <Box component="span" sx={{ display: { md: 'none', xl: 'inline' } }}>
-                Wyloguj
-              </Box>
-            </Button>
-          </Box>
-          <IconButton
-            color="inherit"
-            aria-label={menuOpen ? 'Zamknij menu' : 'Otwórz menu'}
-            aria-expanded={menuOpen}
-            aria-controls="dashboard-mobile-menu"
-            onClick={() => setMenuOpen((open) => !open)}
-            sx={{ display: { xs: 'inline-flex', md: 'none' } }}
-          >
-            {menuOpen ? <CloseIcon /> : <MenuIcon />}
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-      <Box
-        component="nav"
-        id="dashboard-mobile-menu"
-        aria-label="Menu główne"
-        aria-hidden={!menuOpen}
-        sx={{
-          display: { xs: 'block', md: 'none' },
-          position: 'fixed',
-          top: { xs: '56px', sm: '64px' },
-          left: 0,
-          right: 0,
-          height: {
-            xs: 'calc(100dvh - 56px)',
-            sm: 'calc(100dvh - 64px)',
-          },
-          overflowY: 'auto',
-          bgcolor: 'primary.main',
-          color: 'common.white',
-          zIndex: (theme) => theme.zIndex.appBar,
-          transform: menuOpen ? 'translateY(0)' : 'translateY(-8px)',
-          opacity: menuOpen ? 1 : 0,
-          visibility: menuOpen ? 'visible' : 'hidden',
-          pointerEvents: menuOpen ? 'auto' : 'none',
-          transition: (theme) =>
-            theme.transitions.create(
-              ['transform', 'opacity', 'visibility'],
-              {
-                duration: theme.transitions.duration.short,
-              },
-            ),
-        }}
-      >
-        <Stack spacing={1} sx={{ p: 3 }}>
-          {navigationItems.map((item) => (
-            <Button
-              key={item.href}
-              component={Link}
-              href={item.href}
-              color="inherit"
-              startIcon={item.icon}
-              onClick={closeMenu}
               sx={{
                 justifyContent: 'flex-start',
                 px: 2,
@@ -232,28 +273,22 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 fontSize: '1.1rem',
               }}
             >
-              {item.label}
+              Wyloguj
             </Button>
-          ))}
-          <Button
-            color="inherit"
-            startIcon={<LogoutIcon />}
-            onClick={() => {
-              closeMenu();
-              void handleLogout();
-            }}
-            sx={{
-              justifyContent: 'flex-start',
-              px: 2,
-              py: 1.5,
-              fontSize: '1.1rem',
-            }}
-          >
-            Wyloguj
-          </Button>
-        </Stack>
-      </Box>
-      <Container component="main" sx={{ mt: 4, mb: 4 }}>
+          </Stack>
+        </Box>
+      )}
+      <Container
+        component="main"
+        className="dashboard-main-container"
+        maxWidth={isCoverLetterPage ? false : 'xl'}
+        disableGutters={isCoverLetterPage}
+        sx={
+          isCoverLetterPage
+            ? { m: 0, p: 0, width: '100%', maxWidth: 'none' }
+            : { mt: 4, mb: 4 }
+        }
+      >
         {children}
       </Container>
     </Box>

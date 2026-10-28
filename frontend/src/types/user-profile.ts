@@ -1,17 +1,19 @@
 export interface UserProfile {
   id: string;
-  name: string | null;
-  surname: string | null;
+  name: string;
+  surname: string;
   email: string;
-  mobilePhone: string | null;
+  mobilePhone: string;
+  hometown: string;
   updatedAt: string;
 }
 
 export interface UpdateUserProfileDto {
-  name: string | null;
-  surname: string | null;
+  name: string;
+  surname: string;
   email: string;
-  mobilePhone: string | null;
+  mobilePhone: string;
+  hometown: string;
   password?: string;
   confirmPassword?: string;
 }

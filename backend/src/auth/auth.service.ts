@@ -1,4 +1,8 @@
-import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { PrismaService } from '../prisma/prisma.service';
@@ -16,6 +20,20 @@ export class AuthService {
   ) {}
 
   async register(dto: RegisterDto) {
+    const name = dto.name.trim();
+    const surname = dto.surname.trim();
+    const mobilePhone = dto.mobilePhone.trim();
+    const hometown = dto.hometown.trim();
+    const phoneDigits = mobilePhone.replace(/\D/g, '');
+    if (!name || !surname || !hometown) {
+      throw new BadRequestException(
+        'Name, surname, mobile phone, and hometown are required',
+      );
+    }
+    if (phoneDigits.length < 7 || phoneDigits.length > 15) {
+      throw new BadRequestException('Enter a valid mobile phone number');
+    }
+
     const existingUser = await this.prisma.user.findFirst({
       where: {
         OR: [{ email: dto.email }, { username: dto.username }],
@@ -23,13 +41,19 @@ export class AuthService {
     });
 
     if (existingUser) {
-      throw new BadRequestException('Nazwa użytkownika lub email jest już zajęty');
+      throw new BadRequestException(
+        'Nazwa użytkownika lub email jest już zajęty',
+      );
     }
 
     const passwordHash = await bcrypt.hash(dto.password, this.SALT_ROUNDS);
 
     const user = await this.prisma.user.create({
       data: {
+        name,
+        surname,
+        mobilePhone,
+        hometown,
         username: dto.username,
         email: dto.email,
         passwordHash,
@@ -69,7 +93,10 @@ export class AuthService {
       throw new UnauthorizedException('Stare hasło jest niepoprawne');
     }
 
-    const newPasswordHash = await bcrypt.hash(dto.newPassword, this.SALT_ROUNDS);
+    const newPasswordHash = await bcrypt.hash(
+      dto.newPassword,
+      this.SALT_ROUNDS,
+    );
 
     await this.prisma.user.update({
       where: { id: userId },
