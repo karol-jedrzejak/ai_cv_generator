@@ -245,7 +245,7 @@ export type UserTechnologyScalarWhereWithAggregatesInput = {
 }
 
 export type UserTechnologyCreateInput = {
-  proficiency: number
+  proficiency?: number
   user: Prisma.UserCreateNestedOneWithoutTechnologySkillsInput
   technology: Prisma.TechnologyCreateNestedOneWithoutUsersInput
 }
@@ -253,7 +253,7 @@ export type UserTechnologyCreateInput = {
 export type UserTechnologyUncheckedCreateInput = {
   userId: string
   technologyId: string
-  proficiency: number
+  proficiency?: number
 }
 
 export type UserTechnologyUpdateInput = {
@@ -271,7 +271,7 @@ export type UserTechnologyUncheckedUpdateInput = {
 export type UserTechnologyCreateManyInput = {
   userId: string
   technologyId: string
-  proficiency: number
+  proficiency?: number
 }
 
 export type UserTechnologyUpdateManyMutationInput = {
@@ -410,13 +410,13 @@ export type UserTechnologyUncheckedUpdateManyWithoutUserNestedInput = {
 }
 
 export type UserTechnologyCreateWithoutTechnologyInput = {
-  proficiency: number
+  proficiency?: number
   user: Prisma.UserCreateNestedOneWithoutTechnologySkillsInput
 }
 
 export type UserTechnologyUncheckedCreateWithoutTechnologyInput = {
   userId: string
-  proficiency: number
+  proficiency?: number
 }
 
 export type UserTechnologyCreateOrConnectWithoutTechnologyInput = {
@@ -455,13 +455,13 @@ export type UserTechnologyScalarWhereInput = {
 }
 
 export type UserTechnologyCreateWithoutUserInput = {
-  proficiency: number
+  proficiency?: number
   technology: Prisma.TechnologyCreateNestedOneWithoutUsersInput
 }
 
 export type UserTechnologyUncheckedCreateWithoutUserInput = {
   technologyId: string
-  proficiency: number
+  proficiency?: number
 }
 
 export type UserTechnologyCreateOrConnectWithoutUserInput = {
@@ -492,7 +492,7 @@ export type UserTechnologyUpdateManyWithWhereWithoutUserInput = {
 
 export type UserTechnologyCreateManyTechnologyInput = {
   userId: string
-  proficiency: number
+  proficiency?: number
 }
 
 export type UserTechnologyUpdateWithoutTechnologyInput = {
@@ -512,7 +512,7 @@ export type UserTechnologyUncheckedUpdateManyWithoutTechnologyInput = {
 
 export type UserTechnologyCreateManyUserInput = {
   technologyId: string
-  proficiency: number
+  proficiency?: number
 }
 
 export type UserTechnologyUpdateWithoutUserInput = {

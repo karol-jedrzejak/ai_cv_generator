@@ -13,6 +13,7 @@ import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutlined';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import type { JobOffer } from '@/types/job-offer';
+import GeneratedJobOfferDocuments from './GeneratedJobOfferDocuments';
 
 interface Props {
   jobOffer: JobOffer;
@@ -73,6 +74,7 @@ export default function JobOfferCard({
               }).format(new Date(jobOffer.updatedAt))}
             </Typography>
           )}
+          <GeneratedJobOfferDocuments jobOfferId={jobOffer.id} />
         </Box>
         <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
           <Tooltip title="Edytuj ofertę">

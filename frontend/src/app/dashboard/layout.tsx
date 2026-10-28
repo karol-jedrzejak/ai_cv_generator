@@ -10,6 +10,7 @@ import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
 import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
 import WorkspacePremiumOutlinedIcon from '@mui/icons-material/WorkspacePremiumOutlined';
 import WorkOutlineIcon from '@mui/icons-material/WorkOutlined';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 
@@ -74,6 +75,11 @@ const navigationItems = [
     href: '/dashboard/job-offers',
     label: 'Oferty pracy',
     icon: <WorkOutlineIcon />,
+  },
+  {
+    href: '/dashboard/profile/edit',
+    label: 'Mój profil',
+    icon: <AccountCircleOutlinedIcon />,
   },
 ];
 

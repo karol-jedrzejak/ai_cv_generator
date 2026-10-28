@@ -29,7 +29,6 @@ export type JobOfferMinAggregateOutputType = {
   userId: string | null
   title: string | null
   companyName: string | null
-  location: string | null
   url: string | null
   description: string | null
   createdAt: Date | null
@@ -41,7 +40,6 @@ export type JobOfferMaxAggregateOutputType = {
   userId: string | null
   title: string | null
   companyName: string | null
-  location: string | null
   url: string | null
   description: string | null
   createdAt: Date | null
@@ -53,7 +51,6 @@ export type JobOfferCountAggregateOutputType = {
   userId: number
   title: number
   companyName: number
-  location: number
   url: number
   description: number
   createdAt: number
@@ -67,7 +64,6 @@ export type JobOfferMinAggregateInputType = {
   userId?: true
   title?: true
   companyName?: true
-  location?: true
   url?: true
   description?: true
   createdAt?: true
@@ -79,7 +75,6 @@ export type JobOfferMaxAggregateInputType = {
   userId?: true
   title?: true
   companyName?: true
-  location?: true
   url?: true
   description?: true
   createdAt?: true
@@ -91,7 +86,6 @@ export type JobOfferCountAggregateInputType = {
   userId?: true
   title?: true
   companyName?: true
-  location?: true
   url?: true
   description?: true
   createdAt?: true
@@ -176,7 +170,6 @@ export type JobOfferGroupByOutputType = {
   userId: string
   title: string
   companyName: string | null
-  location: string | null
   url: string | null
   description: string
   createdAt: Date
@@ -209,7 +202,6 @@ export type JobOfferWhereInput = {
   userId?: Prisma.StringFilter<"JobOffer"> | string
   title?: Prisma.StringFilter<"JobOffer"> | string
   companyName?: Prisma.StringNullableFilter<"JobOffer"> | string | null
-  location?: Prisma.StringNullableFilter<"JobOffer"> | string | null
   url?: Prisma.StringNullableFilter<"JobOffer"> | string | null
   description?: Prisma.StringFilter<"JobOffer"> | string
   createdAt?: Prisma.DateTimeFilter<"JobOffer"> | Date | string
@@ -224,7 +216,6 @@ export type JobOfferOrderByWithRelationInput = {
   userId?: Prisma.SortOrder
   title?: Prisma.SortOrder
   companyName?: Prisma.SortOrderInput | Prisma.SortOrder
-  location?: Prisma.SortOrderInput | Prisma.SortOrder
   url?: Prisma.SortOrderInput | Prisma.SortOrder
   description?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -242,7 +233,6 @@ export type JobOfferWhereUniqueInput = Prisma.AtLeast<{
   userId?: Prisma.StringFilter<"JobOffer"> | string
   title?: Prisma.StringFilter<"JobOffer"> | string
   companyName?: Prisma.StringNullableFilter<"JobOffer"> | string | null
-  location?: Prisma.StringNullableFilter<"JobOffer"> | string | null
   url?: Prisma.StringNullableFilter<"JobOffer"> | string | null
   description?: Prisma.StringFilter<"JobOffer"> | string
   createdAt?: Prisma.DateTimeFilter<"JobOffer"> | Date | string
@@ -257,7 +247,6 @@ export type JobOfferOrderByWithAggregationInput = {
   userId?: Prisma.SortOrder
   title?: Prisma.SortOrder
   companyName?: Prisma.SortOrderInput | Prisma.SortOrder
-  location?: Prisma.SortOrderInput | Prisma.SortOrder
   url?: Prisma.SortOrderInput | Prisma.SortOrder
   description?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -275,7 +264,6 @@ export type JobOfferScalarWhereWithAggregatesInput = {
   userId?: Prisma.StringWithAggregatesFilter<"JobOffer"> | string
   title?: Prisma.StringWithAggregatesFilter<"JobOffer"> | string
   companyName?: Prisma.StringNullableWithAggregatesFilter<"JobOffer"> | string | null
-  location?: Prisma.StringNullableWithAggregatesFilter<"JobOffer"> | string | null
   url?: Prisma.StringNullableWithAggregatesFilter<"JobOffer"> | string | null
   description?: Prisma.StringWithAggregatesFilter<"JobOffer"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"JobOffer"> | Date | string
@@ -286,7 +274,6 @@ export type JobOfferCreateInput = {
   id?: string
   title: string
   companyName?: string | null
-  location?: string | null
   url?: string | null
   description: string
   createdAt?: Date | string
@@ -301,7 +288,6 @@ export type JobOfferUncheckedCreateInput = {
   userId: string
   title: string
   companyName?: string | null
-  location?: string | null
   url?: string | null
   description: string
   createdAt?: Date | string
@@ -314,7 +300,6 @@ export type JobOfferUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -329,7 +314,6 @@ export type JobOfferUncheckedUpdateInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -343,7 +327,6 @@ export type JobOfferCreateManyInput = {
   userId: string
   title: string
   companyName?: string | null
-  location?: string | null
   url?: string | null
   description: string
   createdAt?: Date | string
@@ -354,7 +337,6 @@ export type JobOfferUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -366,7 +348,6 @@ export type JobOfferUncheckedUpdateManyInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -383,7 +364,6 @@ export type JobOfferCountOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   title?: Prisma.SortOrder
   companyName?: Prisma.SortOrder
-  location?: Prisma.SortOrder
   url?: Prisma.SortOrder
   description?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -395,7 +375,6 @@ export type JobOfferMaxOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   title?: Prisma.SortOrder
   companyName?: Prisma.SortOrder
-  location?: Prisma.SortOrder
   url?: Prisma.SortOrder
   description?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -407,7 +386,6 @@ export type JobOfferMinOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   title?: Prisma.SortOrder
   companyName?: Prisma.SortOrder
-  location?: Prisma.SortOrder
   url?: Prisma.SortOrder
   description?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -498,7 +476,6 @@ export type JobOfferCreateWithoutGeneratedCvsInput = {
   id?: string
   title: string
   companyName?: string | null
-  location?: string | null
   url?: string | null
   description: string
   createdAt?: Date | string
@@ -512,7 +489,6 @@ export type JobOfferUncheckedCreateWithoutGeneratedCvsInput = {
   userId: string
   title: string
   companyName?: string | null
-  location?: string | null
   url?: string | null
   description: string
   createdAt?: Date | string
@@ -540,7 +516,6 @@ export type JobOfferUpdateWithoutGeneratedCvsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -554,7 +529,6 @@ export type JobOfferUncheckedUpdateWithoutGeneratedCvsInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -566,7 +540,6 @@ export type JobOfferCreateWithoutGeneratedMotivationLettersInput = {
   id?: string
   title: string
   companyName?: string | null
-  location?: string | null
   url?: string | null
   description: string
   createdAt?: Date | string
@@ -580,7 +553,6 @@ export type JobOfferUncheckedCreateWithoutGeneratedMotivationLettersInput = {
   userId: string
   title: string
   companyName?: string | null
-  location?: string | null
   url?: string | null
   description: string
   createdAt?: Date | string
@@ -608,7 +580,6 @@ export type JobOfferUpdateWithoutGeneratedMotivationLettersInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -622,7 +593,6 @@ export type JobOfferUncheckedUpdateWithoutGeneratedMotivationLettersInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -634,7 +604,6 @@ export type JobOfferCreateWithoutUserInput = {
   id?: string
   title: string
   companyName?: string | null
-  location?: string | null
   url?: string | null
   description: string
   createdAt?: Date | string
@@ -647,7 +616,6 @@ export type JobOfferUncheckedCreateWithoutUserInput = {
   id?: string
   title: string
   companyName?: string | null
-  location?: string | null
   url?: string | null
   description: string
   createdAt?: Date | string
@@ -690,7 +658,6 @@ export type JobOfferScalarWhereInput = {
   userId?: Prisma.StringFilter<"JobOffer"> | string
   title?: Prisma.StringFilter<"JobOffer"> | string
   companyName?: Prisma.StringNullableFilter<"JobOffer"> | string | null
-  location?: Prisma.StringNullableFilter<"JobOffer"> | string | null
   url?: Prisma.StringNullableFilter<"JobOffer"> | string | null
   description?: Prisma.StringFilter<"JobOffer"> | string
   createdAt?: Prisma.DateTimeFilter<"JobOffer"> | Date | string
@@ -701,7 +668,6 @@ export type JobOfferCreateManyUserInput = {
   id?: string
   title: string
   companyName?: string | null
-  location?: string | null
   url?: string | null
   description: string
   createdAt?: Date | string
@@ -712,7 +678,6 @@ export type JobOfferUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -725,7 +690,6 @@ export type JobOfferUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -738,7 +702,6 @@ export type JobOfferUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   companyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -790,7 +753,6 @@ export type JobOfferSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   userId?: boolean
   title?: boolean
   companyName?: boolean
-  location?: boolean
   url?: boolean
   description?: boolean
   createdAt?: boolean
@@ -806,7 +768,6 @@ export type JobOfferSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   userId?: boolean
   title?: boolean
   companyName?: boolean
-  location?: boolean
   url?: boolean
   description?: boolean
   createdAt?: boolean
@@ -819,7 +780,6 @@ export type JobOfferSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   userId?: boolean
   title?: boolean
   companyName?: boolean
-  location?: boolean
   url?: boolean
   description?: boolean
   createdAt?: boolean
@@ -832,14 +792,13 @@ export type JobOfferSelectScalar = {
   userId?: boolean
   title?: boolean
   companyName?: boolean
-  location?: boolean
   url?: boolean
   description?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type JobOfferOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "title" | "companyName" | "location" | "url" | "description" | "createdAt" | "updatedAt", ExtArgs["result"]["jobOffer"]>
+export type JobOfferOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "title" | "companyName" | "url" | "description" | "createdAt" | "updatedAt", ExtArgs["result"]["jobOffer"]>
 export type JobOfferInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   generatedCvs?: boolean | Prisma.JobOffer$generatedCvsArgs<ExtArgs>
@@ -865,7 +824,6 @@ export type $JobOfferPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     userId: string
     title: string
     companyName: string | null
-    location: string | null
     url: string | null
     description: string
     createdAt: Date
@@ -1300,7 +1258,6 @@ export interface JobOfferFieldRefs {
   readonly userId: Prisma.FieldRef<"JobOffer", 'String'>
   readonly title: Prisma.FieldRef<"JobOffer", 'String'>
   readonly companyName: Prisma.FieldRef<"JobOffer", 'String'>
-  readonly location: Prisma.FieldRef<"JobOffer", 'String'>
   readonly url: Prisma.FieldRef<"JobOffer", 'String'>
   readonly description: Prisma.FieldRef<"JobOffer", 'String'>
   readonly createdAt: Prisma.FieldRef<"JobOffer", 'DateTime'>

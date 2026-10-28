@@ -104,3 +104,33 @@ npm run dev
 
 
 
+docker exec -it cv-ai-ollama ollama pull qwen2.5:7b
+
+
+add check for all routes within backend src so that user can only edit show patch and delete elements that are assigned to them (can't see edit delete add other's persons data)
+
+
+
+Układ i struktura listu motywacyjnego
+
+• Nagłówek (dane kontaktowe):
+	• Twoje imię i nazwisko, numer telefonu, adres e-mail oraz opcjonalnie link do profilu na LinkedIn.
+	• Miejscowość i data po Twojej lewej lub prawej stronie.
+• Dane adresata:
+	• Imię i nazwisko osoby rekrutującej (jeśli je znasz), zajmowane stanowisko oraz nazwa i dokładny adres firmy.
+• Zwrot grzecznościowy:
+	• Np. „Szanowny Panie / Szanowna Pani” (jeśli znasz nazwisko) lub „Szanowni Państwo” (jeśli dane są ogólne).
+• Wstęp (Akapit 1):
+	• Określ, na jakie stanowisko aplikujesz.
+	• Wskaż źródło ogłoszenia (np. portal pracy) oraz numer referencyjny, jeśli był podany.
+	• Zarysuj swój główny cel lub największy atut.
+• Rozwinięcie (Akapity 2–3):
+	• Nie powtarzaj treści z CV – rozwiń je i pokaż, jak Twoje umiejętności przełożą się na korzyści dla pracodawcy.
+	• Uzasadnij, dlaczego chcesz pracować akurat w tej firmie i co Cię motywuje.
+	• Podaj konkretne przykłady swoich sukcesów lub doświadczeń.
+• Zakończenie:
+	• Wyraź gotowość do bezpośredniego spotkania na rozmowie kwalifikacyjnej.
+• Zwrot grzecznościowy i podpis:
+	• Np. „Z poważaniem”, a pod nim Twoje odręczne lub czytelne imię i nazwisko.
+• Klauzula RODO:
+	• Wymagana tylko wtedy, gdy nie ma jej w CV lub gdy pracodawca wyraźnie o nią poprosił w ofercie.

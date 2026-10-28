@@ -1,5 +1,6 @@
 import {
   BadRequestException,
+  ConflictException,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
@@ -11,6 +12,25 @@ import { UpdateJobOfferDto } from './dto/update-job-offer.dto';
 @Injectable()
 export class JobOffersService {
   constructor(private readonly prisma: PrismaService) {}
+
+  private readonly generatedDocumentListSelect = {
+    id: true,
+    jobOfferId: true,
+    languageId: true,
+    description: true,
+    createdAt: true,
+    language: {
+      select: {
+        id: true,
+        name: true,
+      },
+    },
+  };
+
+  private readonly generatedDocumentDetailSelect = {
+    ...this.generatedDocumentListSelect,
+    content: true,
+  };
 
   private readonly selectFields = {
     id: true,
@@ -95,6 +115,153 @@ export class JobOffersService {
       where: { id },
       select: this.selectFields,
     });
+  }
+
+  async findGeneratedCvs(userId: string, jobOfferId: string) {
+    await this.findOne(userId, jobOfferId);
+    return this.prisma.generatedCv.findMany({
+      where: { userId, jobOfferId },
+      select: this.generatedDocumentListSelect,
+      orderBy: { createdAt: 'desc' },
+    });
+  }
+
+  async findGeneratedCv(userId: string, jobOfferId: string, documentId: string) {
+    const document = await this.prisma.generatedCv.findFirst({
+      where: { id: documentId, jobOfferId, userId },
+      select: this.generatedDocumentDetailSelect,
+    });
+    if (!document) {
+      throw new NotFoundException('Generated CV not found');
+    }
+    return document;
+  }
+
+  async generateCv(userId: string, jobOfferId: string, languageId: string) {
+    await this.findOne(userId, jobOfferId);
+    await this.ensureDocumentLanguageAvailable(
+      this.prisma.generatedCv.findFirst({
+        where: { userId, jobOfferId, languageId },
+        select: { id: true },
+      }),
+      'A CV already exists for this language and job offer',
+    );
+
+    try {
+      return await this.prisma.generatedCv.create({
+        data: {
+          description: 'lorem ipsum',
+          content: { text: 'lorem ipsum' },
+          user: { connect: { id: userId } },
+          jobOffer: { connect: { id: jobOfferId } },
+          language: { connect: { id: languageId } },
+        },
+        select: this.generatedDocumentDetailSelect,
+      });
+    } catch (error) {
+      this.handleGeneratedDocumentPrismaError(error);
+    }
+  }
+
+  async removeGeneratedCv(
+    userId: string,
+    jobOfferId: string,
+    documentId: string,
+  ) {
+    const result = await this.prisma.generatedCv.deleteMany({
+      where: { id: documentId, jobOfferId, userId },
+    });
+    if (result.count === 0) {
+      throw new NotFoundException('Generated CV not found');
+    }
+    return { id: documentId };
+  }
+
+  async findGeneratedMotivationLetters(userId: string, jobOfferId: string) {
+    await this.findOne(userId, jobOfferId);
+    return this.prisma.generatedMotivationLetters.findMany({
+      where: { userId, jobOfferId },
+      select: this.generatedDocumentListSelect,
+      orderBy: { createdAt: 'desc' },
+    });
+  }
+
+  async findGeneratedMotivationLetter(
+    userId: string,
+    jobOfferId: string,
+    documentId: string,
+  ) {
+    const document = await this.prisma.generatedMotivationLetters.findFirst({
+      where: { id: documentId, jobOfferId, userId },
+      select: this.generatedDocumentDetailSelect,
+    });
+    if (!document) {
+      throw new NotFoundException('Generated cover letter not found');
+    }
+    return document;
+  }
+
+  async generateMotivationLetter(
+    userId: string,
+    jobOfferId: string,
+    languageId: string,
+  ) {
+    await this.findOne(userId, jobOfferId);
+    await this.ensureDocumentLanguageAvailable(
+      this.prisma.generatedMotivationLetters.findFirst({
+        where: { userId, jobOfferId, languageId },
+        select: { id: true },
+      }),
+      'A cover letter already exists for this language and job offer',
+    );
+
+    try {
+      return await this.prisma.generatedMotivationLetters.create({
+        data: {
+          description: 'lorem ipsum',
+          content: { text: 'lorem ipsum' },
+          user: { connect: { id: userId } },
+          jobOffer: { connect: { id: jobOfferId } },
+          language: { connect: { id: languageId } },
+        },
+        select: this.generatedDocumentDetailSelect,
+      });
+    } catch (error) {
+      this.handleGeneratedDocumentPrismaError(error);
+    }
+  }
+
+  async removeGeneratedMotivationLetter(
+    userId: string,
+    jobOfferId: string,
+    documentId: string,
+  ) {
+    const result = await this.prisma.generatedMotivationLetters.deleteMany({
+      where: { id: documentId, jobOfferId, userId },
+    });
+    if (result.count === 0) {
+      throw new NotFoundException('Generated cover letter not found');
+    }
+    return { id: documentId };
+  }
+
+  private async ensureDocumentLanguageAvailable(
+    document: Promise<{ id: string } | null>,
+    conflictMessage: string,
+  ) {
+    const existing = await document;
+    if (existing) {
+      throw new ConflictException(conflictMessage);
+    }
+  }
+
+  private handleGeneratedDocumentPrismaError(error: unknown): never {
+    if (error instanceof Prisma.PrismaClientKnownRequestError) {
+      if (error.code === 'P2003') {
+        throw new NotFoundException('Language or job offer not found');
+      }
+    }
+    throw error;
   }
 
   private validateRequiredFields(dto: {
