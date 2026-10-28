@@ -7,6 +7,8 @@ import LanguageIcon from '@mui/icons-material/Language';
 import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
 import FolderSpecialIcon from '@mui/icons-material/FolderSpecial';
 import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
+import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
+import WorkspacePremiumOutlinedIcon from '@mui/icons-material/WorkspacePremiumOutlined';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 
@@ -56,6 +58,16 @@ const navigationItems = [
     href: '/dashboard/education',
     label: 'Edukacja',
     icon: <SchoolOutlinedIcon />,
+  },
+  {
+    href: '/dashboard/courses',
+    label: 'Kursy',
+    icon: <MenuBookOutlinedIcon />,
+  },
+  {
+    href: '/dashboard/certifications',
+    label: 'Certyfikaty',
+    icon: <WorkspacePremiumOutlinedIcon />,
   },
 ];
 
