@@ -1,14 +1,12 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import {
   Alert,
-  Autocomplete,
   Box,
   Button,
   Checkbox,
-  CircularProgress,
   FormControlLabel,
   MenuItem,
   Paper,
@@ -18,12 +16,11 @@ import {
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import SaveIcon from '@mui/icons-material/Save';
-import { technologiesApi } from '@/lib/api/technologies';
+import TechnologyMultiSelect from '@/components/technologies/TechnologyMultiSelect';
 import { workExperiencesApi } from '@/lib/api/work-experience';
-import type { Technology } from '@/types/technology';
+import type { TechnologyOption } from '@/types/technology';
 import type {
   WorkExperience,
-  WorkExperienceTechnology,
 } from '@/types/work-experience';
 
 interface Props {
@@ -44,13 +41,6 @@ const MONTHS = [
   'Listopad',
   'Grudzień',
 ];
-
-function formatCategory(category: string) {
-  return category
-    .replaceAll('_', ' ')
-    .toLowerCase()
-    .replace(/\b\w/g, (letter) => letter.toUpperCase());
-}
 
 export default function WorkExperienceForm({ initialData }: Props) {
   const router = useRouter();
@@ -87,69 +77,11 @@ export default function WorkExperienceForm({ initialData }: Props) {
   const [sortOrder, setSortOrder] = useState(
     String(initialData?.sortOrder ?? 0),
   );
-  const [technologies, setTechnologies] = useState<
-    WorkExperienceTechnology[]
-  >(
+  const [technologies, setTechnologies] = useState<TechnologyOption[]>(
     initialData?.technologies.map((item) => item.technology) ?? [],
   );
-  const [search, setSearch] = useState('');
-  const [searchResults, setSearchResults] = useState<
-    WorkExperienceTechnology[]
-  >([]);
-  const [searching, setSearching] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  const technologyOptions = useMemo(() => {
-    const options = new Map<string, WorkExperienceTechnology>();
-    for (const technology of technologies) options.set(technology.id, technology);
-    for (const technology of searchResults) options.set(technology.id, technology);
-    return [...options.values()];
-  }, [technologies, searchResults]);
-
-  useEffect(() => {
-    if (search.trim().length < 2) {
-      setSearchResults([]);
-      setSearching(false);
-      return;
-    }
-
-    let active = true;
-    const timer = setTimeout(async () => {
-      setSearching(true);
-      setError(null);
-      try {
-        const results: Technology[] = await technologiesApi.search(
-          search.trim(),
-        );
-        if (active) {
-          setSearchResults(
-            results.map(({ id, name, category }) => ({
-              id,
-              name,
-              category,
-            })),
-          );
-        }
-      } catch (err) {
-        if (active) {
-          setError(
-            err instanceof Error
-              ? err.message
-              : 'Nie udało się pobrać technologii.',
-          );
-          setSearchResults([]);
-        }
-      } finally {
-        if (active) setSearching(false);
-      }
-    }, 300);
-
-    return () => {
-      active = false;
-      clearTimeout(timer);
-    };
-  }, [search]);
 
   const handleSubmit = async (
     event: React.FormEvent<HTMLFormElement>,
@@ -351,71 +283,10 @@ export default function WorkExperienceForm({ initialData }: Props) {
             />
           </Box>
 
-          <Autocomplete
-            multiple
-            options={technologyOptions}
+          <TechnologyMultiSelect
             value={technologies}
-            inputValue={search}
-            loading={searching}
-            filterOptions={(options) => options}
-            getOptionLabel={(option) => option.name}
-            isOptionEqualToValue={(option, value) =>
-              option.id === value.id
-            }
-            onInputChange={(_, value, reason) => {
-              if (reason === 'input' || reason === 'clear') {
-                setSearch(value);
-              }
-            }}
-            onChange={(_, value) => {
-              setTechnologies(value);
-              setSearch('');
-            }}
-            noOptionsText={
-              search.trim().length < 2
-                ? 'Wpisz minimum 2 znaki'
-                : 'Nie znaleziono technologii'
-            }
-            loadingText="Wyszukiwanie..."
-            renderOption={(props, option) => (
-              <Box
-                component="li"
-                {...props}
-                key={option.id}
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  gap: 2,
-                }}
-              >
-                <div key={option.id}>
-                  <Typography>{option.name}</Typography>
-                  <Typography variant="caption" color="text.secondary">
-                    {formatCategory(option.category)}
-                  </Typography>
-                </div>
-              </Box>
-            )}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Technologie"
-                placeholder="Wyszukaj i dodaj używane technologie"
-                helperText="Możesz wybrać wiele technologii. Wpisz co najmniej 2 znaki, aby wyszukać."
-                slotProps={{
-                  ...params.slotProps,
-                  input: {
-                    ...params.slotProps.input,
-                    endAdornment: (
-                      <>
-                        {searching && <CircularProgress size={18} />}
-                        {params.slotProps.input?.endAdornment}
-                      </>
-                    ),
-                  },
-                }}
-              />
-            )}
+            onChange={setTechnologies}
+            onError={setError}
             disabled={saving}
           />
 

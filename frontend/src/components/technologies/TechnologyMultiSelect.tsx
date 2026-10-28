@@ -17,6 +17,7 @@ interface Props {
   onError: (message: string | null) => void;
   disabled?: boolean;
   label?: string;
+  maxSelections?: number;
 }
 
 function formatCategory(category: string) {
@@ -32,6 +33,7 @@ export default function TechnologyMultiSelect({
   onError,
   disabled = false,
   label = 'Technologie',
+  maxSelections,
 }: Props) {
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState<TechnologyOption[]>([]);
@@ -96,6 +98,11 @@ export default function TechnologyMultiSelect({
       disabled={disabled}
       filterOptions={(items) => items}
       getOptionLabel={(option) => option.name}
+      getOptionDisabled={(option) =>
+        maxSelections !== undefined &&
+        value.length >= maxSelections &&
+        !value.some((selected) => selected.id === option.id)
+      }
       isOptionEqualToValue={(option, selected) => option.id === selected.id}
       onInputChange={(_, input, reason) => {
         if (reason === 'input' || reason === 'clear') {
@@ -136,7 +143,11 @@ export default function TechnologyMultiSelect({
           {...params}
           label={label}
           placeholder="Wyszukaj i dodaj używane technologie"
-          helperText="Możesz wybrać wiele technologii. Wpisz co najmniej 2 znaki, aby wyszukać."
+          helperText={
+            maxSelections === 1
+              ? 'Wybierz jedną technologię. Wpisz co najmniej 2 znaki, aby wyszukać.'
+              : 'Możesz wybrać wiele technologii. Wpisz co najmniej 2 znaki, aby wyszukać.'
+          }
           slotProps={{
             ...params.slotProps,
             input: {
