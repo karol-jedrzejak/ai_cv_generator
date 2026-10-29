@@ -64,7 +64,8 @@ export default function JobOfferCard({
             </Link>
           )}
           <Typography sx={{ mt: 1.5, whiteSpace: 'pre-wrap' }}>
-            {jobOffer.description}
+            {jobOffer.description?.slice(0, 200)}
+            {jobOffer.description?.length > 200 && '...'}
           </Typography>
           {jobOffer.updatedAt && (
             <Typography variant="caption" color="text.secondary" sx={{ mt: 1, display: 'block' }}>

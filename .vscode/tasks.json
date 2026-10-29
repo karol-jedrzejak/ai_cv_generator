@@ -16,10 +16,26 @@
       "problemMatcher": []
     },
     {
+      "label": "Ollama Logs",
+      "type": "shell",
+      "command": "docker logs -f cv-ai-ollama",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Docker Stats",
+      "type": "shell",
+      "command": "docker stats",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
       "label": "Dev",
       "dependsOn": [
         "Frontend",
-        "Backend"
+        "Backend",
+        "Ollama Logs",
+        "Docker Stats",
       ],
       "dependsOrder": "parallel",
       "group": {
