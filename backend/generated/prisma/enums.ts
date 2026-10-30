@@ -9,6 +9,14 @@
 * 🟢 You can import this file directly.
 */
 
+export const AiProvider = {
+  OLLAMA: 'OLLAMA',
+  GOOGLE_AI_STUDIO: 'GOOGLE_AI_STUDIO'
+} as const
+
+export type AiProvider = (typeof AiProvider)[keyof typeof AiProvider]
+
+
 export const LanguageLevel = {
   A1: 'A1',
   A2: 'A2',

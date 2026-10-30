@@ -1,0 +1,4 @@
+CREATE TYPE "AiProvider" AS ENUM ('OLLAMA', 'GOOGLE_AI_STUDIO');
+
+ALTER TABLE "users"
+ADD COLUMN "aiProvider" "AiProvider" NOT NULL DEFAULT 'OLLAMA';

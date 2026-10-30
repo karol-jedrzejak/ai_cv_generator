@@ -266,6 +266,13 @@ export type EnumLinkTypeWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumLinkTypeFilter<$PrismaModel>
 }
 
+export type EnumAiProviderFilter<$PrismaModel = never> = {
+  equals?: $Enums.AiProvider | Prisma.EnumAiProviderFieldRefInput<$PrismaModel>
+  in?: $Enums.AiProvider[] | Prisma.ListEnumAiProviderFieldRefInput<$PrismaModel>
+  notIn?: $Enums.AiProvider[] | Prisma.ListEnumAiProviderFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumAiProviderFilter<$PrismaModel> | $Enums.AiProvider
+}
+
 export type BoolFilter<$PrismaModel = never> = {
   equals?: boolean | Prisma.BooleanFieldRefInput<$PrismaModel>
   not?: Prisma.NestedBoolFilter<$PrismaModel> | boolean
@@ -287,6 +294,16 @@ export type EnumThemePreferenceFilter<$PrismaModel = never> = {
   in?: $Enums.ThemePreference[] | Prisma.ListEnumThemePreferenceFieldRefInput<$PrismaModel>
   notIn?: $Enums.ThemePreference[] | Prisma.ListEnumThemePreferenceFieldRefInput<$PrismaModel>
   not?: Prisma.NestedEnumThemePreferenceFilter<$PrismaModel> | $Enums.ThemePreference
+}
+
+export type EnumAiProviderWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.AiProvider | Prisma.EnumAiProviderFieldRefInput<$PrismaModel>
+  in?: $Enums.AiProvider[] | Prisma.ListEnumAiProviderFieldRefInput<$PrismaModel>
+  notIn?: $Enums.AiProvider[] | Prisma.ListEnumAiProviderFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumAiProviderWithAggregatesFilter<$PrismaModel> | $Enums.AiProvider
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumAiProviderFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumAiProviderFilter<$PrismaModel>
 }
 
 export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -559,6 +576,13 @@ export type NestedEnumLinkTypeWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumLinkTypeFilter<$PrismaModel>
 }
 
+export type NestedEnumAiProviderFilter<$PrismaModel = never> = {
+  equals?: $Enums.AiProvider | Prisma.EnumAiProviderFieldRefInput<$PrismaModel>
+  in?: $Enums.AiProvider[] | Prisma.ListEnumAiProviderFieldRefInput<$PrismaModel>
+  notIn?: $Enums.AiProvider[] | Prisma.ListEnumAiProviderFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumAiProviderFilter<$PrismaModel> | $Enums.AiProvider
+}
+
 export type NestedBoolFilter<$PrismaModel = never> = {
   equals?: boolean | Prisma.BooleanFieldRefInput<$PrismaModel>
   not?: Prisma.NestedBoolFilter<$PrismaModel> | boolean
@@ -580,6 +604,16 @@ export type NestedEnumThemePreferenceFilter<$PrismaModel = never> = {
   in?: $Enums.ThemePreference[] | Prisma.ListEnumThemePreferenceFieldRefInput<$PrismaModel>
   notIn?: $Enums.ThemePreference[] | Prisma.ListEnumThemePreferenceFieldRefInput<$PrismaModel>
   not?: Prisma.NestedEnumThemePreferenceFilter<$PrismaModel> | $Enums.ThemePreference
+}
+
+export type NestedEnumAiProviderWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.AiProvider | Prisma.EnumAiProviderFieldRefInput<$PrismaModel>
+  in?: $Enums.AiProvider[] | Prisma.ListEnumAiProviderFieldRefInput<$PrismaModel>
+  notIn?: $Enums.AiProvider[] | Prisma.ListEnumAiProviderFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumAiProviderWithAggregatesFilter<$PrismaModel> | $Enums.AiProvider
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumAiProviderFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumAiProviderFilter<$PrismaModel>
 }
 
 export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {

@@ -1,16 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import {
-  Alert,
-  Box,
-  Breadcrumbs,
-  CircularProgress,
-  Link as MuiLink,
-  Paper,
-  Typography,
-} from '@mui/material';
+import { Alert, Box, CircularProgress, Paper, Typography } from '@mui/material';
 import {
   generatedCvsApi,
   generatedMotivationLettersApi,
@@ -19,6 +10,7 @@ import type { GeneratedJobOfferDocument } from '@/types/generated-job-offer-docu
 import GeneratedCoverLetter, {
   isCoverLetterContent,
 } from './GeneratedCoverLetter';
+import GeneratedCV, { isCVContent } from './GeneratedCV';
 
 type DocumentKind = 'cv' | 'motivation-letter';
 
@@ -78,27 +70,6 @@ export default function GeneratedDocumentView({
 
   return (
     <Box>
-      {kind !== 'motivation-letter' && (
-        <Breadcrumbs sx={{ mb: 3 }}>
-          <MuiLink
-            component={Link}
-            href="/dashboard/job-offers"
-            underline="hover"
-            color="inherit"
-          >
-            Oferty pracy
-          </MuiLink>
-          <MuiLink
-            component={Link}
-            href={`/dashboard/job-offers/${jobOfferId}/edit`}
-            underline="hover"
-            color="inherit"
-          >
-            Oferta
-          </MuiLink>
-          <Typography color="text.primary">{documentLabels[kind]}</Typography>
-        </Breadcrumbs>
-      )}
       {loading ? (
         <Box sx={{ display: 'flex', justifyContent: 'center', py: 8 }}>
           <CircularProgress />
@@ -116,6 +87,13 @@ export default function GeneratedDocumentView({
           <Alert severity="error">
             Zawartość listu motywacyjnego ma nieprawidłowy format.
           </Alert>
+        ) : kind === 'cv' && isCVContent(document.content) ? (
+          <GeneratedCV
+            content={document.content}
+            languageName={document.language.name}
+          />
+        ) : kind === 'cv' ? (
+          <Alert severity="error">Zawartość CV ma nieprawidłowy format.</Alert>
         ) : (
           <Paper
             variant="outlined"

@@ -1,4 +1,3 @@
-
 import {
   Injectable,
   GatewayTimeoutException,
@@ -6,21 +5,16 @@ import {
   Logger,
 } from '@nestjs/common';
 import { randomUUID } from 'node:crypto';
-import { mkdir, writeFile } from 'node:fs/promises';
-import { join } from 'node:path';
 
 @Injectable()
 export class OllamaService {
   private readonly logger = new Logger(OllamaService.name);
 
-  private readonly baseUrl =
-    process.env.OLLAMA_URL ?? 'http://localhost:11434';
+  private readonly baseUrl = process.env.OLLAMA_URL ?? 'http://localhost:11434';
 
-  private readonly model = 'qwen2.5:7b';
+  private readonly model = process.env.OLLAMA_MODEL ?? 'qwen2.5:7b';
 
-  private readonly timeoutMs = Number(
-    process.env.OLLAMA_TIMEOUT_MS ?? 180_000,
-  );
+  private readonly timeoutMs = Number(process.env.OLLAMA_TIMEOUT_MS ?? 300_000);
 
   async chat(systemPrompt: string, userPrompt: string): Promise<string> {
     const requestId = randomUUID();
@@ -39,44 +33,6 @@ export class OllamaService {
       `Prompty przygotowane | system=${systemPrompt.length} znaków, user=${userPrompt.length} znaków`,
     );
 
-    // Zapis promptów przed wysłaniem żądania.
-    try {
-      const directory = join(
-        process.cwd(),
-        'data',
-        'ollama-requests',
-      );
-
-      await mkdir(directory, { recursive: true });
-
-      const filePath = join(directory, `${requestId}.json`);
-
-      await writeFile(
-        filePath,
-        JSON.stringify(
-          {
-            requestId,
-            createdAt: new Date().toISOString(),
-            model: this.model,
-            systemPrompt,
-            userPrompt,
-          },
-          null,
-          2,
-        ),
-        'utf8',
-      );
-
-      log(`Zapisano prompty: ${filePath}`);
-    } catch (error) {
-      this.logger.error(
-        `[${requestId}] Nie udało się zapisać promptów`,
-        error instanceof Error ? error.stack : String(error),
-      );
-
-      // Nie przerywamy generowania, jeśli nie udał się zapis pliku.
-    }
-
     const payload = {
       model: this.model,
       stream: false,
@@ -86,7 +42,11 @@ export class OllamaService {
         { role: 'user', content: userPrompt },
       ],
       options: {
-        temperature: 0.4,
+        temperature: 0.25,
+        top_p: 0.85,
+        repeat_penalty: 1.05,
+        num_ctx: 16_384,
+        num_predict: 4_096,
       },
     };
 
@@ -104,9 +64,7 @@ export class OllamaService {
         signal: AbortSignal.timeout(this.timeoutMs),
       });
 
-      log(
-        `Ollama zwróciła nagłówki HTTP ${response.status} po ${elapsed()}`,
-      );
+      log(`Ollama zwróciła nagłówki HTTP ${response.status} po ${elapsed()}`);
     } catch (error) {
       if (
         error instanceof Error &&
@@ -126,9 +84,7 @@ export class OllamaService {
         error instanceof Error ? error.stack : String(error),
       );
 
-      throw new ServiceUnavailableException(
-        'Nie można połączyć się z Ollamą',
-      );
+      throw new ServiceUnavailableException('Nie można połączyć się z Ollamą');
     }
 
     if (!response.ok) {
@@ -138,8 +94,14 @@ export class OllamaService {
         `[${requestId}] HTTP ${response.status} po ${elapsed()} | ${errorBody.slice(0, 1000)}`,
       );
 
+      if (response.status === 404) {
+        throw new ServiceUnavailableException(
+          `Ollama could not find model "${this.model}". Pull it with: docker exec cv-ai-ollama ollama pull ${this.model}`,
+        );
+      }
+
       throw new ServiceUnavailableException(
-        `Ollama zwróciła HTTP ${response.status}`,
+        `Ollama zwróciła HTTP ${response.status}${errorBody ? `: ${errorBody.slice(0, 300)}` : ''}`,
       );
     }
 

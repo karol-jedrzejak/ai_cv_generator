@@ -2100,6 +2100,7 @@ export const UserScalarFieldEnum = {
   email: 'email',
   passwordHash: 'passwordHash',
   avatarUrl: 'avatarUrl',
+  aiProvider: 'aiProvider',
   isActive: 'isActive',
   emailVerifiedAt: 'emailVerifiedAt',
   themePreference: 'themePreference',
@@ -2285,7 +2286,18 @@ export type EnumLinkTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaM
  * Reference to a field of type 'LinkType[]'
  */
 export type ListEnumLinkTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkType[]'>
-    
+
+
+/**
+ * Reference to a field of type 'AiProvider'
+ */
+export type EnumAiProviderFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AiProvider'>
+
+
+/**
+ * Reference to a field of type 'AiProvider[]'
+ */
+export type ListEnumAiProviderFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AiProvider[]'>
 
 
 /**
@@ -2554,4 +2566,3 @@ export type PrismaAction =
  * `PrismaClient` proxy available in interactive transactions.
  */
 export type TransactionClient = Omit<DefaultPrismaClient, runtime.ITXClientDenyList>
-

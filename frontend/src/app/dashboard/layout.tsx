@@ -92,7 +92,9 @@ export default function DashboardLayout({
   const pathname = usePathname();
   const [loading, setLoading] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
-  const isCoverLetterPage = pathname.includes('/generated-motivation-letters/');
+  const isGeneratedDocumentPage =
+    pathname.includes('/generated-motivation-letters/') ||
+    pathname.includes('/generated-cvs/');
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -137,9 +139,12 @@ export default function DashboardLayout({
 
   return (
     <Box
-      sx={{ flexGrow: 1, minHeight: isCoverLetterPage ? '100dvh' : undefined }}
+      sx={{
+        flexGrow: 1,
+        minHeight: isGeneratedDocumentPage ? '100dvh' : undefined,
+      }}
     >
-      {!isCoverLetterPage && (
+      {!isGeneratedDocumentPage && (
         <AppBar
           className="dashboard-appbar"
           position="sticky"
@@ -210,7 +215,7 @@ export default function DashboardLayout({
           </Toolbar>
         </AppBar>
       )}
-      {!isCoverLetterPage && (
+      {!isGeneratedDocumentPage && (
         <Box
           component="nav"
           id="dashboard-mobile-menu"
@@ -281,10 +286,10 @@ export default function DashboardLayout({
       <Container
         component="main"
         className="dashboard-main-container"
-        maxWidth={isCoverLetterPage ? false : 'xl'}
-        disableGutters={isCoverLetterPage}
+        maxWidth={isGeneratedDocumentPage ? false : 'xl'}
+        disableGutters={isGeneratedDocumentPage}
         sx={
-          isCoverLetterPage
+          isGeneratedDocumentPage
             ? { m: 0, p: 0, width: '100%', maxWidth: 'none' }
             : { mt: 4, mb: 4 }
         }

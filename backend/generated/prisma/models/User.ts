@@ -34,6 +34,7 @@ export type UserMinAggregateOutputType = {
   email: string | null
   passwordHash: string | null
   avatarUrl: string | null
+  aiProvider: $Enums.AiProvider | null
   isActive: boolean | null
   emailVerifiedAt: Date | null
   themePreference: $Enums.ThemePreference | null
@@ -55,6 +56,7 @@ export type UserMaxAggregateOutputType = {
   email: string | null
   passwordHash: string | null
   avatarUrl: string | null
+  aiProvider: $Enums.AiProvider | null
   isActive: boolean | null
   emailVerifiedAt: Date | null
   themePreference: $Enums.ThemePreference | null
@@ -76,6 +78,7 @@ export type UserCountAggregateOutputType = {
   email: number
   passwordHash: number
   avatarUrl: number
+  aiProvider: number
   isActive: number
   emailVerifiedAt: number
   themePreference: number
@@ -99,6 +102,7 @@ export type UserMinAggregateInputType = {
   email?: true
   passwordHash?: true
   avatarUrl?: true
+  aiProvider?: true
   isActive?: true
   emailVerifiedAt?: true
   themePreference?: true
@@ -120,6 +124,7 @@ export type UserMaxAggregateInputType = {
   email?: true
   passwordHash?: true
   avatarUrl?: true
+  aiProvider?: true
   isActive?: true
   emailVerifiedAt?: true
   themePreference?: true
@@ -141,6 +146,7 @@ export type UserCountAggregateInputType = {
   email?: true
   passwordHash?: true
   avatarUrl?: true
+  aiProvider?: true
   isActive?: true
   emailVerifiedAt?: true
   themePreference?: true
@@ -235,6 +241,7 @@ export type UserGroupByOutputType = {
   email: string
   passwordHash: string
   avatarUrl: string | null
+  aiProvider: $Enums.AiProvider
   isActive: boolean
   emailVerifiedAt: Date | null
   themePreference: $Enums.ThemePreference
@@ -277,6 +284,7 @@ export type UserWhereInput = {
   email?: Prisma.StringFilter<"User"> | string
   passwordHash?: Prisma.StringFilter<"User"> | string
   avatarUrl?: Prisma.StringNullableFilter<"User"> | string | null
+  aiProvider?: Prisma.EnumAiProviderFilter<"User"> | $Enums.AiProvider
   isActive?: Prisma.BoolFilter<"User"> | boolean
   emailVerifiedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFilter<"User"> | $Enums.ThemePreference
@@ -309,6 +317,7 @@ export type UserOrderByWithRelationInput = {
   email?: Prisma.SortOrder
   passwordHash?: Prisma.SortOrder
   avatarUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  aiProvider?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   emailVerifiedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   themePreference?: Prisma.SortOrder
@@ -344,6 +353,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   hometown?: Prisma.StringFilter<"User"> | string
   passwordHash?: Prisma.StringFilter<"User"> | string
   avatarUrl?: Prisma.StringNullableFilter<"User"> | string | null
+  aiProvider?: Prisma.EnumAiProviderFilter<"User"> | $Enums.AiProvider
   isActive?: Prisma.BoolFilter<"User"> | boolean
   emailVerifiedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFilter<"User"> | $Enums.ThemePreference
@@ -376,6 +386,7 @@ export type UserOrderByWithAggregationInput = {
   email?: Prisma.SortOrder
   passwordHash?: Prisma.SortOrder
   avatarUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  aiProvider?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   emailVerifiedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   themePreference?: Prisma.SortOrder
@@ -403,6 +414,7 @@ export type UserScalarWhereWithAggregatesInput = {
   email?: Prisma.StringWithAggregatesFilter<"User"> | string
   passwordHash?: Prisma.StringWithAggregatesFilter<"User"> | string
   avatarUrl?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  aiProvider?: Prisma.EnumAiProviderWithAggregatesFilter<"User"> | $Enums.AiProvider
   isActive?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
   emailVerifiedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceWithAggregatesFilter<"User"> | $Enums.ThemePreference
@@ -424,6 +436,7 @@ export type UserCreateInput = {
   email: string
   passwordHash: string
   avatarUrl?: string | null
+  aiProvider?: $Enums.AiProvider
   isActive?: boolean
   emailVerifiedAt?: Date | string | null
   themePreference?: $Enums.ThemePreference
@@ -456,6 +469,7 @@ export type UserUncheckedCreateInput = {
   email: string
   passwordHash: string
   avatarUrl?: string | null
+  aiProvider?: $Enums.AiProvider
   isActive?: boolean
   emailVerifiedAt?: Date | string | null
   themePreference?: $Enums.ThemePreference
@@ -488,6 +502,7 @@ export type UserUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiProvider?: Prisma.EnumAiProviderFieldUpdateOperationsInput | $Enums.AiProvider
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
@@ -520,6 +535,7 @@ export type UserUncheckedUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiProvider?: Prisma.EnumAiProviderFieldUpdateOperationsInput | $Enums.AiProvider
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
@@ -552,6 +568,7 @@ export type UserCreateManyInput = {
   email: string
   passwordHash: string
   avatarUrl?: string | null
+  aiProvider?: $Enums.AiProvider
   isActive?: boolean
   emailVerifiedAt?: Date | string | null
   themePreference?: $Enums.ThemePreference
@@ -573,6 +590,7 @@ export type UserUpdateManyMutationInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiProvider?: Prisma.EnumAiProviderFieldUpdateOperationsInput | $Enums.AiProvider
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
@@ -594,6 +612,7 @@ export type UserUncheckedUpdateManyInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiProvider?: Prisma.EnumAiProviderFieldUpdateOperationsInput | $Enums.AiProvider
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
@@ -620,6 +639,7 @@ export type UserCountOrderByAggregateInput = {
   email?: Prisma.SortOrder
   passwordHash?: Prisma.SortOrder
   avatarUrl?: Prisma.SortOrder
+  aiProvider?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   emailVerifiedAt?: Prisma.SortOrder
   themePreference?: Prisma.SortOrder
@@ -641,6 +661,7 @@ export type UserMaxOrderByAggregateInput = {
   email?: Prisma.SortOrder
   passwordHash?: Prisma.SortOrder
   avatarUrl?: Prisma.SortOrder
+  aiProvider?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   emailVerifiedAt?: Prisma.SortOrder
   themePreference?: Prisma.SortOrder
@@ -662,6 +683,7 @@ export type UserMinOrderByAggregateInput = {
   email?: Prisma.SortOrder
   passwordHash?: Prisma.SortOrder
   avatarUrl?: Prisma.SortOrder
+  aiProvider?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   emailVerifiedAt?: Prisma.SortOrder
   themePreference?: Prisma.SortOrder
@@ -813,6 +835,10 @@ export type UserUpdateOneRequiredWithoutTechnologySkillsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutTechnologySkillsInput, Prisma.UserUpdateWithoutTechnologySkillsInput>, Prisma.UserUncheckedUpdateWithoutTechnologySkillsInput>
 }
 
+export type EnumAiProviderFieldUpdateOperationsInput = {
+  set?: $Enums.AiProvider
+}
+
 export type BoolFieldUpdateOperationsInput = {
   set?: boolean
 }
@@ -849,6 +875,7 @@ export type UserCreateWithoutCertificationsInput = {
   email: string
   passwordHash: string
   avatarUrl?: string | null
+  aiProvider?: $Enums.AiProvider
   isActive?: boolean
   emailVerifiedAt?: Date | string | null
   themePreference?: $Enums.ThemePreference
@@ -880,6 +907,7 @@ export type UserUncheckedCreateWithoutCertificationsInput = {
   email: string
   passwordHash: string
   avatarUrl?: string | null
+  aiProvider?: $Enums.AiProvider
   isActive?: boolean
   emailVerifiedAt?: Date | string | null
   themePreference?: $Enums.ThemePreference
@@ -927,6 +955,7 @@ export type UserUpdateWithoutCertificationsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiProvider?: Prisma.EnumAiProviderFieldUpdateOperationsInput | $Enums.AiProvider
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
@@ -958,6 +987,7 @@ export type UserUncheckedUpdateWithoutCertificationsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiProvider?: Prisma.EnumAiProviderFieldUpdateOperationsInput | $Enums.AiProvider
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
@@ -989,6 +1019,7 @@ export type UserCreateWithoutCoursesInput = {
   email: string
   passwordHash: string
   avatarUrl?: string | null
+  aiProvider?: $Enums.AiProvider
   isActive?: boolean
   emailVerifiedAt?: Date | string | null
   themePreference?: $Enums.ThemePreference
@@ -1020,6 +1051,7 @@ export type UserUncheckedCreateWithoutCoursesInput = {
   email: string
   passwordHash: string
   avatarUrl?: string | null
+  aiProvider?: $Enums.AiProvider
   isActive?: boolean
   emailVerifiedAt?: Date | string | null
   themePreference?: $Enums.ThemePreference
@@ -1067,6 +1099,7 @@ export type UserUpdateWithoutCoursesInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiProvider?: Prisma.EnumAiProviderFieldUpdateOperationsInput | $Enums.AiProvider
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
@@ -1098,6 +1131,7 @@ export type UserUncheckedUpdateWithoutCoursesInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiProvider?: Prisma.EnumAiProviderFieldUpdateOperationsInput | $Enums.AiProvider
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
@@ -1129,6 +1163,7 @@ export type UserCreateWithoutEducationInput = {
   email: string
   passwordHash: string
   avatarUrl?: string | null
+  aiProvider?: $Enums.AiProvider
   isActive?: boolean
   emailVerifiedAt?: Date | string | null
   themePreference?: $Enums.ThemePreference
@@ -1160,6 +1195,7 @@ export type UserUncheckedCreateWithoutEducationInput = {
   email: string
   passwordHash: string
   avatarUrl?: string | null
+  aiProvider?: $Enums.AiProvider
   isActive?: boolean
   emailVerifiedAt?: Date | string | null
   themePreference?: $Enums.ThemePreference
@@ -1207,6 +1243,7 @@ export type UserUpdateWithoutEducationInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiProvider?: Prisma.EnumAiProviderFieldUpdateOperationsInput | $Enums.AiProvider
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
@@ -1238,6 +1275,7 @@ export type UserUncheckedUpdateWithoutEducationInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiProvider?: Prisma.EnumAiProviderFieldUpdateOperationsInput | $Enums.AiProvider
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
@@ -1269,6 +1307,7 @@ export type UserCreateWithoutGeneratedCvsInput = {
   email: string
   passwordHash: string
   avatarUrl?: string | null
+  aiProvider?: $Enums.AiProvider
   isActive?: boolean
   emailVerifiedAt?: Date | string | null
   themePreference?: $Enums.ThemePreference
@@ -1300,6 +1339,7 @@ export type UserUncheckedCreateWithoutGeneratedCvsInput = {
   email: string
   passwordHash: string
   avatarUrl?: string | null
+  aiProvider?: $Enums.AiProvider
   isActive?: boolean
   emailVerifiedAt?: Date | string | null
   themePreference?: $Enums.ThemePreference
@@ -1347,6 +1387,7 @@ export type UserUpdateWithoutGeneratedCvsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiProvider?: Prisma.EnumAiProviderFieldUpdateOperationsInput | $Enums.AiProvider
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
@@ -1378,6 +1419,7 @@ export type UserUncheckedUpdateWithoutGeneratedCvsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiProvider?: Prisma.EnumAiProviderFieldUpdateOperationsInput | $Enums.AiProvider
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
@@ -1409,6 +1451,7 @@ export type UserCreateWithoutGeneratedMotivationLettersInput = {
   email: string
   passwordHash: string
   avatarUrl?: string | null
+  aiProvider?: $Enums.AiProvider
   isActive?: boolean
   emailVerifiedAt?: Date | string | null
   themePreference?: $Enums.ThemePreference
@@ -1440,6 +1483,7 @@ export type UserUncheckedCreateWithoutGeneratedMotivationLettersInput = {
   email: string
   passwordHash: string
   avatarUrl?: string | null
+  aiProvider?: $Enums.AiProvider
   isActive?: boolean
   emailVerifiedAt?: Date | string | null
   themePreference?: $Enums.ThemePreference
@@ -1487,6 +1531,7 @@ export type UserUpdateWithoutGeneratedMotivationLettersInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiProvider?: Prisma.EnumAiProviderFieldUpdateOperationsInput | $Enums.AiProvider
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
@@ -1518,6 +1563,7 @@ export type UserUncheckedUpdateWithoutGeneratedMotivationLettersInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiProvider?: Prisma.EnumAiProviderFieldUpdateOperationsInput | $Enums.AiProvider
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
@@ -1549,6 +1595,7 @@ export type UserCreateWithoutJobOffersInput = {
   email: string
   passwordHash: string
   avatarUrl?: string | null
+  aiProvider?: $Enums.AiProvider
   isActive?: boolean
   emailVerifiedAt?: Date | string | null
   themePreference?: $Enums.ThemePreference
@@ -1580,6 +1627,7 @@ export type UserUncheckedCreateWithoutJobOffersInput = {
   email: string
   passwordHash: string
   avatarUrl?: string | null
+  aiProvider?: $Enums.AiProvider
   isActive?: boolean
   emailVerifiedAt?: Date | string | null
   themePreference?: $Enums.ThemePreference
@@ -1627,6 +1675,7 @@ export type UserUpdateWithoutJobOffersInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiProvider?: Prisma.EnumAiProviderFieldUpdateOperationsInput | $Enums.AiProvider
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
@@ -1658,6 +1707,7 @@ export type UserUncheckedUpdateWithoutJobOffersInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiProvider?: Prisma.EnumAiProviderFieldUpdateOperationsInput | $Enums.AiProvider
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
@@ -1689,6 +1739,7 @@ export type UserCreateWithoutLanguageSkillsInput = {
   email: string
   passwordHash: string
   avatarUrl?: string | null
+  aiProvider?: $Enums.AiProvider
   isActive?: boolean
   emailVerifiedAt?: Date | string | null
   themePreference?: $Enums.ThemePreference
@@ -1720,6 +1771,7 @@ export type UserUncheckedCreateWithoutLanguageSkillsInput = {
   email: string
   passwordHash: string
   avatarUrl?: string | null
+  aiProvider?: $Enums.AiProvider
   isActive?: boolean
   emailVerifiedAt?: Date | string | null
   themePreference?: $Enums.ThemePreference
@@ -1767,6 +1819,7 @@ export type UserUpdateWithoutLanguageSkillsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiProvider?: Prisma.EnumAiProviderFieldUpdateOperationsInput | $Enums.AiProvider
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
@@ -1798,6 +1851,7 @@ export type UserUncheckedUpdateWithoutLanguageSkillsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiProvider?: Prisma.EnumAiProviderFieldUpdateOperationsInput | $Enums.AiProvider
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
@@ -1829,6 +1883,7 @@ export type UserCreateWithoutProjectsInput = {
   email: string
   passwordHash: string
   avatarUrl?: string | null
+  aiProvider?: $Enums.AiProvider
   isActive?: boolean
   emailVerifiedAt?: Date | string | null
   themePreference?: $Enums.ThemePreference
@@ -1860,6 +1915,7 @@ export type UserUncheckedCreateWithoutProjectsInput = {
   email: string
   passwordHash: string
   avatarUrl?: string | null
+  aiProvider?: $Enums.AiProvider
   isActive?: boolean
   emailVerifiedAt?: Date | string | null
   themePreference?: $Enums.ThemePreference
@@ -1907,6 +1963,7 @@ export type UserUpdateWithoutProjectsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiProvider?: Prisma.EnumAiProviderFieldUpdateOperationsInput | $Enums.AiProvider
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
@@ -1938,6 +1995,7 @@ export type UserUncheckedUpdateWithoutProjectsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiProvider?: Prisma.EnumAiProviderFieldUpdateOperationsInput | $Enums.AiProvider
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
@@ -1969,6 +2027,7 @@ export type UserCreateWithoutSocialLinksInput = {
   email: string
   passwordHash: string
   avatarUrl?: string | null
+  aiProvider?: $Enums.AiProvider
   isActive?: boolean
   emailVerifiedAt?: Date | string | null
   themePreference?: $Enums.ThemePreference
@@ -2000,6 +2059,7 @@ export type UserUncheckedCreateWithoutSocialLinksInput = {
   email: string
   passwordHash: string
   avatarUrl?: string | null
+  aiProvider?: $Enums.AiProvider
   isActive?: boolean
   emailVerifiedAt?: Date | string | null
   themePreference?: $Enums.ThemePreference
@@ -2047,6 +2107,7 @@ export type UserUpdateWithoutSocialLinksInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiProvider?: Prisma.EnumAiProviderFieldUpdateOperationsInput | $Enums.AiProvider
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
@@ -2078,6 +2139,7 @@ export type UserUncheckedUpdateWithoutSocialLinksInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiProvider?: Prisma.EnumAiProviderFieldUpdateOperationsInput | $Enums.AiProvider
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
@@ -2109,6 +2171,7 @@ export type UserCreateWithoutTechnologySkillsInput = {
   email: string
   passwordHash: string
   avatarUrl?: string | null
+  aiProvider?: $Enums.AiProvider
   isActive?: boolean
   emailVerifiedAt?: Date | string | null
   themePreference?: $Enums.ThemePreference
@@ -2140,6 +2203,7 @@ export type UserUncheckedCreateWithoutTechnologySkillsInput = {
   email: string
   passwordHash: string
   avatarUrl?: string | null
+  aiProvider?: $Enums.AiProvider
   isActive?: boolean
   emailVerifiedAt?: Date | string | null
   themePreference?: $Enums.ThemePreference
@@ -2187,6 +2251,7 @@ export type UserUpdateWithoutTechnologySkillsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiProvider?: Prisma.EnumAiProviderFieldUpdateOperationsInput | $Enums.AiProvider
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
@@ -2218,6 +2283,7 @@ export type UserUncheckedUpdateWithoutTechnologySkillsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiProvider?: Prisma.EnumAiProviderFieldUpdateOperationsInput | $Enums.AiProvider
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
@@ -2249,6 +2315,7 @@ export type UserCreateWithoutWorkExperiencesInput = {
   email: string
   passwordHash: string
   avatarUrl?: string | null
+  aiProvider?: $Enums.AiProvider
   isActive?: boolean
   emailVerifiedAt?: Date | string | null
   themePreference?: $Enums.ThemePreference
@@ -2280,6 +2347,7 @@ export type UserUncheckedCreateWithoutWorkExperiencesInput = {
   email: string
   passwordHash: string
   avatarUrl?: string | null
+  aiProvider?: $Enums.AiProvider
   isActive?: boolean
   emailVerifiedAt?: Date | string | null
   themePreference?: $Enums.ThemePreference
@@ -2327,6 +2395,7 @@ export type UserUpdateWithoutWorkExperiencesInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiProvider?: Prisma.EnumAiProviderFieldUpdateOperationsInput | $Enums.AiProvider
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
@@ -2358,6 +2427,7 @@ export type UserUncheckedUpdateWithoutWorkExperiencesInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiProvider?: Prisma.EnumAiProviderFieldUpdateOperationsInput | $Enums.AiProvider
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   emailVerifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   themePreference?: Prisma.EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
@@ -2510,6 +2580,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   email?: boolean
   passwordHash?: boolean
   avatarUrl?: boolean
+  aiProvider?: boolean
   isActive?: boolean
   emailVerifiedAt?: boolean
   themePreference?: boolean
@@ -2543,6 +2614,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   email?: boolean
   passwordHash?: boolean
   avatarUrl?: boolean
+  aiProvider?: boolean
   isActive?: boolean
   emailVerifiedAt?: boolean
   themePreference?: boolean
@@ -2564,6 +2636,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   email?: boolean
   passwordHash?: boolean
   avatarUrl?: boolean
+  aiProvider?: boolean
   isActive?: boolean
   emailVerifiedAt?: boolean
   themePreference?: boolean
@@ -2585,6 +2658,7 @@ export type UserSelectScalar = {
   email?: boolean
   passwordHash?: boolean
   avatarUrl?: boolean
+  aiProvider?: boolean
   isActive?: boolean
   emailVerifiedAt?: boolean
   themePreference?: boolean
@@ -2596,7 +2670,7 @@ export type UserSelectScalar = {
   deletedAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "surname" | "mobilePhone" | "hometown" | "username" | "email" | "passwordHash" | "avatarUrl" | "isActive" | "emailVerifiedAt" | "themePreference" | "locale" | "timezone" | "lastLoginAt" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "surname" | "mobilePhone" | "hometown" | "username" | "email" | "passwordHash" | "avatarUrl" | "aiProvider" | "isActive" | "emailVerifiedAt" | "themePreference" | "locale" | "timezone" | "lastLoginAt" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   socialLinks?: boolean | Prisma.User$socialLinksArgs<ExtArgs>
   technologySkills?: boolean | Prisma.User$technologySkillsArgs<ExtArgs>
@@ -2639,6 +2713,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     email: string
     passwordHash: string
     avatarUrl: string | null
+    aiProvider: $Enums.AiProvider
     isActive: boolean
     emailVerifiedAt: Date | null
     themePreference: $Enums.ThemePreference
@@ -3091,6 +3166,7 @@ export interface UserFieldRefs {
   readonly email: Prisma.FieldRef<"User", 'String'>
   readonly passwordHash: Prisma.FieldRef<"User", 'String'>
   readonly avatarUrl: Prisma.FieldRef<"User", 'String'>
+  readonly aiProvider: Prisma.FieldRef<"User", 'AiProvider'>
   readonly isActive: Prisma.FieldRef<"User", 'Boolean'>
   readonly emailVerifiedAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly themePreference: Prisma.FieldRef<"User", 'ThemePreference'>

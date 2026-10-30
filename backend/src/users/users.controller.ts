@@ -19,7 +19,7 @@ import { JwtAuthGuard } from '../auth/guard/jwt-auth.guard';
 import { UpdateProfileDto } from './dto/update-profile.dto';
 
 const MAX_AVATAR_SIZE = 2 * 1024 * 1024;
-const AVATAR_DIRECTORY = resolve(__dirname, '../../uploads/avatars');
+const AVATAR_DIRECTORY = resolve(__dirname, '../../dist/uploads/avatars');
 const AVATAR_EXTENSIONS: Record<string, string> = {
   'image/jpeg': '.jpg',
   'image/png': '.png',

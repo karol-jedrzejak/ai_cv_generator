@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import Link from 'next/link';
+import { useCallback, useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import {
   Alert,
   Box,
@@ -21,18 +21,18 @@ import {
   Stack,
   Tooltip,
   Typography,
-} from '@mui/material';
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutlined';
-import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+} from "@mui/material";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutlined";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import {
   generatedCvsApi,
   generatedMotivationLettersApi,
   generationLanguagesApi,
-} from '@/lib/api/job-offer-documents';
-import type { Language } from '@/types/language-skill';
-import type { GeneratedJobOfferDocumentSummary } from '@/types/generated-job-offer-document';
+} from "@/lib/api/job-offer-documents";
+import type { Language } from "@/types/language-skill";
+import type { GeneratedJobOfferDocumentSummary } from "@/types/generated-job-offer-document";
 
-type DocumentKind = 'cv' | 'motivation-letter';
+type DocumentKind = "cv" | "motivation-letter";
 
 interface Props {
   jobOfferId: string;
@@ -40,12 +40,12 @@ interface Props {
 
 const documentApis = {
   cv: generatedCvsApi,
-  'motivation-letter': generatedMotivationLettersApi,
+  "motivation-letter": generatedMotivationLettersApi,
 };
 
 const documentLabels = {
-  cv: 'CV',
-  'motivation-letter': 'List motywacyjny',
+  cv: "CV",
+  "motivation-letter": "List motywacyjny",
 };
 
 export default function GeneratedJobOfferDocuments({ jobOfferId }: Props) {
@@ -57,10 +57,12 @@ export default function GeneratedJobOfferDocuments({ jobOfferId }: Props) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [dialogKind, setDialogKind] = useState<DocumentKind | null>(null);
-  const [languageId, setLanguageId] = useState('');
-  const [generating, setGenerating] = useState(false);
+  const [languageId, setLanguageId] = useState("");
   const [deleting, setDeleting] = useState(false);
   const [actionError, setActionError] = useState<string | null>(null);
+  const [pendingDocuments, setPendingDocuments] = useState<
+    Array<{ kind: DocumentKind; languageId: string; languageName: string }>
+  >([]);
   const [selectedDocument, setSelectedDocument] = useState<{
     kind: DocumentKind;
     document: GeneratedJobOfferDocumentSummary;
@@ -94,7 +96,7 @@ export default function GeneratedJobOfferDocuments({ jobOfferId }: Props) {
       setError(
         err instanceof Error
           ? err.message
-          : 'Nie udało się pobrać wygenerowanych dokumentów.',
+          : "Nie udało się pobrać wygenerowanych dokumentów.",
       );
     }
   }, [applyDocuments, fetchDocuments]);
@@ -109,7 +111,7 @@ export default function GeneratedJobOfferDocuments({ jobOfferId }: Props) {
           setError(
             err instanceof Error
               ? err.message
-              : 'Nie udało się pobrać wygenerowanych dokumentów.',
+              : "Nie udało się pobrać wygenerowanych dokumentów.",
           );
         }
       } finally {
@@ -124,28 +126,73 @@ export default function GeneratedJobOfferDocuments({ jobOfferId }: Props) {
   }, [applyDocuments, fetchDocuments]);
 
   const existingLanguageIds = useMemo(() => {
-    const docs = dialogKind === 'cv' ? cvs : motivationLetters;
-    return new Set(docs.map((document) => document.languageId));
-  }, [cvs, dialogKind, motivationLetters]);
+    const docs = dialogKind === "cv" ? cvs : motivationLetters;
+    const pending = pendingDocuments
+      .filter((document) => document.kind === dialogKind)
+      .map((document) => document.languageId);
+    return new Set([
+      ...docs.map((document) => document.languageId),
+      ...pending,
+    ]);
+  }, [cvs, dialogKind, motivationLetters, pendingDocuments]);
 
   const handleGenerate = async () => {
     if (!dialogKind || !languageId) return;
-    setGenerating(true);
+    const kind = dialogKind;
+    const selectedLanguageId = languageId;
+    const selectedLanguage = languages.find(
+      (language) => language.id === selectedLanguageId,
+    );
+    if (!selectedLanguage) return;
+    setPendingDocuments((items) => [
+      ...items,
+      {
+        kind,
+        languageId: selectedLanguageId,
+        languageName: selectedLanguage.name ?? "Język bez nazwy",
+      },
+    ]);
+    setDialogKind(null);
+    setLanguageId("");
     setActionError(null);
     try {
-      await documentApis[dialogKind].generate(jobOfferId, languageId);
-      setDialogKind(null);
-      setLanguageId('');
+      const generatedDocument = await documentApis[kind].generate(
+        jobOfferId,
+        selectedLanguageId,
+      );
+      const summary = {
+        id: generatedDocument.id,
+        jobOfferId: generatedDocument.jobOfferId,
+        languageId: generatedDocument.languageId,
+        description: generatedDocument.description,
+        createdAt: generatedDocument.createdAt,
+        language: generatedDocument.language,
+      };
+      if (kind === "cv") {
+        setCvs((items) => [
+          summary,
+          ...items.filter((item) => item.id !== summary.id),
+        ]);
+      } else {
+        setMotivationLetters((items) => [
+          summary,
+          ...items.filter((item) => item.id !== summary.id),
+        ]);
+      }
       setError(null);
-      await loadDocuments();
     } catch (err) {
       setActionError(
         err instanceof Error
           ? err.message
-          : `Nie udało się wygenerować: ${documentLabels[dialogKind]}.`,
+          : `Nie udało się wygenerować: ${documentLabels[kind]}.`,
       );
     } finally {
-      setGenerating(false);
+      setPendingDocuments((items) =>
+        items.filter(
+          (item) =>
+            item.kind !== kind || item.languageId !== selectedLanguageId,
+        ),
+      );
     }
   };
 
@@ -158,7 +205,7 @@ export default function GeneratedJobOfferDocuments({ jobOfferId }: Props) {
         jobOfferId,
         selectedDocument.document.id,
       );
-      if (selectedDocument.kind === 'cv') {
+      if (selectedDocument.kind === "cv") {
         setCvs((items) =>
           items.filter((item) => item.id !== selectedDocument.document.id),
         );
@@ -187,7 +234,8 @@ export default function GeneratedJobOfferDocuments({ jobOfferId }: Props) {
       <Typography variant="subtitle2" sx={{ fontWeight: 700, mb: 0.5 }}>
         {documentLabels[kind]} ({documents.length})
       </Typography>
-      {documents.length === 0 ? (
+      {documents.length === 0 &&
+      !pendingDocuments.some((document) => document.kind === kind) ? (
         <Typography variant="body2" color="text.secondary">
           Brak wygenerowanych dokumentów.
         </Typography>
@@ -198,27 +246,27 @@ export default function GeneratedJobOfferDocuments({ jobOfferId }: Props) {
               key={document.id}
               direction="row"
               spacing={1}
-              sx={{ alignItems: 'center', minWidth: 0 }}
+              sx={{ alignItems: "center", minWidth: 0 }}
             >
               <MuiLink
                 component={Link}
-                href={`/dashboard/job-offers/${jobOfferId}/${kind === 'cv' ? 'generated-cvs' : 'generated-motivation-letters'}/${document.id}`}
+                href={`/dashboard/job-offers/${jobOfferId}/${kind === "cv" ? "generated-cvs" : "generated-motivation-letters"}/${document.id}`}
                 underline="hover"
                 sx={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
+                  display: "inline-flex",
+                  alignItems: "center",
                   gap: 0.5,
                   minWidth: 0,
                 }}
               >
-                {document.language.name ?? 'Język bez nazwy'}
+                {document.language.name ?? "Język bez nazwy"}
                 <OpenInNewIcon sx={{ fontSize: 15 }} />
               </MuiLink>
               <Tooltip title={`Usuń ${documentLabels[kind]}`}>
                 <IconButton
                   size="small"
                   color="error"
-                  aria-label={`Usuń ${documentLabels[kind]} (${document.language.name ?? 'język bez nazwy'})`}
+                  aria-label={`Usuń ${documentLabels[kind]} (${document.language.name ?? "język bez nazwy"})`}
                   onClick={() => {
                     setActionError(null);
                     setSelectedDocument({ kind, document });
@@ -229,6 +277,26 @@ export default function GeneratedJobOfferDocuments({ jobOfferId }: Props) {
               </Tooltip>
             </Stack>
           ))}
+          {pendingDocuments
+            .filter((document) => document.kind === kind)
+            .map((document) => (
+              <Stack
+                key={`pending-${kind}-${document.languageId}`}
+                direction="row"
+                spacing={1}
+                sx={{ alignItems: "center", minWidth: 0 }}
+              >
+                <CircularProgress size={16} />
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  aria-live="polite"
+                >
+                  {document.languageName} — trwa generowanie; może to potrwać
+                  kilka minut.
+                </Typography>
+              </Stack>
+            ))}
         </Stack>
       )}
     </Box>
@@ -237,17 +305,17 @@ export default function GeneratedJobOfferDocuments({ jobOfferId }: Props) {
   return (
     <Box sx={{ mt: 2 }}>
       <Stack
-        direction={{ xs: 'column', sm: 'row' }}
+        direction={{ xs: "column", sm: "row" }}
         spacing={2}
-        sx={{ alignItems: { sm: 'flex-start' } }}
+        sx={{ alignItems: { sm: "flex-start" } }}
       >
         <Button
           size="small"
           variant="outlined"
           onClick={() => {
             setActionError(null);
-            setLanguageId('');
-            setDialogKind('cv');
+            setLanguageId("");
+            setDialogKind("cv");
           }}
           disabled={loading || languages.length === 0}
         >
@@ -258,14 +326,20 @@ export default function GeneratedJobOfferDocuments({ jobOfferId }: Props) {
           variant="outlined"
           onClick={() => {
             setActionError(null);
-            setLanguageId('');
-            setDialogKind('motivation-letter');
+            setLanguageId("");
+            setDialogKind("motivation-letter");
           }}
           disabled={loading || languages.length === 0}
         >
           Generuj list motywacyjny
         </Button>
       </Stack>
+
+      {actionError && (
+        <Alert severity="error" sx={{ mt: 2 }}>
+          Generowanie nie powiodło się. {actionError}
+        </Alert>
+      )}
 
       {loading ? (
         <CircularProgress size={20} sx={{ mt: 2 }} />
@@ -287,23 +361,23 @@ export default function GeneratedJobOfferDocuments({ jobOfferId }: Props) {
         </Alert>
       ) : (
         <Stack
-          direction={{ xs: 'column', md: 'row' }}
+          direction={{ xs: "column", md: "row" }}
           spacing={3}
           sx={{ mt: 2 }}
         >
-          {renderDocuments('cv', cvs)}
-          {renderDocuments('motivation-letter', motivationLetters)}
+          {renderDocuments("cv", cvs)}
+          {renderDocuments("motivation-letter", motivationLetters)}
         </Stack>
       )}
 
       <Dialog
         open={dialogKind !== null}
-        onClose={generating ? undefined : () => setDialogKind(null)}
+        onClose={() => setDialogKind(null)}
         fullWidth
         maxWidth="xs"
       >
         <DialogTitle>
-          Wybierz język — {dialogKind ? documentLabels[dialogKind] : ''}
+          Wybierz język — {dialogKind ? documentLabels[dialogKind] : ""}
         </DialogTitle>
         <DialogContent>
           <FormControl fullWidth sx={{ mt: 1 }}>
@@ -315,7 +389,6 @@ export default function GeneratedJobOfferDocuments({ jobOfferId }: Props) {
               value={languageId}
               label="Język"
               onChange={(event) => setLanguageId(event.target.value)}
-              disabled={generating}
             >
               {languages.map((language) => {
                 const unavailable = existingLanguageIds.has(language.id);
@@ -325,8 +398,8 @@ export default function GeneratedJobOfferDocuments({ jobOfferId }: Props) {
                     value={language.id}
                     disabled={unavailable}
                   >
-                    {language.name ?? 'Język bez nazwy'}
-                    {unavailable ? ' — dokument już istnieje' : ''}
+                    {language.name ?? "Język bez nazwy"}
+                    {unavailable ? " — dokument już istnieje" : ""}
                   </MenuItem>
                 );
               })}
@@ -344,15 +417,13 @@ export default function GeneratedJobOfferDocuments({ jobOfferId }: Props) {
           )}
         </DialogContent>
         <DialogActions sx={{ p: 2.5, pt: 1 }}>
-          <Button onClick={() => setDialogKind(null)} disabled={generating}>
-            Anuluj
-          </Button>
+          <Button onClick={() => setDialogKind(null)}>Anuluj</Button>
           <Button
             variant="contained"
             onClick={() => void handleGenerate()}
-            disabled={generating || !languageId}
+            disabled={!languageId}
           >
-            {generating ? 'Generowanie...' : 'Generuj'}
+            Generuj
           </Button>
         </DialogActions>
       </Dialog>
@@ -366,10 +437,10 @@ export default function GeneratedJobOfferDocuments({ jobOfferId }: Props) {
         <DialogTitle>Usunąć wygenerowany dokument?</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Usunąć {selectedDocument && documentLabels[selectedDocument.kind]}{' '}
-            dla języka{' '}
+            Usunąć {selectedDocument && documentLabels[selectedDocument.kind]}{" "}
+            dla języka{" "}
             <strong>
-              {selectedDocument?.document.language.name ?? 'bez nazwy'}
+              {selectedDocument?.document.language.name ?? "bez nazwy"}
             </strong>
             ?
           </DialogContentText>
@@ -389,7 +460,7 @@ export default function GeneratedJobOfferDocuments({ jobOfferId }: Props) {
             onClick={() => void handleDelete()}
             disabled={deleting}
           >
-            {deleting ? 'Usuwanie...' : 'Usuń'}
+            {deleting ? "Usuwanie..." : "Usuń"}
           </Button>
         </DialogActions>
       </Dialog>

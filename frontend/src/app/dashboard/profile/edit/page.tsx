@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import {
   Avatar,
   Alert,
@@ -9,26 +9,33 @@ import {
   Button,
   CircularProgress,
   Divider,
+  FormControl,
+  FormHelperText,
+  InputLabel,
   Link,
+  MenuItem,
   Paper,
+  Select,
   Stack,
   TextField,
   Typography,
-} from '@mui/material';
-import NextLink from 'next/link';
-import SaveIcon from '@mui/icons-material/Save';
-import { userProfileApi } from '@/lib/api/user-profile';
-import type { UserProfile } from '@/types/user-profile';
+} from "@mui/material";
+import NextLink from "next/link";
+import SaveIcon from "@mui/icons-material/Save";
+import { userProfileApi } from "@/lib/api/user-profile";
+import type { UserProfile } from "@/types/user-profile";
 
 export default function EditProfilePage() {
   const [profile, setProfile] = useState<UserProfile | null>(null);
-  const [name, setName] = useState('');
-  const [surname, setSurname] = useState('');
-  const [email, setEmail] = useState('');
-  const [mobilePhone, setMobilePhone] = useState('');
-  const [hometown, setHometown] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
+  const [email, setEmail] = useState("");
+  const [mobilePhone, setMobilePhone] = useState("");
+  const [hometown, setHometown] = useState("");
+  const [aiProvider, setAiProvider] =
+    useState<UserProfile["aiProvider"]>("OLLAMA");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [uploadingPhoto, setUploadingPhoto] = useState(false);
@@ -47,13 +54,14 @@ export default function EditProfilePage() {
           setEmail(data.email);
           setMobilePhone(data.mobilePhone);
           setHometown(data.hometown);
+          setAiProvider(data.aiProvider);
         }
       } catch (err) {
         if (active) {
           setError(
             err instanceof Error
               ? err.message
-              : 'Nie udało się pobrać danych profilu.',
+              : "Nie udało się pobrać danych profilu.",
           );
         }
       } finally {
@@ -74,15 +82,15 @@ export default function EditProfilePage() {
 
     if (password || confirmPassword) {
       if (!password || !confirmPassword) {
-        setError('Wpisz nowe hasło w obu polach.');
+        setError("Wpisz nowe hasło w obu polach.");
         return;
       }
       if (password !== confirmPassword) {
-        setError('Hasła muszą być identyczne.');
+        setError("Hasła muszą być identyczne.");
         return;
       }
       if (password.length < 8) {
-        setError('Hasło musi mieć co najmniej 8 znaków.');
+        setError("Hasło musi mieć co najmniej 8 znaków.");
         return;
       }
     }
@@ -95,6 +103,7 @@ export default function EditProfilePage() {
         email: email.trim(),
         mobilePhone: mobilePhone.trim(),
         hometown: hometown.trim(),
+        aiProvider,
         ...(password && { password, confirmPassword }),
       });
       setProfile(updatedProfile);
@@ -103,14 +112,15 @@ export default function EditProfilePage() {
       setEmail(updatedProfile.email);
       setMobilePhone(updatedProfile.mobilePhone);
       setHometown(updatedProfile.hometown);
-      setPassword('');
-      setConfirmPassword('');
-      setSuccess('Dane profilu zostały zapisane.');
+      setAiProvider(updatedProfile.aiProvider);
+      setPassword("");
+      setConfirmPassword("");
+      setSuccess("Dane profilu zostały zapisane.");
     } catch (err) {
       setError(
         err instanceof Error
           ? err.message
-          : 'Nie udało się zapisać danych profilu.',
+          : "Nie udało się zapisać danych profilu.",
       );
     } finally {
       setSaving(false);
@@ -121,16 +131,16 @@ export default function EditProfilePage() {
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     const photo = event.target.files?.[0];
-    event.target.value = '';
+    event.target.value = "";
     if (!photo) return;
 
-    if (!['image/jpeg', 'image/png', 'image/webp'].includes(photo.type)) {
-      setError('Wybierz zdjęcie w formacie JPEG, PNG lub WebP.');
+    if (!["image/jpeg", "image/png", "image/webp"].includes(photo.type)) {
+      setError("Wybierz zdjęcie w formacie JPEG, PNG lub WebP.");
       setSuccess(null);
       return;
     }
     if (photo.size > 2 * 1024 * 1024) {
-      setError('Zdjęcie może mieć maksymalnie 2 MB.');
+      setError("Zdjęcie może mieć maksymalnie 2 MB.");
       setSuccess(null);
       return;
     }
@@ -141,12 +151,12 @@ export default function EditProfilePage() {
     try {
       const updatedProfile = await userProfileApi.uploadPhoto(photo);
       setProfile(updatedProfile);
-      setSuccess('Zdjęcie profilowe zostało zaktualizowane.');
+      setSuccess("Zdjęcie profilowe zostało zaktualizowane.");
     } catch (err) {
       setError(
         err instanceof Error
           ? err.message
-          : 'Nie udało się przesłać zdjęcia profilowego.',
+          : "Nie udało się przesłać zdjęcia profilowego.",
       );
     } finally {
       setUploadingPhoto(false);
@@ -168,12 +178,12 @@ export default function EditProfilePage() {
       </Breadcrumbs>
 
       {loading ? (
-        <Box sx={{ display: 'flex', justifyContent: 'center', py: 8 }}>
+        <Box sx={{ display: "flex", justifyContent: "center", py: 8 }}>
           <CircularProgress />
         </Box>
       ) : !profile ? (
         <Alert severity="error">
-          {error ?? 'Nie udało się załadować profilu.'}
+          {error ?? "Nie udało się załadować profilu."}
         </Alert>
       ) : (
         <Paper
@@ -193,9 +203,9 @@ export default function EditProfilePage() {
               {error && <Alert severity="error">{error}</Alert>}
               {success && <Alert severity="success">{success}</Alert>}
               <Stack
-                direction={{ xs: 'column', sm: 'row' }}
+                direction={{ xs: "column", sm: "row" }}
                 spacing={2.5}
-                sx={{ alignItems: { xs: 'flex-start', sm: 'center' } }}
+                sx={{ alignItems: { xs: "flex-start", sm: "center" } }}
               >
                 {profile.avatarUrl ? (
                   <Box
@@ -206,9 +216,9 @@ export default function EditProfilePage() {
                       width: 200,
                       height: 200,
                       flexShrink: 0,
-                      objectFit: 'cover',
+                      objectFit: "cover",
                       borderRadius: 2,
-                      bgcolor: 'action.hover',
+                      bgcolor: "action.hover",
                     }}
                   />
                 ) : (
@@ -234,9 +244,9 @@ export default function EditProfilePage() {
                     component="label"
                     variant="outlined"
                     disabled={uploadingPhoto || saving}
-                    sx={{ alignSelf: 'flex-start' }}
+                    sx={{ alignSelf: "flex-start" }}
                   >
-                    {uploadingPhoto ? 'Przesyłanie...' : 'Wybierz zdjęcie'}
+                    {uploadingPhoto ? "Przesyłanie..." : "Wybierz zdjęcie"}
                     <input
                       hidden
                       type="file"
@@ -247,7 +257,7 @@ export default function EditProfilePage() {
                 </Stack>
               </Stack>
               <Divider />
-              <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+              <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
                 <TextField
                   required
                   fullWidth
@@ -300,6 +310,27 @@ export default function EditProfilePage() {
                 slotProps={{ htmlInput: { maxLength: 100 } }}
                 disabled={saving || uploadingPhoto}
               />
+              <FormControl fullWidth disabled={saving || uploadingPhoto}>
+                <InputLabel id="ai-provider-label">Generator AI</InputLabel>
+                <Select
+                  labelId="ai-provider-label"
+                  value={aiProvider}
+                  label="Generator AI"
+                  onChange={(event) =>
+                    setAiProvider(
+                      event.target.value as UserProfile["aiProvider"],
+                    )
+                  }
+                >
+                  <MenuItem value="OLLAMA">Ollama (lokalny)</MenuItem>
+                  <MenuItem value="GOOGLE_AI_STUDIO">
+                    Google AI Studio (Gemini)
+                  </MenuItem>
+                </Select>
+                <FormHelperText>
+                  Google AI Studio wymaga klucza API w konfiguracji backendu.
+                </FormHelperText>
+              </FormControl>
               <Typography variant="h6" sx={{ fontWeight: 700, mt: 1 }}>
                 Zmiana hasła (opcjonalnie)
               </Typography>
@@ -329,9 +360,9 @@ export default function EditProfilePage() {
                 variant="contained"
                 startIcon={<SaveIcon />}
                 disabled={saving}
-                sx={{ alignSelf: { sm: 'flex-start' } }}
+                sx={{ alignSelf: { sm: "flex-start" } }}
               >
-                {saving ? 'Zapisywanie...' : 'Zapisz zmiany'}
+                {saving ? "Zapisywanie..." : "Zapisz zmiany"}
               </Button>
             </Stack>
           </Box>

@@ -11,6 +11,7 @@ model User {
   passwordHash      String @db.VarChar(255)
 
   avatarUrl         String? @db.VarChar(500)
+  aiProvider        AiProvider @default(OLLAMA)
 
   isActive          Boolean @default(true)
   emailVerifiedAt   DateTime?

@@ -27,6 +27,7 @@ export class UsersService {
     mobilePhone: true,
     hometown: true,
     avatarUrl: true,
+    aiProvider: true,
     updatedAt: true,
   };
 
@@ -84,6 +85,7 @@ export class UsersService {
       email,
       mobilePhone,
       hometown,
+      ...(dto.aiProvider !== undefined && { aiProvider: dto.aiProvider }),
       ...(dto.password !== undefined && {
         passwordHash: await bcrypt.hash(dto.password, this.saltRounds),
       }),
@@ -198,7 +200,7 @@ export class UsersService {
     }
     const filename = basename(avatarUrl);
     await this.removeUploadedFile(
-      resolve(__dirname, '../../uploads/avatars', filename),
+      resolve(__dirname, '../../dist/uploads/avatars', filename),
     );
   }
 
@@ -227,6 +229,7 @@ export class UsersService {
         mobilePhone: true,
         hometown: true,
         avatarUrl: true,
+        aiProvider: true,
         isActive: true,
         emailVerifiedAt: true,
         themePreference: true,

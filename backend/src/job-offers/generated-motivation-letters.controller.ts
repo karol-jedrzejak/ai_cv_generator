@@ -12,7 +12,7 @@ import {
 import type { Request } from 'express';
 import { JwtAuthGuard } from '../auth/guard/jwt-auth.guard';
 import { GenerateJobOfferDocumentDto } from './dto/generate-job-offer-document.dto';
-import { JobOffersService } from './job-offers.service';
+import { GeneratedMotivationLettersService } from './generated-motivation-letters.service';
 
 interface AuthenticatedRequest extends Request {
   user: { id: string };
@@ -21,14 +21,16 @@ interface AuthenticatedRequest extends Request {
 @UseGuards(JwtAuthGuard)
 @Controller('job-offers/:jobOfferId/generated-motivation-letters')
 export class GeneratedMotivationLettersController {
-  constructor(private readonly jobOffersService: JobOffersService) {}
+  constructor(
+    private readonly generatedLettersService: GeneratedMotivationLettersService,
+  ) {}
 
   @Get()
   getAll(
     @Req() req: AuthenticatedRequest,
     @Param('jobOfferId', ParseUUIDPipe) jobOfferId: string,
   ) {
-    return this.jobOffersService.findGeneratedMotivationLetters(
+    return this.generatedLettersService.findGeneratedMotivationLetters(
       req.user.id,
       jobOfferId,
     );
@@ -40,7 +42,7 @@ export class GeneratedMotivationLettersController {
     @Param('jobOfferId', ParseUUIDPipe) jobOfferId: string,
     @Body() dto: GenerateJobOfferDocumentDto,
   ) {
-    return this.jobOffersService.generateMotivationLetter(
+    return this.generatedLettersService.generateMotivationLetter(
       req.user.id,
       jobOfferId,
       dto.languageId,
@@ -53,7 +55,7 @@ export class GeneratedMotivationLettersController {
     @Param('jobOfferId', ParseUUIDPipe) jobOfferId: string,
     @Param('documentId', ParseUUIDPipe) documentId: string,
   ) {
-    return this.jobOffersService.findGeneratedMotivationLetter(
+    return this.generatedLettersService.findGeneratedMotivationLetter(
       req.user.id,
       jobOfferId,
       documentId,
@@ -66,7 +68,7 @@ export class GeneratedMotivationLettersController {
     @Param('jobOfferId', ParseUUIDPipe) jobOfferId: string,
     @Param('documentId', ParseUUIDPipe) documentId: string,
   ) {
-    return this.jobOffersService.removeGeneratedMotivationLetter(
+    return this.generatedLettersService.removeGeneratedMotivationLetter(
       req.user.id,
       jobOfferId,
       documentId,

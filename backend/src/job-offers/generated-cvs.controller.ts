@@ -12,7 +12,7 @@ import {
 import type { Request } from 'express';
 import { JwtAuthGuard } from '../auth/guard/jwt-auth.guard';
 import { GenerateJobOfferDocumentDto } from './dto/generate-job-offer-document.dto';
-import { JobOffersService } from './job-offers.service';
+import { GeneratedCvsService } from './generated-cvs.service';
 
 interface AuthenticatedRequest extends Request {
   user: { id: string };
@@ -21,14 +21,14 @@ interface AuthenticatedRequest extends Request {
 @UseGuards(JwtAuthGuard)
 @Controller('job-offers/:jobOfferId/generated-cvs')
 export class GeneratedCvsController {
-  constructor(private readonly jobOffersService: JobOffersService) {}
+  constructor(private readonly generatedCvsService: GeneratedCvsService) {}
 
   @Get()
   getAll(
     @Req() req: AuthenticatedRequest,
     @Param('jobOfferId', ParseUUIDPipe) jobOfferId: string,
   ) {
-    return this.jobOffersService.findGeneratedCvs(req.user.id, jobOfferId);
+    return this.generatedCvsService.findGeneratedCvs(req.user.id, jobOfferId);
   }
 
   @Post('generate')
@@ -37,7 +37,7 @@ export class GeneratedCvsController {
     @Param('jobOfferId', ParseUUIDPipe) jobOfferId: string,
     @Body() dto: GenerateJobOfferDocumentDto,
   ) {
-    return this.jobOffersService.generateCv(
+    return this.generatedCvsService.generateCv(
       req.user.id,
       jobOfferId,
       dto.languageId,
@@ -50,7 +50,7 @@ export class GeneratedCvsController {
     @Param('jobOfferId', ParseUUIDPipe) jobOfferId: string,
     @Param('documentId', ParseUUIDPipe) documentId: string,
   ) {
-    return this.jobOffersService.findGeneratedCv(
+    return this.generatedCvsService.findGeneratedCv(
       req.user.id,
       jobOfferId,
       documentId,
@@ -63,7 +63,7 @@ export class GeneratedCvsController {
     @Param('jobOfferId', ParseUUIDPipe) jobOfferId: string,
     @Param('documentId', ParseUUIDPipe) documentId: string,
   ) {
-    return this.jobOffersService.removeGeneratedCv(
+    return this.generatedCvsService.removeGeneratedCv(
       req.user.id,
       jobOfferId,
       documentId,

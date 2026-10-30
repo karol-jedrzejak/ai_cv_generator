@@ -1,4 +1,5 @@
 import {
+  IsEnum,
   IsEmail,
   IsOptional,
   IsString,
@@ -6,6 +7,7 @@ import {
   MaxLength,
   MinLength,
 } from 'class-validator';
+import { AiProvider } from '../../../generated/prisma/client';
 
 export class UpdateProfileDto {
   @IsString()
@@ -32,6 +34,10 @@ export class UpdateProfileDto {
   @MinLength(1)
   @MaxLength(100)
   hometown!: string;
+
+  @IsOptional()
+  @IsEnum(AiProvider)
+  aiProvider?: AiProvider;
 
   @IsOptional()
   @IsString()

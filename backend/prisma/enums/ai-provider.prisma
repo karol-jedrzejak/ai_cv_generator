@@ -1,0 +1,4 @@
+enum AiProvider {
+  OLLAMA
+  GOOGLE_AI_STUDIO
+}
