@@ -4,6 +4,7 @@ import {
   Logger,
   ServiceUnavailableException,
 } from '@nestjs/common';
+import type { Interactions } from '@google/genai';
 import { AiProvider } from '../../generated/prisma/client';
 import { GoogleAiStudioService } from './google-ai-studio.service';
 import { OllamaService } from '../ollama/ollama.service';
@@ -21,13 +22,18 @@ export class AiProviderService {
     provider: AiProvider,
     systemPrompt: string,
     userPrompt: string,
+    responseFormat: Interactions.TextResponseFormat,
   ): Promise<string> {
     try {
       switch (provider) {
         case AiProvider.OLLAMA:
           return await this.ollama.chat(systemPrompt, userPrompt);
         case AiProvider.GOOGLE_AI_STUDIO:
-          return await this.googleAiStudio.generate(systemPrompt, userPrompt);
+          return await this.googleAiStudio.generate(
+            systemPrompt,
+            userPrompt,
+            responseFormat,
+          );
         default:
           throw new ServiceUnavailableException(
             'The selected AI provider is not supported',

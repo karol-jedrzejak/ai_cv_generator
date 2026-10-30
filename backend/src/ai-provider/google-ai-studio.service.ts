@@ -4,6 +4,7 @@ import {
   Logger,
   ServiceUnavailableException,
 } from '@nestjs/common';
+import { ApiError, GoogleGenAI, type Interactions } from '@google/genai';
 
 @Injectable()
 export class GoogleAiStudioService {
@@ -14,7 +15,11 @@ export class GoogleAiStudioService {
     process.env.GOOGLE_AI_STUDIO_TIMEOUT_MS ?? 300_000,
   );
 
-  async generate(systemPrompt: string, userPrompt: string): Promise<string> {
+  async generate(
+    systemPrompt: string,
+    userPrompt: string,
+    responseFormat: Interactions.TextResponseFormat,
+  ): Promise<string> {
     this.logger.log(
       `Generating with ${this.model} via Gemini Interactions API`,
     );
@@ -25,28 +30,18 @@ export class GoogleAiStudioService {
       );
     }
 
-    let response: Response;
+    const ai = new GoogleGenAI({ apiKey });
+    let interaction: Interactions.Interaction;
     try {
-      response = await fetch(
-        'https://generativelanguage.googleapis.com/v1beta/interactions',
+      interaction = await ai.interactions.create(
         {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'x-goog-api-key': apiKey,
-          },
-          body: JSON.stringify({
-            model: this.model,
-            input: userPrompt,
-            system_instruction: systemPrompt,
-            response_format: {
-              type: 'text',
-              mime_type: 'application/json',
-            },
-            store: false,
-          }),
-          signal: AbortSignal.timeout(this.timeoutMs),
+          model: this.model,
+          input: userPrompt,
+          system_instruction: systemPrompt,
+          response_format: responseFormat,
+          store: false,
         },
+        { timeout_ms: this.timeoutMs },
       );
     } catch (error) {
       if (
@@ -57,6 +52,19 @@ export class GoogleAiStudioService {
           `Google AI Studio did not respond within ${this.timeoutMs} ms`,
         );
       }
+      if (error instanceof ApiError) {
+        this.logger.error(
+          `Google AI Studio model "${this.model}" returned HTTP ${error.status}: ${error.message.slice(0, 1000)}`,
+        );
+        if (error.status === 404) {
+          throw new ServiceUnavailableException(
+            `Google AI Studio model "${this.model}" is unavailable. Check GOOGLE_AI_STUDIO_MODEL and restart the backend. ${error.message.slice(0, 300)}`,
+          );
+        }
+        throw new ServiceUnavailableException(
+          `Google AI Studio returned HTTP ${error.status}`,
+        );
+      }
       this.logger.error(
         'Could not connect to Google AI Studio',
         error instanceof Error ? error.stack : String(error),
@@ -65,74 +73,12 @@ export class GoogleAiStudioService {
         'Could not connect to Google AI Studio',
       );
     }
-
-    if (!response.ok) {
-      const errorBody = await response.text();
-      this.logger.error(
-        `Google AI Studio model "${this.model}" returned HTTP ${response.status}: ${errorBody.slice(0, 1000)}`,
-      );
-      if (response.status === 404) {
-        let detail = errorBody.slice(0, 300);
-        try {
-          const errorResult: unknown = JSON.parse(errorBody);
-          if (
-            this.isRecord(errorResult) &&
-            this.isRecord(errorResult.error) &&
-            typeof errorResult.error.message === 'string'
-          ) {
-            detail = errorResult.error.message;
-          }
-        } catch {
-          // Use the response text when Google does not return a JSON error.
-        }
-        throw new ServiceUnavailableException(
-          `Google AI Studio model "${this.model}" is unavailable. Check GOOGLE_AI_STUDIO_MODEL and restart the backend. ${detail}`,
-        );
-      }
-      throw new ServiceUnavailableException(
-        `Google AI Studio returned HTTP ${response.status}`,
-      );
-    }
-
-    const result: unknown = await response.json();
-    if (!this.isRecord(result)) {
-      throw new ServiceUnavailableException(
-        'Google AI Studio returned an invalid response',
-      );
-    }
-
-    const outputs = result.outputs;
-
-    console.log('Pełna odpowiedź z Google AI:', JSON.stringify(response, null, 2));
-    
-    if (!this.isUnknownArray(outputs) || outputs.length === 0) {
-      throw new ServiceUnavailableException(
-        'Google AI Studio returned no generated content',
-      );
-    }
-
-    const generatedText = outputs
-      .filter(
-        (output): output is Record<string, unknown> & { text: string } =>
-          this.isRecord(output) &&
-          output.type === 'text' &&
-          typeof output.text === 'string',
-      )
-      .map((output) => output.text)
-      .join('');
-    if (!generatedText.trim()) {
+    const generatedText = interaction.output_text;
+    if (typeof generatedText !== 'string' || !generatedText.trim()) {
       throw new ServiceUnavailableException(
         'Google AI Studio returned empty generated text',
       );
     }
     return generatedText;
-  }
-
-  private isRecord(value: unknown): value is Record<string, unknown> {
-    return value !== null && typeof value === 'object' && !Array.isArray(value);
-  }
-
-  private isUnknownArray(value: unknown): value is unknown[] {
-    return Array.isArray(value);
   }
 }
