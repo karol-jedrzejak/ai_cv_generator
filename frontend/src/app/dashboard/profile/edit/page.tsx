@@ -2,11 +2,13 @@
 
 import { useEffect, useState } from 'react';
 import {
+  Avatar,
   Alert,
   Box,
   Breadcrumbs,
   Button,
   CircularProgress,
+  Divider,
   Link,
   Paper,
   Stack,
@@ -29,6 +31,7 @@ export default function EditProfilePage() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [uploadingPhoto, setUploadingPhoto] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
 
@@ -114,6 +117,42 @@ export default function EditProfilePage() {
     }
   };
 
+  const handlePhotoChange = async (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const photo = event.target.files?.[0];
+    event.target.value = '';
+    if (!photo) return;
+
+    if (!['image/jpeg', 'image/png', 'image/webp'].includes(photo.type)) {
+      setError('Wybierz zdjęcie w formacie JPEG, PNG lub WebP.');
+      setSuccess(null);
+      return;
+    }
+    if (photo.size > 2 * 1024 * 1024) {
+      setError('Zdjęcie może mieć maksymalnie 2 MB.');
+      setSuccess(null);
+      return;
+    }
+
+    setError(null);
+    setSuccess(null);
+    setUploadingPhoto(true);
+    try {
+      const updatedProfile = await userProfileApi.uploadPhoto(photo);
+      setProfile(updatedProfile);
+      setSuccess('Zdjęcie profilowe zostało zaktualizowane.');
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : 'Nie udało się przesłać zdjęcia profilowego.',
+      );
+    } finally {
+      setUploadingPhoto(false);
+    }
+  };
+
   return (
     <Box>
       <Breadcrumbs sx={{ mb: 3 }}>
@@ -153,6 +192,61 @@ export default function EditProfilePage() {
               </Box>
               {error && <Alert severity="error">{error}</Alert>}
               {success && <Alert severity="success">{success}</Alert>}
+              <Stack
+                direction={{ xs: 'column', sm: 'row' }}
+                spacing={2.5}
+                sx={{ alignItems: { xs: 'flex-start', sm: 'center' } }}
+              >
+                {profile.avatarUrl ? (
+                  <Box
+                    component="img"
+                    src={userProfileApi.photoUrl(profile.avatarUrl)}
+                    alt={`${profile.name} ${profile.surname}`}
+                    sx={{
+                      width: 200,
+                      height: 200,
+                      flexShrink: 0,
+                      objectFit: 'cover',
+                      borderRadius: 2,
+                      bgcolor: 'action.hover',
+                    }}
+                  />
+                ) : (
+                  <Avatar
+                    sx={{
+                      width: 200,
+                      height: 200,
+                      borderRadius: 2,
+                      fontSize: 64,
+                    }}
+                  >
+                    {profile.name[0]}
+                  </Avatar>
+                )}
+                <Stack spacing={1}>
+                  <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
+                    Zdjęcie profilowe
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    JPEG, PNG lub WebP. Maksymalny rozmiar: 2 MB.
+                  </Typography>
+                  <Button
+                    component="label"
+                    variant="outlined"
+                    disabled={uploadingPhoto || saving}
+                    sx={{ alignSelf: 'flex-start' }}
+                  >
+                    {uploadingPhoto ? 'Przesyłanie...' : 'Wybierz zdjęcie'}
+                    <input
+                      hidden
+                      type="file"
+                      accept="image/jpeg,image/png,image/webp"
+                      onChange={handlePhotoChange}
+                    />
+                  </Button>
+                </Stack>
+              </Stack>
+              <Divider />
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
                 <TextField
                   required
@@ -161,7 +255,7 @@ export default function EditProfilePage() {
                   value={name}
                   onChange={(event) => setName(event.target.value)}
                   slotProps={{ htmlInput: { maxLength: 100 } }}
-                  disabled={saving}
+                  disabled={saving || uploadingPhoto}
                 />
                 <TextField
                   required
@@ -170,7 +264,7 @@ export default function EditProfilePage() {
                   value={surname}
                   onChange={(event) => setSurname(event.target.value)}
                   slotProps={{ htmlInput: { maxLength: 100 } }}
-                  disabled={saving}
+                  disabled={saving || uploadingPhoto}
                 />
               </Stack>
               <TextField
@@ -182,7 +276,7 @@ export default function EditProfilePage() {
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
                 slotProps={{ htmlInput: { maxLength: 255 } }}
-                disabled={saving}
+                disabled={saving || uploadingPhoto}
               />
               <TextField
                 required
@@ -194,7 +288,7 @@ export default function EditProfilePage() {
                 onChange={(event) => setMobilePhone(event.target.value)}
                 slotProps={{ htmlInput: { maxLength: 30 } }}
                 helperText="Podaj numer z kodem kraju, jeśli jest potrzebny."
-                disabled={saving}
+                disabled={saving || uploadingPhoto}
               />
               <TextField
                 required
@@ -204,7 +298,7 @@ export default function EditProfilePage() {
                 value={hometown}
                 onChange={(event) => setHometown(event.target.value)}
                 slotProps={{ htmlInput: { maxLength: 100 } }}
-                disabled={saving}
+                disabled={saving || uploadingPhoto}
               />
               <Typography variant="h6" sx={{ fontWeight: 700, mt: 1 }}>
                 Zmiana hasła (opcjonalnie)
@@ -218,7 +312,7 @@ export default function EditProfilePage() {
                 onChange={(event) => setPassword(event.target.value)}
                 slotProps={{ htmlInput: { minLength: 8 } }}
                 helperText="Co najmniej 8 znaków."
-                disabled={saving}
+                disabled={saving || uploadingPhoto}
               />
               <TextField
                 fullWidth
@@ -228,7 +322,7 @@ export default function EditProfilePage() {
                 value={confirmPassword}
                 onChange={(event) => setConfirmPassword(event.target.value)}
                 slotProps={{ htmlInput: { minLength: 8 } }}
-                disabled={saving}
+                disabled={saving || uploadingPhoto}
               />
               <Button
                 type="submit"

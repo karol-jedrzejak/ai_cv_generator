@@ -1,9 +1,7 @@
-const API_URL =
-  process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3001';
+const API_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3001';
 
 const SESSION_EXPIRED_MESSAGE = 'Sesja wygasła. Zaloguj się ponownie.';
-const DEFAULT_ERROR_MESSAGE =
-  'Wystąpił błąd podczas komunikacji z serwerem.';
+const DEFAULT_ERROR_MESSAGE = 'Wystąpił błąd podczas komunikacji z serwerem.';
 
 interface ApiErrorBody {
   message?: string | string[];
@@ -28,9 +26,7 @@ export async function apiRequest<T>(
   fallbackErrorMessage = DEFAULT_ERROR_MESSAGE,
 ): Promise<T> {
   const token =
-    typeof window !== 'undefined'
-      ? localStorage.getItem('accessToken')
-      : null;
+    typeof window !== 'undefined' ? localStorage.getItem('accessToken') : null;
 
   if (!token) {
     throw new Error(SESSION_EXPIRED_MESSAGE);
@@ -38,7 +34,9 @@ export async function apiRequest<T>(
 
   const headers = new Headers(options.headers);
   headers.set('Authorization', `Bearer ${token}`);
-  if (options.body && !headers.has('Content-Type')) {
+  const isFormData =
+    typeof FormData !== 'undefined' && options.body instanceof FormData;
+  if (options.body && !headers.has('Content-Type') && !isFormData) {
     headers.set('Content-Type', 'application/json');
   }
 
@@ -63,6 +61,10 @@ export async function apiRequest<T>(
   return response.json() as Promise<T>;
 }
 
+export function apiAssetUrl(path: string): string {
+  return new URL(path, API_URL).toString();
+}
+
 export interface CrudApi<T, CreateDto, UpdateDto> {
   getAll: () => Promise<T[]>;
   getOne: (id: string) => Promise<T>;
@@ -74,8 +76,7 @@ export interface CrudApi<T, CreateDto, UpdateDto> {
 export function createCrudApi<T, CreateDto, UpdateDto>(
   resourcePath: string,
 ): CrudApi<T, CreateDto, UpdateDto> {
-  const itemPath = (id: string) =>
-    `${resourcePath}/${encodeURIComponent(id)}`;
+  const itemPath = (id: string) => `${resourcePath}/${encodeURIComponent(id)}`;
 
   return {
     getAll: () => apiRequest<T[]>(resourcePath),
@@ -90,7 +91,6 @@ export function createCrudApi<T, CreateDto, UpdateDto>(
         method: 'PATCH',
         body: JSON.stringify(data),
       }),
-    remove: (id) =>
-      apiRequest<T>(itemPath(id), { method: 'DELETE' }),
+    remove: (id) => apiRequest<T>(itemPath(id), { method: 'DELETE' }),
   };
 }

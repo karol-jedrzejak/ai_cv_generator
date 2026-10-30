@@ -16,3 +16,4 @@ coverage/
 dist/
 
 .DS_Store
+backend/uploads/avatars/

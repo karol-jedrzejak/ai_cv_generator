@@ -5,6 +5,7 @@ export interface UserProfile {
   email: string;
   mobilePhone: string;
   hometown: string;
+  avatarUrl: string | null;
   updatedAt: string;
 }
 

@@ -1,5 +1,5 @@
 import type { UpdateUserProfileDto, UserProfile } from '@/types/user-profile';
-import { apiRequest } from './client';
+import { apiRequest, apiAssetUrl } from './client';
 
 export const userProfileApi = {
   get: () => apiRequest<UserProfile>('/users/me'),
@@ -8,4 +8,13 @@ export const userProfileApi = {
       method: 'PATCH',
       body: JSON.stringify(data),
     }),
+  uploadPhoto: (photo: File) => {
+    const formData = new FormData();
+    formData.append('photo', photo);
+    return apiRequest<UserProfile>('/users/me/photo', {
+      method: 'PATCH',
+      body: formData,
+    });
+  },
+  photoUrl: (path: string) => apiAssetUrl(path),
 };
