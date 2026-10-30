@@ -1,5 +1,8 @@
 # AI CV Generator
 
+<img src="https://raw.githubusercontent.com/karol-jedrzejak/ai_cv_generator/refs/heads/main/screenshots/01.png" height="400">
+<img src="https://raw.githubusercontent.com/karol-jedrzejak/ai_cv_generator/refs/heads/main/screenshots/02.png" height="400">
+
 AI CV Generator is a web application for organizing a professional profile and creating job-specific CVs and cover letters. It combines a Next.js frontend, a NestJS REST API, PostgreSQL, Prisma, and configurable AI providers.
 
 The application uses a candidate's saved profile and a job offer to produce structured documents in Polish or English. Users can choose between a locally hosted Ollama model and Google AI Studio (Gemini).
