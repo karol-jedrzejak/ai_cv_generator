@@ -77,11 +77,7 @@ interface CandidatePromptProfile {
 }
 
 interface JobOfferPromptData {
-  title: string;
-  companyName: string | null;
-  url: string | null;
   description: string;
-  pageText: string;
 }
 
 interface PromptData {
@@ -266,13 +262,7 @@ export function formatAiUserPrompt({
   lines.push(
     '',
     'Job offer:',
-    `Title: ${jobOffer.title}`,
-    `Company: ${jobOffer.companyName ?? ''}`,
-    `URL: ${jobOffer.url ?? ''}`,
     `Description: ${jobOffer.description}`,
-    '',
-    'Job offer page text:',
-    jobOffer.pageText,
   );
 
   return lines.join('\n');

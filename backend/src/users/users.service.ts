@@ -200,7 +200,7 @@ export class UsersService {
     }
     const filename = basename(avatarUrl);
     await this.removeUploadedFile(
-      resolve(__dirname, '../../dist/uploads/avatars', filename),
+      resolve(__dirname, '../../uploads/avatars', filename),
     );
   }
 

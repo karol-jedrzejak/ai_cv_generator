@@ -105,6 +105,10 @@ Run commands from the repository root.
    npm run dev
    ```
 
+5. Dummy Login data:
+E-mail: jan.kowalski@example.com
+Password: Test123!
+
 The frontend API client defaults to `http://localhost:3001`. To override it, configure `NEXT_PUBLIC_API_URL` in the frontend environment.
 
 ## Local service addresses
